@@ -23,7 +23,7 @@ public class test {
 	XYSeriesCollection dataset3;
 	JFreeChart chart;
 	XYPlot plot;
-
+//注释在这里
 	public test() {
 		// 生成数据
 		XYSeries series1 = new XYSeries("系列1");
