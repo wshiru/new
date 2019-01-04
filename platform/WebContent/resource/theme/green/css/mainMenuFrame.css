@@ -1,0 +1,279 @@
+@charset "utf-8";
+
+/* start mainMenuFrame  */
+* {
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+}
+
+html,body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	overflow: hidden;
+	background: url(../images/mainMenuFrame/bg.jpg) no-repeat;
+	background-color:#fff;
+	background-attachment:fixed;
+	background-position: right 160px; *+
+	background-position: right bottom !important;
+}
+
+#div_mainMenu {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	float: left;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#div_subnavTitle {
+	width: 100%;
+	height: 24px;
+	left: 0;
+	top: 0;
+}
+
+#div_main {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: block;
+}
+
+.div_mainMenu_Hide {
+	display: none;
+}
+
+.div_mainMenu_Show {
+	display: block;
+}
+
+* html body {
+	padding: 0;
+}
+
+html,body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	overflow: hidden;
+}
+
+#div_mainMenu {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.navtop {
+	width: 100%;
+	height: 24px;
+	overflow: hidden;
+}
+
+#div_mainDetail {
+	width: 100%;
+	height: 1px;
+	overflow: hidden;
+}
+
+iframe {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+.menu_bock{
+	padding:80px 0 0 0px;	
+}
+
+.menu2_box{
+	float:left;
+	width:230px;	
+ 	vertical-align: top;
+	text-align: left;;	
+	margin:0px;
+	padding: 0px;	
+}	
+.menu2_title{ 
+	height:25px;
+	font-size:14px;
+	font-weight: bold;
+	color:#fff;
+	background-image:url(../images/mainMenuFrame/menu_titlebg.png);
+	background-repeat:no-repeat;
+	padding:8px 0 0 14px !important;
+	*+padding:0 0 0 14px;
+	margin:30px 0 0 0px !important;
+	*+margin:30px 0 0 0px;	
+}
+.clear_b {
+	clear: both;
+}
+.menu2{
+     float:left; 
+	 width:100%;
+     height:auto; 
+     margin:0 5px 5px 5px!important;
+	 *+margin:0 5px 5px 5px;
+	 text-align:center;
+	 clear:both;
+	 padding:6px 0 0 0; 
+}
+
+
+/* start 导航图标区域 */
+.bat {
+	width: 125px;
+	float: left;
+	height: 100px;
+	margin: 5px 0 0 0px !important; *+
+	margin: 5px 0 0 0px;
+	text-align: center;
+	font-weight: bold;
+	color: #003f45;
+	font-size: 12px;
+	line-height: 20px; *+
+	line-height: 22px;	
+	
+}
+
+.bat a:link,.bat a:visited {
+	color: #555e5e;
+	text-decoration: none;
+	opacity:0.6;
+ 
+}
+
+.bat a:hover,.bat a:active {
+	color: #FF6600;
+	text-decoration: none;
+	opacity:1;
+	 
+}
+/* end 导航图标区域 */
+
+/* 显示隐藏功能菜单 */
+.navtop {
+	height: 37px;
+	background: url(../images/mainMenuFrame/navtopbg.png) repeat-x;
+	margin: 0;
+}
+
+
+.navtop_l {
+	float: right;
+	font-size:12px;
+	font-weight: bold;
+	color: #eef1d6;
+	height: 21px;
+	padding: 8px 10px 0 20px;	
+	background-position: 2px 7px;
+}
+
+.navtop_home {
+	float: left;
+	font-size:14px;
+	font-weight: bold;
+	color: #555e5e; <!-- #365ca3;-->
+	height: 21px;
+	padding: 3px 10px 0 10px;	
+	background-position: 2px 7px;
+}
+
+.navtop_devicetype{
+	float: left;
+	font-size:14px;
+	font-weight: bold;
+	color: #555e5e; <!-- #365ca3;-->
+	height: 21px;
+	padding: 12px 4px 0 4px;	
+}
+
+
+#pathDiv{
+	float: left;
+	font-size:14px;
+	font-weight: bold;
+	color: #555e5e; <!-- #365ca3;-->
+	height: 21px;
+	padding: 12px 4px 0 4px;		
+}
+
+.navtop_home img{
+	float: left;
+	display: inline;
+}
+
+.navtop_home div{
+	float: left;
+	padding: 8px 0px 0 8px;	
+	display: inline;
+	color:#555e5e;
+}
+
+
+.navtop_devicetype a:link{
+	color: #555e5e;
+	text-decoration: none;
+}
+
+ 
+.navtop_devicetype a:visited{
+	color: #555e5e;
+	text-decoration: none;
+}
+
+.navtop_devicetype a:hover{
+	color: #555e5e;
+	text-decoration: none;
+}
+
+.navtop_devicetype a:active{
+	color: #555e5e;
+	text-decoration: none;
+}
+
+.navtop_l a:link,.navtop_r a:visited {
+	color: #555e5e;
+	text-decoration: none;
+}
+
+.navtop_l a:hover {
+	color: #d3071a;
+	text-decoration: none;
+}
+
+.navtop_r_left {
+	float: right;
+	font-size:10px;
+	color: #555e5e;
+	height: 21px;
+	padding: 3px 10px 0 10px;
+	margin: 3px 0 0 15px !important;
+}
+
+#div_subnavDetail {
+	width: 100%;
+	height: 90%;
+	margin: 0px 0px 0px 0px !important;
+	text-align: left;
+	overflow: auto;  hidden; auto;  visible;
+	scrollbar-face-color: #FFFFFF;
+	scrollbar-highlight-color: #f5eff8; /*滚动条左边框颜色*/
+	scrollbar-shadow-color: #78f21e; /* 滚动条右边框颜色*/
+	scrollbar-3dlight-color: #FFFFFF;
+	scrollbar-arrow-color: #00a826; /* 滚动条方向头颜色 */
+	scrollbar-track-color: #FFFFFF; /* 滚动条底色*/
+	scrollbar-darkshadow-color: #88a2e6;
+	left: 0;
+}
+
+/* end mainMenuFrame  */

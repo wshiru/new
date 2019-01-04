@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//OpenSymphony Group//XWork Validator 1.0.2//EN" 
+  		"/WEB-INF/dtd/xwork-validator-1.0.2.dtd">
+<validators>
+	<!-- start 用户编号 -->
+	<field name="user.userCode">
+		<field-validator type="requiredstring">
+			<message>请输入用户编号</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9]+$]]></param>
+			<message>用户编号只允许输入英文或数字</message>
+		</field-validator>
+	</field>
+	<!-- end 用户编号 -->
+	
+	<!-- start 登录密码 -->
+	<field name="user.password">
+		<field-validator type="requiredstring">
+			<message>请输入登录密码</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9]+$]]></param>
+			<message>登录密码只允许输入英文或数字</message>
+		</field-validator>
+	</field>
+	<!-- end 登录密码 -->
+
+	<!-- start 密码确认 -->
+	<field name="user.confirmPassword">
+        <field-validator type="requiredstring">
+            <message>请输入密码确认</message>
+        </field-validator>
+		<field-validator type="fieldexpression">
+			<param name="expression"><![CDATA[(user.password)==(user.confirmPassword)]]></param>
+			<message>两次输入密码不相同</message>
+		</field-validator>
+	</field>
+	<!-- end 密码确认 -->
+	
+	<!-- start 状态 -->
+	<field name="user.state">
+		<field-validator type="regex">
+			<param name="expression"><![CDATA[0|1]]></param>
+			<message>状态值无效，只允许为0或1</message>
+		</field-validator>
+	</field>
+	<!-- end 状态 -->
+
+	<!-- start 用户名称 -->
+	<field name="user.userName">
+        <field-validator type="requiredstring">
+            <message>请输入用户名称</message>
+        </field-validator>
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9\u4e00-\u9fa5]+$]]></param>
+			<message>用户名称只允许输入中英文或数字</message>
+		</field-validator>
+	</field>
+	<!-- end 用户名称 -->	
+
+	<!-- start 联系电话 -->
+	<field name="user.phone">
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[0-9]+$]]></param>
+			<message>联系电话只允许输入数字</message>
+		</field-validator>
+	</field>
+	<!-- end 联系电话 -->	
+
+	<!-- start 备注 -->
+	<field name="user.userDesc">
+		<field-validator type="stringlength">
+			<param name="trim">false</param>
+			<param name="minLength">0</param>
+			<param name="maxLength">250</param>
+			<message>备注长度在${minLength}到${maxLength}之间</message>
+		</field-validator>
+	</field>
+	<!-- end 备注 -->
+</validators>

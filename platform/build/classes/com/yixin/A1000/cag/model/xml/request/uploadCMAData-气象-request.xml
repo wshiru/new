@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<request>
+	<monitordata cmaid="29M00000009009000" datanodenum="1">
+		<datanode sensorid="29M00000009009001">
+			<type>018001</type>
+			<equipmentid>29M00000009009001</equipmentid>
+			<timestamp>2010-04-10 22:10:11</timestamp>
+			<attrs>
+				<attr alarm="TRUE" name="Average_WindSpeed_10min" value="67.3" />
+				<attr alarm="TRUE" name="Average_WindDirection_10min" value="37" />
+				<attr alarm="TRUE" name="Max_WindSpeed" value="67.3" />
+				<attr alarm="TRUE" name="Extreme_WindSpeed" value="37.3" />
+				<attr alarm="TRUE" name="Standard_WindSpeed" value="67.3" />
+				<attr alarm="TRUE" name="Air_Temperature" value="37.3" />
+				<attr alarm="FALSE" name="Humidity" value="10" />
+				<attr alarm="FALSE" name="Air_Pressure" value="1000" />
+				<attr alarm="FALSE" name="Precipitation" value="3" />
+				<attr alarm="TRUE" name="Precipitation_Intensity" value="2" />
+				<attr alarm="TRUE" name="Radiation_Intensity" value="37" />
+			</attrs>
+		</datanode>
+	</monitordata>
+</request>

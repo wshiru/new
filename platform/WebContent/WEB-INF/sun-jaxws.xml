@@ -1,0 +1,8 @@
+<?xml version = "1.0"?>
+<endpoints version="2.0"
+	xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
+	<endpoint name="CameraProxy"
+		implementation="com.yixin.A1000.video.webservice.impl.CameraProxyImpl"
+		url-pattern="/CameraProxy">		
+		
+	</endpoint></endpoints>

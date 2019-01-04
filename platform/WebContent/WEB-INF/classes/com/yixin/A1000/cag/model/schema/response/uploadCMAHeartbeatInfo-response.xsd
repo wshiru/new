@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="response">
+		<complexType>
+			<sequence>
+				<element name="result">
+					<complexType>
+						<sequence>
+							<element name="error" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="attr">
+											<complexType>
+												<attribute name="name" type="string" use="required" />
+												<attribute name="value" type="string" use="required" />
+											</complexType>
+										</element>
+									</sequence>
+									<attribute name="errorcode" type="string" use="required" />
+								</complexType>
+							</element>
+						</sequence>
+						<attribute name="code" type="string" use="required" />
+					</complexType>
+				</element>
+				<element name="commands" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="command" minOccurs="1" maxOccurs="unbounded">
+								<complexType>
+									<sequence>
+										<element maxOccurs="unbounded" minOccurs="0" name="action">
+											<complexType>
+												<attribute name="name" type="string" use="required" />
+												<attribute name="value" type="string" use="required" />
+											</complexType>
+										</element>
+									</sequence>
+									<attribute name="objid" type="string" use="required" />
+									<attribute name="type" type="string" use="required" />
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="versions" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element maxOccurs="unbounded" minOccurs="1" name="version">
+								<complexType>
+									<sequence>
+										<element name="time" type="string" />
+										<element name="versionno" type="string" />
+										<element name="filename" type="string" />
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

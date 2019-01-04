@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="landslideSampling" namespace="/landslide/sampling" extends="struts-default">
+		<result-types>
+			<result-type name="chart" class="org.apache.struts2.dispatcher.ChartResult">
+				<param name="width">1000</param>
+				<param name="height">500</param>
+			</result-type>				
+		</result-types>
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/landslide/sampling/list.jsp</result>
+			<result name="chart" type="chart" />		
+		</global-results>
+		<action name="list" class="landslideSamplingAction" method="list">
+			<result name="success">/WEB-INF/jsp/A1000/landslide/sampling/list.jsp</result>
+			<result name="listPoint">/WEB-INF/jsp/A1000/landslide/sampling/listPoint.jsp</result>
+		</action>	
+		<action name="chart" class="landslideSamplingAction" method="chart"></action>
+		
+		<action name="main" class="landslideSamplingAction" method="main">
+			<result>/WEB-INF/jsp/A1000/landslide/sampling/main.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/landslide/sampling/main.jsp</result>
+		</action>		
+	</package>
+	<package name="landslideRealTime" namespace="/landslide/realTime" extends="struts-default">
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/landslide/realTime/read.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/landslide/realTime/read.jsp</result>
+		</global-results>
+		<action name="realTime" class="realTimeLandslideAction" method="realTime"></action>
+		<action name="samplingLandslide" class="realTimeLandslideAction" method="samplingLandslide"></action>		
+	</package>
+	<package name="landslideParameter" namespace="/landslide/parameter" extends="struts-default">
+		<interceptors>
+			<!-- 通讯的拦截器 -->
+			<interceptor name="deviceSettingsActionInterceptor" class="com.yixin.A1000.settings.web.DeviceSettingsActionInterceptor"></interceptor>
+			<interceptor-stack name="landslideStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="deviceSettingsActionInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>			
+
+		
+		<!-- 传感器参数配置 开始-->
+		<action name="sensorParam" class="landslideParameterAction" method="sensorParam">
+			<result>/WEB-INF/jsp/A1000/landslide/parameter/sensorParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/landslide/parameter/sensorParam.jsp</result>		
+		</action>
+		<action name="addSensorCount" class="landslideParameterAction" method="addSensorCount">
+			<result>/WEB-INF/jsp/A1000/landslide/parameter/sensorParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/landslide/parameter/sensorParam.jsp</result>		
+		</action>
+		<action name="decSensorCount" class="landslideParameterAction" method="decSensorCount">
+			<result>/WEB-INF/jsp/A1000/landslide/parameter/sensorParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/landslide/parameter/sensorParam.jsp</result>		
+		</action>		
+		<action name="saveSensorParam" class="landslideParameterAction" method="saveSensorParam">
+			<result>/WEB-INF/jsp/A1000/landslide/parameter/sensorParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/landslide/parameter/sensorParam.jsp</result>	
+		</action>		
+		<!-- 传感器参数配置 结束-->
+		
+		<!-- 终端模型参数 开始-->
+		<action name="modelParam" class="landslideParameterAction" method="modelParam">
+			<result>/WEB-INF/jsp/A1000/landslide/parameter/modelParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/landslide/parameter/modelParam.jsp</result>		
+		</action>
+		<action name="upModelParam" class="landslideParameterAction" method="upModelParam">
+			<interceptor-ref name="landslideStack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/landslide/parameter/modelParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/landslide/parameter/modelParam.jsp</result>		
+		</action>		
+		
+		<action name="downModelParam" class="landslideParameterAction" method="downModelParam">
+			<interceptor-ref name="landslideStack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/landslide/parameter/modelParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/landslide/parameter/modelParam.jsp</result>		
+		</action>
+		<!-- 终端模型参数 结束-->
+		
+		<!-- 终端告警阀值参数 开始-->
+		<action name="alarmParam" class="landslideParameterAction" method="alarmParam">
+			<result>/WEB-INF/jsp/A1000/landslide/parameter/alarmParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/landslide/parameter/alarmParam.jsp</result>		
+		</action>
+		<action name="upAlarmParam" class="landslideParameterAction" method="upAlarmParam">
+			<interceptor-ref name="landslideStack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/landslide/parameter/alarmParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/landslide/parameter/alarmParam.jsp</result>		
+		</action>		
+		
+		<action name="downAlarmParam" class="landslideParameterAction" method="downAlarmParam">
+			<interceptor-ref name="landslideStack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/landslide/parameter/alarmParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/landslide/parameter/alarmParam.jsp</result>		
+		</action>
+		<!-- 终端告警阀值参数 结束-->				
+	</package>	
+	
+	<!-- 地质滑坡数据分析-->			
+	<package name="landslideDisplacement" namespace="/landslide/displacement" extends="struts-default">
+		<result-types>
+			<result-type name="chart" class="org.apache.struts2.dispatcher.ChartResult">
+				<param name="width">1000</param>
+				<param name="height">500</param>
+			</result-type>				
+		</result-types>
+	
+		<action name="dayList" class="landslideDisplacementAction" method="dayList">
+			<result >/WEB-INF/jsp/A1000/landslide/displacement/daysDisplacement.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/landslide/displacement/daysDisplacement.jsp</result>	
+		</action>
+		
+		<action name="dayExportExcel" class="landslideDisplacementAction" method="dayExportExcel">
+			<result >/WEB-INF/jsp/A1000/landslide/displacement/daysDisplacement.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/landslide/displacement/daysDisplacement.jsp</result>	
+		</action>
+		
+		<action name="dayChart" class="landslideDisplacementAction" method="dayChart">
+		     <result name="chart" type="chart" />		
+		</action>
+		
+		<action name="monthList" class="landslideDisplacementAction" method="monthList">
+			<result >/WEB-INF/jsp/A1000/landslide/displacement/monthDisplacement.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/landslide/displacement/monthDisplacement.jsp</result>	
+		</action>
+		
+		<action name="monthExportExcel" class="landslideDisplacementAction" method="monthExportExcel">
+			<result >/WEB-INF/jsp/A1000/landslide/displacement/monthDisplacement.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/landslide/displacement/monthDisplacement.jsp</result>	
+		</action>
+		
+		<action name="monthChart" class="landslideDisplacementAction" method="monthChart">
+		     <result name="chart" type="chart" />		
+		</action>
+
+
+		<action name="yearList" class="landslideDisplacementAction" method="yearList">
+			<result >/WEB-INF/jsp/A1000/landslide/displacement/yearDisplacement.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/landslide/displacement/yearDisplacement.jsp</result>	
+		</action>
+		
+		<action name="yearExportExcel" class="landslideDisplacementAction" method="yearExportExcel">
+			<result >/WEB-INF/jsp/A1000/landslide/displacement/yearDisplacement.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/landslide/displacement/yearDisplacement.jsp</result>	
+		</action>
+		
+		<action name="yearChart" class="landslideDisplacementAction" method="yearChart">
+		     <result name="chart" type="chart" />		
+		</action>	 
+
+		
+	</package>		
+</struts>

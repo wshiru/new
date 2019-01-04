@@ -1,0 +1,74 @@
+/*
+  说明：部分改写dtree
+  1.增加DIV滚动条功能,overflow设置为auto启用
+  2.优化树形的相关参数
+  航天科工 软件部  zhanzhaolun
+ 
+*/
+
+.dtree{
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size:13px;
+    white-space: nowrap;
+    width:100%;
+	padding:2px 0px 0px 5px;
+    overflow: auto;/* visible;auto */
+    scrollbar-face-color:#e7f8fc;
+    scrollbar-highlight-color: #e7f8fc;  /*滚动条左边框颜色*/
+    scrollbar-shadow-color: #e7f8fc;     /* 滚动条右边框颜色*/
+    scrollbar-3dlight-color: #e7f8fc; 
+    scrollbar-arrow-color: #005a62;   /* 滚动条方向头颜色 */
+    scrollbar-track-color: #e7f8fc;   /* 滚动条底色*/
+    scrollbar-darkshadow-color: #e7f8fc;/*88a2e6;*/
+    /*background-color:#FFFFFF;*/	  
+}
+
+.dtree a.node:hover, .dtree a.nodeSel:hover {
+    color: #FF6600;
+    text-decoration: underline;
+    outline-style: none;
+}
+
+.dtree a.node:active {
+    background-color:#c2e2e9;
+}
+
+
+.dtree img {
+    border: 0;
+    vertical-align: middle;
+    outline-style: none;
+}
+
+
+.dtree a {
+    color: #333;
+    text-decoration: none;
+    outline-style: none;
+}
+
+.dtree a:visited {
+    color: #333;
+    text-decoration: none;
+    outline-style: none;
+}
+
+.dtree a.node, .dtree a.nodeSel {
+    white-space: nowrap;
+    padding: 1px 2px 1px 2px;
+    outline-style: none;
+}
+
+.dtree a.nodeSel {
+    background-color: #c0d2ec;
+    outline-style: none;
+}
+
+.dtree .clip {
+    overflow: hidden;
+}
+.checkbox{
+	width:11px;
+	height:11px;
+}
+

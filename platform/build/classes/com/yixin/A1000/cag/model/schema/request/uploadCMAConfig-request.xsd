@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="request">
+		<complexType>
+			<sequence>
+				<element name="configs">
+					<complexType>
+						<sequence>
+							<element name="config" minOccurs="1" maxOccurs="unbounded">
+								<complexType>
+									<sequence>
+										<element name="attr" minOccurs="0" maxOccurs="unbounded">
+											<complexType>
+												<attribute name="desc" type="string" use="required" />
+												<attribute name="name" type="string" use="required" />
+												<attribute name="type" type="string" use="required" />
+												<attribute name="length" type="string" use="required" />
+												<attribute name="unit" type="string" use="required" />
+												<attribute name="range" type="string" use="required" />
+												<attribute name="note" type="string" use="required" />
+												<attribute name="value" type="string" use="required" />
+											</complexType>
+										</element>
+									</sequence>
+									<attribute name="objid" type="string" use="required" />
+									<attribute name="dataacquiretime" type="string" use="required" />
+									<attribute name="heartbeattime" type="string" use="required" />
+									<attribute name="version" type="string" use="required" />
+									<attribute name="wakeupreferencetime" type="string" use="required" />
+									<attribute name="wakeupcycle" type="string" use="required" />
+									<attribute name="wakeuptime" type="string" use="required" />
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

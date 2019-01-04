@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//OpenSymphony Group//XWork Validator 1.0.2//EN" 
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<!-- start 安装高度 -->
+	<field name="weatherParameter.mountingHeight">
+		<field-validator type="required">
+			<message>安装高度不能为空</message>
+		</field-validator>
+		<field-validator type="double">
+			<param name="minInclusive">8</param>
+			<param name="maxInclusive">100</param>
+			<message>安装高度必须为${minInclusive}到${maxInclusive}间的数值</message>
+		</field-validator>
+	</field>
+	<!-- end 安装高度 -->
+
+	<!-- start 设计高度 -->
+	<field name="weatherParameter.designHeight">
+		<field-validator type="required">
+			<message>设计高度不能为空</message>
+		</field-validator>
+		<field-validator type="double">
+			<param name="minInclusive">8</param>
+			<param name="maxInclusive">100</param>
+			<message>设计高度必须为${minInclusive}到${maxInclusive}间的数值</message>
+		</field-validator>
+	</field>
+	<!-- end 设计高度 -->
+
+	<!-- start 地面状况系数 -->
+	<field name="weatherParameter.windCoefficient">
+		<field-validator type="required">
+			<message>地面状况系数不能为空</message>
+		</field-validator>
+		<field-validator type="double">
+			<param name="minInclusive">0.01</param>
+			<param name="maxInclusive">0.2</param>
+			<message>地面状况系数必须为${minInclusive}到${maxInclusive}间的数值</message>
+		</field-validator>
+	</field>
+	<!-- end 地面状况系数 -->
+</validators>

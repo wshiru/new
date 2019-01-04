@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+
+<!-- Dao 配置开始 -->
+	<bean id="contaminationSamplingDao" class="com.yixin.A1000.contamination.dao.impl.springhibernate.ContaminationSamplingDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="contaminationParameterDao" class="com.yixin.A1000.contamination.dao.impl.springhibernate.ContaminationParameterDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+<!-- Dao 配置结束 -->
+
+<!-- Service 配置开始 -->
+	<bean id="contaminationSamplingService" class="com.yixin.A1000.contamination.service.impl.ContaminationSamplingServiceImpl">
+		<property name="samplingDao" ref="contaminationSamplingDao" />
+	</bean>
+	<bean id="realTimeContaminationService" class="com.yixin.A1000.contamination.service.impl.RealTimeContaminationServiceImpl">
+		<property name="taskConfigDao" ref="taskConfigDao" />
+		<property name="taskConfigService" ref="taskConfigService" />
+		<property name="commService" ref="commService" />
+	</bean>
+	<bean id="contaminationParameterService" class="com.yixin.A1000.contamination.service.impl.ContaminationParameterServiceImpl">
+		<property name="contaminationParameterDao" ref="contaminationParameterDao" />
+	</bean>
+	
+<!-- Service 配置结束 -->
+
+<!-- Action 配置开始 -->
+
+	<bean name="contaminationSamplingAction" class="com.yixin.A1000.contamination.web.ContaminationSamplingAction" scope="prototype">
+		<property name="samplingService" ref="contaminationSamplingService"/>
+		<property name="sensorService" ref="sensorService"/>
+		<property name="pictureService" ref="pictureService"/>				
+		<property name="contaminationParameterService" ref="contaminationParameterService"/>		
+	</bean>
+	
+	<bean name="contaminationParameterAction" class="com.yixin.A1000.contamination.web.ContaminationParameterAction" scope="prototype">
+		<property name="contaminationParameterService" ref="contaminationParameterService"/>
+		<property name="deviceSettingsService" ref="deviceSettingsService"/>		
+		<property name="sensorService" ref="sensorService"/>		
+	</bean>	
+	
+	<bean name="realTimeContaminationAction" class="com.yixin.A1000.contamination.web.RealTimeContaminationAction" scope="prototype">
+		<property name="realTimeContaminationService" ref="realTimeContaminationService"/>
+		<property name="sensorService" ref="sensorService"/>
+		<property name="contaminationSamplingService" ref="contaminationSamplingService"/>
+		<property name="taskConfigService" ref="taskConfigService"/>
+	</bean>
+	  
+	<bean name="contaminationAnalysisAction" class="com.yixin.A1000.contamination.web.ContaminationAnalysisAction" scope="prototype">
+		<property name="samplingService" ref="contaminationSamplingService"/>
+		<property name="sensorService" ref="sensorService"/>
+	</bean>	
+ 	
+<!-- Action 配置结束 -->
+</beans>

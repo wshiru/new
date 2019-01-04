@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="icethincknessParameter" namespace="/icethinckness/parameter" extends="struts-default">
+		<interceptors>
+			<!-- 通讯的拦截器 -->
+			<interceptor name="deviceSettingsActionInterceptor" class="com.yixin.A1000.settings.web.DeviceSettingsActionInterceptor"></interceptor>
+			<interceptor-stack name="icethincknessStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="deviceSettingsActionInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>			
+		
+		<!-- 传感器参数配置 开始-->
+		<action name="sensorParam" class="iceThincknessParameterAction" method="sensorParam">
+			<result>/WEB-INF/jsp/A1000/icethinckness/parameter/alarmParam.jsp</result> 
+			<result name="input">/WEB-INF/jsp/A1000/icethinckness/parameter/alarmParam.jsp</result>		
+		</action>		
+		<action name="saveSensorParam" class="iceThincknessParameterAction" method="saveSensorParam">
+			<result>/WEB-INF/jsp/A1000/icethinckness/parameter/alarmParam.jsp</result> 
+			<result name="input">/WEB-INF/jsp/A1000/icethinckness/parameter/alarmParam.jsp</result>	
+		</action>		
+		<!-- 传感器参数配置 结束-->
+		
+		<!-- 终端模型参数 开始 -->
+		<action name="modelParam" class="iceThincknessParameterAction" method="modelParam">
+			<result>/WEB-INF/jsp/A1000/icethinckness/parameter/modelParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/icethinckness/parameter/modelParam.jsp</result>
+		</action>
+		<action name="upModelParam" class="iceThincknessParameterAction" method="upModelParam">
+			<interceptor-ref name="icethincknessStack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/icethinckness/parameter/modelParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/icethinckness/parameter/modelParam.jsp</result>
+		</action>
+		<action name="downModelParam" class="iceThincknessParameterAction" method="downModelParam">
+			<interceptor-ref name="icethincknessStack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/icethinckness/parameter/modelParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/icethinckness/parameter/modelParam.jsp</result>
+		</action>
+		<!-- 终端模型参数 结束 -->		
+		
+		<!-- 终端告警阀值参数 开始-->
+		<action name="alarmParam" class="iceThincknessParameterAction" method="alarmParam">
+			<result>/WEB-INF/jsp/A1000/icethinckness/parameter/alarmParam.jsp</result> 
+			<result name="input">/WEB-INF/jsp/A1000/icethinckness/parameter/alarmParam.jsp</result>		
+		</action>
+		<action name="upAlarmParam" class="iceThincknessParameterAction" method="upAlarmParam">
+			<interceptor-ref name="icethincknessStack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/icethinckness/parameter/alarmParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/icethinckness/parameter/alarmParam.jsp</result>		
+		</action>		
+		
+		<action name="downAlarmParam" class="iceThincknessParameterAction" method="downAlarmParam">
+			<interceptor-ref name="icethincknessStack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/icethinckness/parameter/alarmParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/icethinckness/parameter/alarmParam.jsp</result>		
+		</action>
+		<!-- 终端告警阀值参数 结束-->				
+	</package>	
+	
+	<package name="iceThinckness" namespace="/icethinckness/sampling" extends="struts-default">
+		<result-types>
+			<result-type name="chart" class="org.apache.struts2.dispatcher.ChartResult">
+				<param name="width">1000</param>
+				<param name="height">500</param>
+			</result-type>				
+		</result-types>
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/icethinckness/sampling/list.jsp</result>	
+			<result name="chart" type="chart" />	
+		</global-results>
+		<action name="list" class="iceThincknessSamplingAction" method="list">
+			<result name="success">/WEB-INF/jsp/A1000/icethinckness/sampling/list.jsp</result>	
+		</action>	
+		
+		<action name="timeExportExcel" class="iceThincknessSamplingAction" method="exportExcel">
+			<result name="success">/WEB-INF/jsp/A1000/icethinckness/sampling/list.jsp</result>	
+			<result name="input">/WEB-INF/jsp/A1000/icethinckness/sampling/list.jsp</result>	
+		</action>			
+		
+		<action name="chart" class="iceThincknessSamplingAction" method="chart"></action>
+		
+		<action name="main" class="iceThincknessSamplingAction" method="main">
+			<result>/WEB-INF/jsp/A1000/icethinckness/sampling/main.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/icethinckness/sampling/main.jsp</result>
+		</action>			
+	</package>
+	
+	<package name="realTimeIceThinckness" namespace="/icethinckness/realTime" extends="struts-default">
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/icethinckness/realTime/realTimeIceThinckness.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/icethinckness/realTime/realTimeIceThinckness.jsp</result>
+		</global-results>
+		<action name="realTime" class="realTimeIceThincknessAction" method="realTime"></action>	
+		<action name="addRealTimeTask" class="realTimeIceThincknessAction" method="addRealTimeTask"></action>
+		<action name="samplingIceThinckness" class="realTimeIceThincknessAction" method="samplingIceThinckness">
+			<result>/WEB-INF/jsp/A1000/icethinckness/realTime/realTimeIceThinckness.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/icethinckness/realTime/realTimeIceThinckness.jsp</result>
+		</action>
+	</package>
+	
+
+	<package name="iceThincknessAnalysis" namespace="/icethinckness/analysis" extends="struts-default">
+		<result-types>
+			<result-type name="chart" class="org.apache.struts2.dispatcher.ChartResult">
+				<param name="width">1000</param>
+				<param name="height">500</param>
+			</result-type>				
+		</result-types>
+	
+		<action name="dayList" class="iceThincknessAnalysisAction" method="dayList">
+			<result >/WEB-INF/jsp/A1000/icethinckness/analysis/daysAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/icethinckness/analysis/daysAnalysis.jsp</result>	
+		</action>
+		
+		<action name="dayExportExcel" class="iceThincknessAnalysisAction" method="dayExportExcel">
+			<result >/WEB-INF/jsp/A1000/icethinckness/analysis/daysAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/icethinckness/analysis/daysAnalysis.jsp</result>	
+		</action>
+		
+		<action name="dayChart" class="iceThincknessAnalysisAction" method="dayChart">
+		     <result name="chart" type="chart" />		
+		</action>
+		
+		<action name="monthList" class="iceThincknessAnalysisAction" method="monthList">
+			<result >/WEB-INF/jsp/A1000/icethinckness/analysis/monthAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/icethinckness/analysis/monthAnalysis.jsp</result>	
+		</action>
+		
+		<action name="monthExportExcel" class="iceThincknessAnalysisAction" method="monthExportExcel">
+			<result >/WEB-INF/jsp/A1000/icethinckness/analysis/monthAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/icethinckness/analysis/monthAnalysis.jsp</result>	
+		</action>
+		
+		<action name="monthChart" class="iceThincknessAnalysisAction" method="monthChart">
+		     <result name="chart" type="chart" />		
+		</action>
+
+
+		<action name="yearList" class="iceThincknessAnalysisAction" method="yearList">
+			<result >/WEB-INF/jsp/A1000/icethinckness/analysis/yearAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/icethinckness/analysis/yearAnalysis.jsp</result>	
+		</action>
+		
+		<action name="yearExportExcel" class="iceThincknessAnalysisAction" method="yearExportExcel">
+			<result >/WEB-INF/jsp/A1000/icethinckness/analysis/yearAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/icethinckness/analysis/yearAnalysis.jsp</result>	
+		</action>
+		
+		<action name="yearChart" class="iceThincknessAnalysisAction" method="yearChart">
+		     <result name="chart" type="chart" />		
+		</action>	 
+
+		
+	</package>	
+	
+</struts>

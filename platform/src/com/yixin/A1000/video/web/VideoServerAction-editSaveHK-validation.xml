@@ -1,0 +1,68 @@
+<!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<!-- "videoServer.name" start -->
+	<field name="videoServer.name">
+		<field-validator type="required">
+			<message>视频服务器名称不能为空</message>
+		</field-validator>
+	</field>
+	<!-- "videoServer.name" end -->
+
+	<!-- "videoServer.ip" start -->
+	<field name="videoServer.ip">
+		<field-validator type="required">
+			<message>IP地址不能为空</message>
+		</field-validator>
+	</field>
+	<!-- "videoServer.ip" end -->
+
+	<!-- "videoServer.port" start -->
+	<field name="videoServer.port">
+		<field-validator type="required">
+			<message>端口不能为空</message>
+		</field-validator>
+		<field-validator type="int">
+			<param name="min">1</param>
+			<param name="max">65560</param>
+			<message>端口必须为${min}到${max}间的整数</message>
+		</field-validator>
+	</field>
+	<!-- "videoServer.port" end -->
+
+	<!-- "videoServer.userName" start -->
+	<field name="videoServer.userName">
+		<field-validator type="required">
+			<message>用户名不能为空</message>
+		</field-validator>
+	</field>
+	<!-- "videoServer.userName" end -->
+	
+	
+	<!-- "videoServer.password" start -->
+	<field name="videoServer.password">
+		<field-validator type="required">
+			<message>密码不能为空</message>
+		</field-validator>
+	</field>
+	<!-- "videoServer.password" end -->	
+
+	<!-- "videoServer.openTime" start -->
+	<field name="videoServer.openTime">
+		<field-validator type="required">
+			<message>默认打开时间不能为空</message>
+		</field-validator>
+		<field-validator type="int">
+			<param name="min">1</param>
+			<param name="max">60</param>
+			<message>默认打开时间必须为${min}到${max}间的整数</message>
+		</field-validator>
+	</field>
+	<!-- "videoServer.openTime" end -->
+
+
+
+
+</validators>

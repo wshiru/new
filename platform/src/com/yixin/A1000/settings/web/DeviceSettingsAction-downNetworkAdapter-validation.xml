@@ -1,0 +1,53 @@
+<!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<!-- networkAdapter.ip start-->
+    <field name="networkAdapter.ip">
+        <field-validator type="requiredstring" short-circuit="true">
+            <message>请输入IP地址</message>
+        </field-validator>
+        <field-validator type="regex" short-circuit="true">
+			<param name="expression">^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$</param>
+			<message>IP地址格式不正确</message>
+		</field-validator>
+    </field>
+	<!-- networkAdapter.ip end -->
+	
+	<!-- networkAdapter.subnetMask start-->
+    <field name="networkAdapter.subnetMask">
+        <field-validator type="requiredstring" short-circuit="true">
+            <message>子网掩码不能为空</message>
+        </field-validator>
+        <field-validator type="regex" short-circuit="true">
+			<param name="expression">^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$</param>
+			<message>子网掩码格式不正确</message>
+		</field-validator>
+    </field>
+	<!-- networkAdapter.subnetMask end -->
+	
+	<!-- networkAdapter.gateway start-->
+    <field name="networkAdapter.gateway">
+        <field-validator type="requiredstring" short-circuit="true">
+            <message>网关不能为空</message>
+        </field-validator>
+        <field-validator type="regex" short-circuit="true">
+			<param name="expression">^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$</param>
+			<message>网关格式不正确</message>
+		</field-validator>
+    </field>
+	<!-- networkAdapter.gateway end -->
+	
+	<!-- networkAdapter.dnsServer start-->
+    <field name="networkAdapter.dnsServer">
+        <field-validator type="requiredstring" short-circuit="true">
+            <message>DNS服务器不能为空</message>
+        </field-validator>
+        <field-validator type="regex" short-circuit="true">
+			<param name="expression">^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$</param>
+			<message>DNS服务器格式不正确</message>
+		</field-validator>
+    </field>
+	<!-- networkAdapter.dnsServer end -->
+</validators>

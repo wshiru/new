@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<request>
+	<imageinfo sensorid="26M00090990000900" cmaid="26M00090990000901">
+		<packagesum>5</packagesum>
+		<curpackagenum>3</curpackagenum>
+		<timestamp>2010-04-1012:10:11</timestamp>
+		<info name="Channel_No" value="1" />
+		<info name="Presetting_No" value="2" />
+		<info name="MD5Value" value="fa15f254498759e4" />
+	</imageinfo>
+</request>

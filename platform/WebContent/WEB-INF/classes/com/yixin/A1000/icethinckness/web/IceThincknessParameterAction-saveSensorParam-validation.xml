@@ -1,0 +1,59 @@
+<!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<!-- "deviceID.componentID" start -->
+
+	<field name="iceThincknessParameter.angleXAlarm2">
+		<field-validator type="conversion">
+			<message></message>
+		</field-validator>
+		<field-validator type="double">
+			<param name="min">0</param>
+			<param name="max">90</param>
+			<message>预警值为${min }到${max }间的整数或小数</message>
+		</field-validator>
+	</field>
+	<field name="iceThincknessParameter.angleXAlarm3">
+		<field-validator type="conversion">
+			<message></message>
+		</field-validator>
+		<field-validator type="double">
+			<param name="min">0</param>
+			<param name="max">90</param>
+			<message>预警值为${min }到${max }间的整数或小数</message>
+		</field-validator>
+	</field>
+	<field name="iceThincknessParameter.angleYAlarm1">
+		<field-validator type="conversion">
+			<message></message>
+		</field-validator>
+		<field-validator type="double">
+			<param name="min">0</param>
+			<param name="max">90</param>
+			<message>预警值为${min }到${max }间的整数或小数</message>
+		</field-validator>
+	</field>
+	<field name="iceThincknessParameter.angleYAlarm2">
+		<field-validator type="conversion">
+			<message></message>
+		</field-validator>
+		<field-validator type="double">
+			<param name="min">0</param>
+			<param name="max">90</param>
+			<message>预警值为${min }到${max }间的整数或小数</message>
+		</field-validator>
+	</field>
+	<field name="iceThincknessParameter.angleYAlarm3">
+		<field-validator type="conversion">
+			<message></message>
+		</field-validator>
+		<field-validator type="double">
+			<param name="min">0</param>
+			<param name="max">90</param>
+			<message>预警值为${min }到${max }间的整数或小数</message>
+		</field-validator>
+	</field>	
+		
+</validators>

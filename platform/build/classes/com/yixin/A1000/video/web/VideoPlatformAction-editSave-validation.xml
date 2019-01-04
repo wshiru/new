@@ -1,0 +1,44 @@
+<!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+    <!-- "videoPlatform.name" start -->
+    <field name="videoPlatform.name">
+		<field-validator type="required">
+            <message>平台名称不能为空</message>
+        </field-validator>
+    </field>
+    <!-- "videoPlatform.name" end -->
+    
+    <!-- "videoPlatform.platformHost" start -->
+    <field name="videoPlatform.platformHost">
+		<field-validator type="required">
+            <message>平台地址不能为空</message>
+        </field-validator>
+    </field>
+    <!-- "videoPlatform.platformHost" end -->
+    
+    <!-- "videoPlatform.platformPort" start -->
+    <field name="videoPlatform.platformPort">
+		<field-validator type="required">
+            <message>平台端口不能为空</message>
+        </field-validator>
+        <field-validator type="int">
+			<param name="min">1</param>
+			<param name="max">65535</param>
+			<message>端口必须为${min}到${max}间的整数</message>
+		</field-validator>
+    </field>
+    <!-- "videoPlatform.platformPort" end -->
+    
+    <!-- "videoPlatform.userName" start -->
+    <field name="videoPlatform.userName">
+		<field-validator type="required">
+            <message>用户名不能为空</message>
+        </field-validator>
+    </field>
+    <!-- "videoPlatform.userName" end -->            
+    
+  
+</validators>

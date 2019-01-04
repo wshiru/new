@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="towertiltParameter" namespace="/towertilt/parameter" extends="struts-default">
+		<interceptors>
+			<!-- 通讯的拦截器 -->
+			<interceptor name="deviceSettingsActionInterceptor" class="com.yixin.A1000.settings.web.DeviceSettingsActionInterceptor"></interceptor>
+			<interceptor-stack name="towertiltStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="deviceSettingsActionInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>			
+		
+		<!-- 传感器参数配置 开始-->
+		<action name="sensorParam" class="towerTiltParameterAction" method="sensorParam">
+			<result>/WEB-INF/jsp/A1000/towertilt/parameter/alarmParam.jsp</result> 
+			<result name="input">/WEB-INF/jsp/A1000/towertilt/parameter/alarmParam.jsp</result>		
+		</action>		
+		<action name="saveSensorParam" class="towerTiltParameterAction" method="saveSensorParam">
+			<result>/WEB-INF/jsp/A1000/towertilt/parameter/alarmParam.jsp</result> 
+			<result name="input">/WEB-INF/jsp/A1000/towertilt/parameter/alarmParam.jsp</result>	
+		</action>		
+		<!-- 传感器参数配置 结束-->
+		
+		<!-- 终端模型参数 开始 -->
+		<action name="modelParam" class="towerTiltParameterAction" method="modelParam">
+			<result>/WEB-INF/jsp/A1000/towertilt/parameter/modelParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/towertilt/parameter/modelParam.jsp</result>
+		</action>
+		<action name="upModelParam" class="towerTiltParameterAction" method="upModelParam">
+			<interceptor-ref name="towertiltStack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/towertilt/parameter/modelParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/towertilt/parameter/modelParam.jsp</result>
+		</action>
+		<action name="downModelParam" class="towerTiltParameterAction" method="downModelParam">
+			<interceptor-ref name="towertiltStack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/towertilt/parameter/modelParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/towertilt/parameter/modelParam.jsp</result>
+		</action>
+		<!-- 终端模型参数 结束 -->		
+		
+		<!-- 终端告警阀值参数 开始-->
+		<action name="alarmParam" class="towerTiltParameterAction" method="alarmParam">
+			<result>/WEB-INF/jsp/A1000/towertilt/parameter/alarmParam.jsp</result> 
+			<result name="input">/WEB-INF/jsp/A1000/towertilt/parameter/alarmParam.jsp</result>		
+		</action>
+		<action name="upAlarmParam" class="towerTiltParameterAction" method="upAlarmParam">
+			<interceptor-ref name="towertiltStack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/towertilt/parameter/alarmParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/towertilt/parameter/alarmParam.jsp</result>		
+		</action>		
+		
+		<action name="downAlarmParam" class="towerTiltParameterAction" method="downAlarmParam">
+			<interceptor-ref name="towertiltStack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/towertilt/parameter/alarmParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/towertilt/parameter/alarmParam.jsp</result>		
+		</action>
+		<!-- 终端告警阀值参数 结束-->				
+	</package>	
+	
+	<package name="towerTilt" namespace="/towertilt/sampling" extends="struts-default">
+		<result-types>
+			<result-type name="chart" class="org.apache.struts2.dispatcher.ChartResult">
+				<param name="width">1000</param>
+				<param name="height">500</param>
+			</result-type>				
+		</result-types>
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/towertilt/sampling/list.jsp</result>	
+			<result name="chart" type="chart" />	
+		</global-results>
+		<action name="list" class="towerTiltSamplingAction" method="list">
+			<result name="success">/WEB-INF/jsp/A1000/towertilt/sampling/list.jsp</result>	
+		</action>	
+		
+		<action name="timeExportExcel" class="towerTiltSamplingAction" method="exportExcel">
+			<result name="success">/WEB-INF/jsp/A1000/towertilt/sampling/list.jsp</result>	
+			<result name="input">/WEB-INF/jsp/A1000/towertilt/sampling/list.jsp</result>	
+		</action>			
+		
+		<action name="chart" class="towerTiltSamplingAction" method="chart"></action>
+		
+		<action name="main" class="towerTiltSamplingAction" method="main">
+			<result>/WEB-INF/jsp/A1000/towertilt/sampling/main.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/towertilt/sampling/main.jsp</result>
+		</action>			
+	</package>
+	
+	<package name="realTimeTowerTilt" namespace="/towerTilt/realTime" extends="struts-default">
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/towertilt/realTime/realTimeTowerTilt.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/towertilt/realTime/realTimeTowerTilt.jsp</result>
+		</global-results>
+		<action name="realTime" class="realTimeTowerTiltAction" method="realTime"></action>	
+		<action name="addRealTimeTask" class="realTimeTowerTiltAction" method="addRealTimeTask"></action>
+		<action name="samplingTowerTilt" class="realTimeTowerTiltAction" method="samplingTowerTilt">
+			<result>/WEB-INF/jsp/A1000/towertilt/realTime/realTimeTowerTilt.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/towertilt/realTime/realTimeTowerTilt.jsp</result>
+		</action>
+	</package>
+	
+
+	<package name="towerTiltAnalysis" namespace="/towertilt/analysis" extends="struts-default">
+		<result-types>
+			<result-type name="chart" class="org.apache.struts2.dispatcher.ChartResult">
+				<param name="width">1000</param>
+				<param name="height">500</param>
+			</result-type>				
+		</result-types>
+	
+		<action name="dayList" class="towerTiltAnalysisAction" method="dayList">
+			<result >/WEB-INF/jsp/A1000/towertilt/analysis/daysAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/towertilt/analysis/daysAnalysis.jsp</result>	
+		</action>
+		
+		<action name="dayExportExcel" class="towerTiltAnalysisAction" method="dayExportExcel">
+			<result >/WEB-INF/jsp/A1000/towertilt/analysis/daysAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/towertilt/analysis/daysAnalysis.jsp</result>	
+		</action>
+		
+		<action name="dayChart" class="towerTiltAnalysisAction" method="dayChart">
+		     <result name="chart" type="chart" />		
+		</action>
+		
+		<action name="monthList" class="towerTiltAnalysisAction" method="monthList">
+			<result >/WEB-INF/jsp/A1000/towertilt/analysis/monthAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/towertilt/analysis/monthAnalysis.jsp</result>	
+		</action>
+		
+		<action name="monthExportExcel" class="towerTiltAnalysisAction" method="monthExportExcel">
+			<result >/WEB-INF/jsp/A1000/towertilt/analysis/monthAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/towertilt/analysis/monthAnalysis.jsp</result>	
+		</action>
+		
+		<action name="monthChart" class="towerTiltAnalysisAction" method="monthChart">
+		     <result name="chart" type="chart" />		
+		</action>
+
+
+		<action name="yearList" class="towerTiltAnalysisAction" method="yearList">
+			<result >/WEB-INF/jsp/A1000/towertilt/analysis/yearAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/towertilt/analysis/yearAnalysis.jsp</result>	
+		</action>
+		
+		<action name="yearExportExcel" class="towerTiltAnalysisAction" method="yearExportExcel">
+			<result >/WEB-INF/jsp/A1000/towertilt/analysis/yearAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/towertilt/analysis/yearAnalysis.jsp</result>	
+		</action>
+		
+		<action name="yearChart" class="towerTiltAnalysisAction" method="yearChart">
+		     <result name="chart" type="chart" />		
+		</action>	 
+
+		
+	</package>	
+	
+</struts>

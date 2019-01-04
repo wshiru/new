@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 禁用动态方法调用-->
+	<!-- 
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	 -->
+	<!-- 启用调试模式，在发布项目时应该设为禁用 -->
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources" value="messageResource" />
+	<!-- 允许静态方法调用 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+
+	<!-- 配置访问action时的后缀为jsp。向客户端隐藏后台使用的技术，同时不将其设为html，是因为html被Google等视为静态网页 -->
+	<!-- 如：/admin/login.jspx，将调用该文件里定义的admin/login action -->
+	<constant name="struts.action.extension" value="jspx" />
+	<!-- 最大上传文件的大小 -->
+	<constant name="struts.multipart.maxSize" value="1000000000" />
+	
+	<!-- 引入其他 struts 配置文件 -->
+	
+	<include file="com/yixin/framework/system/config/system-struts.xml" />
+	<include file="com/yixin/A1000/archive/config/archive-struts.xml" />
+	<include file="com/yixin/A1000/wiretemperature/config/wireTemperature-struts.xml" />
+	<include file="com/yixin/A1000/wiresag/config/wireSag-struts.xml" />
+	<include file="com/yixin/A1000/whitemonsoon/config/whiteMonsoon-struts.xml" />
+	<include file="com/yixin/A1000/insulatormonsoon/config/insulatorMonsoon-struts.xml" />
+	<include file="com/yixin/A1000/towertilt/config/towerTilt-struts.xml" />
+	<include file="com/yixin/A1000/icethinckness/config/iceThinckness-struts.xml" />
+	<include file="com/yixin/A1000/contamination/config/contamination-struts.xml" />	
+	<include file="com/yixin/A1000/weather/config/weather-struts.xml" />
+	<include file="com/yixin/A1000/A1021/config/A1021-struts.xml" />
+	<include file="com/yixin/A1000/landslide/config/landslide-struts.xml" />
+	<include file="com/yixin/A1000/video/config/video-struts.xml" />
+	<include file="com/yixin/A1000/setting/config/setting-struts.xml" />
+	<include file="com/yixin/A1000/warning/config/warning-struts.xml" />
+	<include file="com/yixin/A1000/monitor/config/monitor-struts.xml" />
+    <include file="com/yixin/A1000/settings/config/settings-struts.xml" />
+    <include file="com/yixin/framework/login/config/login-struts.xml" />
+
+	<package name="default" namespace="/" extends="struts-default">
+        <default-action-ref name="index" />
+        <global-results>
+            <result name="error">/500.jsp</result>
+        </global-results>
+        
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+		<action name="index">
+			<result>/index.jsp</result>
+		</action>
+    </package>
+</struts>

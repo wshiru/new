@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="videoPlatform" namespace="/video/videoPlatform"
+		extends="struts-default">
+		<default-action-ref name="edit" />
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/video/videoplatform/edit.jsp
+			</result>
+			<result name="input">/WEB-INF/jsp/A1000/video/videoplatform/edit.jsp
+			</result>
+		</global-results>
+		<action name="edit" class="videoPlatformAction" method="edit">
+			<result name="success">/WEB-INF/jsp/A1000/video/videoplatform/edit.jsp
+			</result>
+		</action>
+		<action name="editSave" class="videoPlatformAction" method="editSave"></action>
+	</package>
+	<package name="videoServer" namespace="/video/videoServer"
+		extends="struts-default">
+		<default-action-ref name="edit" />
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/video/videoserver/edit.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/video/videoserver/edit.jsp
+			</result>
+		</global-results>
+		<action name="edit" class="videoServerAction" method="edit"></action>
+		<action name="editSave" class="videoServerAction" method="editSave"></action>
+		<action name="editHK" class="videoServerAction" method="edit">
+			<result>/WEB-INF/jsp/A1000/video/videoserver/edithk.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/video/videoserver/edithk.jsp
+			</result>
+		</action>
+		<action name="editSaveHK" class="videoServerAction" method="editSaveHK">
+			<result>/WEB-INF/jsp/A1000/video/videoserver/edithk.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/video/videoserver/edithk.jsp
+			</result>		
+		</action>
+		<action name="openVideoPower" class="videoServerAction" method="openVideoPower"></action>
+	</package>
+
+	<package name="recordPlan" namespace="/video/recordPlan"
+		extends="struts-default">
+		<default-action-ref name="list" />
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/video/recordPlan/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/video/recordPlan/list.jsp
+			</result>
+		</global-results>
+		<action name="list" class="recordPlanAction" method="list">
+			<result>/WEB-INF/jsp/A1000/video/recordPlan/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/video/recordPlan/list.jsp
+			</result>
+		</action>
+		<action name="add" class="recordPlanAction" method="add">
+			<result>/WEB-INF/jsp/A1000/video/recordPlan/add.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/video/recordPlan/list.jsp
+			</result>
+		</action>
+		<action name="addSave" class="recordPlanAction" method="addSave">
+			<result>/WEB-INF/jsp/A1000/video/recordPlan/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/video/recordPlan/add.jsp
+			</result>
+		</action>
+		<action name="edit" class="recordPlanAction" method="edit">
+			<result>/WEB-INF/jsp/A1000/video/recordPlan/edit.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/video/recordPlan/list.jsp
+			</result>
+		</action>
+		<action name="editSave" class="recordPlanAction" method="editSave">
+			<result>/WEB-INF/jsp/A1000/video/recordPlan/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/video/recordPlan/edit.jsp
+			</result>
+		</action>
+		<action name="delete" class="recordPlanAction" method="delete">
+		</action>
+		<action name="copyToAll" class="recordPlanAction" method="copyToAll">
+		</action>
+	</package>
+
+	<package name="realtimeVideo" namespace="/video/realtimeVideo"
+		extends="struts-default">
+		<default-action-ref name="list" />
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/video/realtime/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/video/realtime/list.jsp
+			</result>
+		</global-results>
+
+
+
+		<action name="list" class="realtimeVideoAction" method="list"></action>
+		<action name="openVideoPower" class="realtimeVideoAction"
+			method="openVideoPower"></action>
+		<action name="openPower" class="realtimeVideoAction" method="openPower">
+			<result name="success" type="plainText">
+				<param name="charSet">UTF-8</param>
+				<param name="location">/WEB-INF/jsp/A1000/video/realtime/openPower.jsp</param>
+			</result>
+		</action>
+	</package>
+	<package name="playback" namespace="/video/playback" extends="struts-default">
+		<default-action-ref name="list" />
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/video/playback/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/video/playback/list.jsp
+			</result>
+		</global-results>
+		<action name="list" class="playbackVideoAction" method="list"></action>
+
+		<action name="main" class="playbackVideoAction" method="main">
+			<result>/WEB-INF/jsp/A1000/video/playback/main.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/video/playback/main.jsp
+			</result>
+		</action>
+	</package>
+	<package name="videoPlay" namespace="/video/videoplay" extends="struts-default">
+		<default-action-ref name="list" />
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/video/videoplay/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/video/videoplay/list.jsp
+			</result>
+		</global-results>
+		<action name="list" class="videoPlayAction" method="list"></action>
+		<action name="login" class="videoPlayAction" method="login"></action>
+		<action name="logout" class="videoPlayAction" method="logout"></action>
+		<action name="ptzControlStart" class="videoPlayAction" method="ptzControlStart"></action>
+		<action name="ptzControlStop" class="videoPlayAction" method="ptzControlStop"></action>
+		<action name="ptzPresetCall" class="videoPlayAction" method="ptzPresetCall"></action>
+		<action name="ptzPresetSet" class="videoPlayAction" method="ptzPresetSet"></action>
+		<action name="photograph" class="videoPlayAction" method="photograph"></action>
+		<action name="powerControl" class="videoPlayAction" method="powerControl"></action>
+		<action name="queryAlarmEvent" class="videoPlayAction" method="queryAlarmEvent"></action>
+		<action name="queryPowerStatus" class="videoPlayAction" method="queryPowerStatus"></action>
+		<action name="queryOnlineStatus" class="videoPlayAction"
+			method="queryOnlineStatus"></action>
+		<action name="queryBatteryVoltage" class="videoPlayAction"
+			method="queryBatteryVoltage"></action>
+		<action name="queryRealPlayRtspUrl" class="videoPlayAction"
+			method="queryRealPlayRtspUrl"></action>
+		<action name="queryRecordFile" class="videoPlayAction" method="queryRecordFile"></action>
+	</package>
+</struts>

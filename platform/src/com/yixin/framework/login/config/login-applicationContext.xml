@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+<!-- Service 配置开始 -->
+	<bean id="loginService" class="com.yixin.framework.login.service.impl.LoginServiceImpl">
+		<property name="userDao" ref="userDao" />
+		<property name="authResourceDao" ref="authResourceDao" />
+		<property name="userService" ref="userService" />
+		<property name="lineService" ref="lineService" />
+		<property name="towerService" ref="towerService" />	
+		<property name="sensorTypeService" ref="sensorTypeService" />
+		<property name="commService" ref="commService" />
+			
+	</bean>
+<!-- Service 配置结束 -->
+
+<!-- Action 配置开始 -->	
+	<bean name="loginAction" class="com.yixin.framework.login.web.LoginAction" scope="prototype">
+		<property name="loginService" ref="loginService" />
+		<property name="userService" ref="userService" />
+		<property name="sensorService" ref="sensorService" />	
+		<property name="sensorFunctionService" ref="sensorFunctionService" />
+		<property name="localWeatherSamplingService" ref="localWeatherSamplingService" />	
+		<property name="onlineDeviceStatusService" ref="onlineDeviceStatusService" />		
+		<property name="warningService" ref="warningService" />			
+	</bean>
+	<bean name="indexPageAction" class="com.yixin.framework.login.web.IndexPageAction" scope="prototype">
+		<property name="onlineDeviceStatusService" ref="onlineDeviceStatusService" />		
+		<property name="warningService" ref="warningService" />		
+		<property name="lineService" ref="lineService" />
+		<property name="towerService" ref="towerService" />
+		<property name="sensorTypeService" ref="sensorTypeService" />		
+		<property name="sensorService" ref="sensorService" />
+		<property name="pictureService" ref="pictureService" />		
+		<property name="landslideParameterService" ref="landslideParameterService" />
+		<property name="towerTiltParameterService" ref="towerTiltParameterService" />
+		
+		<property name="towerTiltSamplingService" ref="towerTiltSamplingService" />
+		<property name="landslideSamplingService" ref="landslideSamplingService" />
+		<property name="weatherSamplingService" ref="weatherSamplingService" />
+		<property name="recordFileService" ref="recordFileService" />
+		
+		
+	</bean>	
+	
+<!-- Action 配置结束 -->
+
+</beans>

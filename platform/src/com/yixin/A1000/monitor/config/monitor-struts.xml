@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="cmaRunningStatus" namespace="/monitor/cmastatus"
+		extends="struts-default">
+		<result-types>
+			<result-type name="chart"
+				class="org.apache.struts2.dispatcher.ChartResult">
+				<param name="width">1000</param>
+				<param name="height">500</param>
+			</result-type>
+		</result-types>
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/monitor/cmaStatus.jsp</result>
+			<result name="chart" type="chart" />
+		</global-results>
+		<action name="list" class="cmaRunningStatusAction" method="list"></action>
+		<action name="chart" class="cmaRunningStatusAction" method="chart"></action>
+	</package>
+
+
+	<package name="sensorRunningStatus" namespace="/monitor/sensorstatus"
+		extends="struts-default">
+		<result-types>
+			<result-type name="chart"
+				class="org.apache.struts2.dispatcher.ChartResult">
+				<param name="width">1000</param>
+				<param name="height">500</param>
+			</result-type>
+		</result-types>
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/monitor/sensorStatus.jsp
+			</result>
+			<result name="chart" type="chart" />
+		</global-results>
+		<action name="list" class="sensorRunningStatusAction" method="list"></action>
+		<action name="chart" class="sensorRunningStatusAction" method="chart"></action>
+	</package>
+
+
+	<package name="cmaOnline" namespace="/monitor/cmaonline"
+		extends="struts-default">
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/monitor/cmaOnline.jsp</result>
+		</global-results>
+		<action name="list" class="cmaOnlineAction" method="list"></action>
+	</package>
+
+
+	<package name="sensorOnline" namespace="/monitor/sensoronline"
+		extends="struts-default">
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/monitor/sensorOnline.jsp
+			</result>
+		</global-results>
+		<action name="list" class="sensorOnlineAction" method="list"></action>
+	</package>
+
+
+
+	<package name="onlineDeviceStatus" namespace="/monitor/onlineDeviceStatus"
+		extends="struts-default">		
+		<result-types>
+			<result-type name="chart" class="org.apache.struts2.dispatcher.ChartResult">
+				<param name="width">1000</param>
+				<param name="height">500</param>
+			</result-type>				
+		</result-types>		
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/monitor/onlineDeviceStatus.jsp
+			</result>
+			<result name="input">/WEB-INF/jsp/A1000/monitor/onlineDeviceStatus.jsp
+			</result>
+		</global-results>
+		<action name="onlineDeviceStatus" class="sensorOnlineAction"
+			method="onlineDeviceStatus"></action>
+		<action name="upOnlineDeviceStatus" class="sensorOnlineAction"
+			method="upOnlineDeviceStatus"></action>
+		<action name="onlineRateStatistics" class="sensorOnlineAction"
+			method="onlineRateStatistics">
+			<result >/WEB-INF/jsp/A1000/monitor/onlineRateStatistics.jsp</result>
+			<result name="chart" type="chart" />
+		</action>
+	</package>
+</struts>

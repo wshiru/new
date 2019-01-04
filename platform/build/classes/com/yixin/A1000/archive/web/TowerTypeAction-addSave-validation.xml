@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//OpenSymphony Group//XWork Validator 1.0.2//EN" 
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<!-- start 杆塔类型编号 -->
+	<field name="towerType.towerTypeCode">
+		<field-validator type="requiredstring">
+			<message>请输入杆塔类型编号</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9]+$]]></param>
+			<message>杆塔类型编号只允许输入英文或数字</message>
+		</field-validator>
+	</field>
+	<!-- end 杆塔类型编号 -->
+
+	<!-- start 杆塔类型名称 -->
+	<field name="towerType.towerTypeName">
+		<field-validator type="requiredstring">
+			<message>请输入杆塔类型名称</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9\u4e00-\u9fa5]+$]]></param>
+			<message>杆塔类型名称只允许输入中英文或数字</message>
+		</field-validator>
+	</field>
+	<!-- end 杆塔类型名称 -->	
+
+	<!-- start 描述 -->
+	<field name="towerType.towerTypeDesc">
+		<field-validator type="stringlength">
+			<param name="trim">false</param>
+			<param name="minLength">0</param>
+			<param name="maxLength">250</param>
+			<message>描述长度在${minLength}到${maxLength}之间</message>
+		</field-validator>
+	</field>
+	<!-- end 描述 -->
+</validators>

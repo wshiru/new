@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/business-config.properties=UTF-8
+encoding//src/comm-config.properties=UTF-8
+encoding//src/log4j.properties=UTF-8
+encoding//src/system-config.properties=UTF-8
+encoding//src/vci-config.properties=UTF-8

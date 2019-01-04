@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+
+<!-- Dao 配置开始 -->
+	<bean id="whiteMonsoonSamplingDao" class="com.yixin.A1000.whitemonsoon.dao.impl.springhibernate.WhiteMonsoonSamplingDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+<!-- Dao 配置结束 -->
+
+<!-- Service 配置开始 -->
+	<bean id="whiteMonsoonSamplingService" class="com.yixin.A1000.whitemonsoon.service.impl.WhiteMonsoonSamplingServiceImpl">
+		<property name="samplingDao" ref="whiteMonsoonSamplingDao" />
+	</bean>
+	<bean id="realTimeWhiteMonsoonService" class="com.yixin.A1000.whitemonsoon.service.impl.RealTimeWhiteMonsoonServiceImpl">
+		<property name="taskConfigDao" ref="taskConfigDao" />
+		<property name="taskConfigService" ref="taskConfigService" />
+	</bean>
+<!-- Service 配置结束 -->
+
+<!-- Action 配置开始 -->
+	<bean name="whiteMonsoonSamplingAction" class="com.yixin.A1000.whitemonsoon.web.WhiteMonsoonSamplingAction" scope="prototype">
+		<property name="samplingService" ref="whiteMonsoonSamplingService"/>
+	</bean>
+	<bean name="realTimeWhiteMonsoonAction" class="com.yixin.A1000.whitemonsoon.web.RealTimeWhiteMonsoonAction" scope="prototype">
+		<property name="realTimeWhiteMonsoonService" ref="realTimeWhiteMonsoonService"/>
+		<property name="sensorService" ref="sensorService"/>
+		<property name="whiteMonsoonSamplingService" ref="whiteMonsoonSamplingService"/>
+		<property name="taskConfigService" ref="taskConfigService"/>
+	</bean>
+<!-- Action 配置结束 -->
+</beans>

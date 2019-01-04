@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+   
+    <package name="warning" namespace="/warning" extends="struts-default">
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/warning/list.jsp</result>		
+		</global-results>
+		<action name="list" class="warningAction" method="list"></action>
+	</package>
+	
+	<package name="sensorWarning" namespace="/warning/sensor" extends="struts-default">
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/warning/sensorWarningList.jsp</result>		
+		</global-results>
+		<action name="list" class="warningAction" method="list"></action>
+	</package>
+	
+	<package name="mainPage" namespace="/mainpage" extends="struts-default">
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/mainPage.jsp</result>		
+		</global-results>
+		<action name="list" class="latestWarningAction" method="list"></action>
+	</package>
+
+	<package name="weatherCondition" namespace="/warning/weathercondition" extends="struts-default">
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/warning/weatherWarningSetting.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/warning/weatherWarningSetting.jsp</result>	
+		</global-results>
+		<action name="save" class="weatherWarningConditionAction" method="save"></action>
+		<action name="view" class="weatherWarningConditionAction" method="execute"></action>
+	</package>
+	<package name="wireTemperatureCondition" namespace="/warning/wiretemperaturecondition" extends="struts-default">
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/warning/wireTemperatureWarningSetting.jsp</result>	
+			<result name="input">/WEB-INF/jsp/A1000/warning/wireTemperatureWarningSetting.jsp</result>
+		</global-results>
+		<action name="save" class="wireTemperatureWarningConditionAction" method="save"></action>
+		<action name="view" class="wireTemperatureWarningConditionAction" method="execute"></action>
+	</package>
+	<package name="wireSagCondition" namespace="/warning/wiresagcondition" extends="struts-default">
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/warning/wireSagWarningSetting.jsp</result>	
+			<result name="input">/WEB-INF/jsp/A1000/warning/wireSagWarningSetting.jsp</result>
+		</global-results>
+		<action name="save" class="wireSagWarningConditionAction" method="save"></action>
+		<action name="view" class="wireSagWarningConditionAction" method="execute"></action>
+	</package>
+	<package name="whiteMonsoonCondition" namespace="/warning/whitemonsooncondition" extends="struts-default">
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/warning/whiteMonsoonWarningSetting.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/warning/whiteMonsoonWarningSetting.jsp</result>	
+		</global-results>
+		<action name="save" class="whiteMonsoonWarningConditionAction" method="save"></action>
+		<action name="view" class="whiteMonsoonWarningConditionAction" method="execute"></action>
+	</package>
+	<package name="towerTiltCondition" namespace="/warning/towertiltcondition" extends="struts-default">
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/warning/towerTiltWarningSetting.jsp</result>	
+			<result name="input">/WEB-INF/jsp/A1000/warning/towerTiltWarningSetting.jsp</result>	
+		</global-results>
+		<action name="save" class="towerTiltWarningConditionAction" method="save"></action>
+		<action name="view" class="towerTiltWarningConditionAction" method="execute"></action>
+	</package>
+	
+	<package name="insulatorMonsoonCondition" namespace="/warning/insulatormonsooncondition" extends="struts-default">
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/warning/insulatorMonsoonWarningSetting.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/warning/insulatorMonsoonWarningSetting.jsp</result>	
+		</global-results>
+		<action name="save" class="insulatorMonsoonWarningConditionAction" method="save"></action>
+		<action name="view" class="insulatorMonsoonWarningConditionAction" method="execute"></action>
+	</package>	
+			
+	
+</struts>

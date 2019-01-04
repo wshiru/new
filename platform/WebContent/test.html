@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>sss</title>
+
+		<script type="text/javascript"
+			src="http://192.168.0.51:8000/platform/resource/module/jquery/jquery.min.js"></script>
+		<script type="text/javascript"
+			src="http://192.168.0.51:8000/platform/resource/module/jquery/jquery.messager.js"></script>
+
+		<link type="text/css" rel="stylesheet"
+			href="http://192.168.0.51:8000/platform/resource/theme/blue/css/tab.css" />
+		<script type="text/javascript" src="engine.js"></script>
+		<script type="text/javascript">
+	function load() {
+		alert("init");
+		//var str = document.getElementById("title");			
+		//engine.get("http://192.168.0.51:8000/platform/test.html","");
+		//alert(str.innerHTML);
+		VideoPlayer.InitParams("61.191.26.2", 8866, "admin", "",0,"127.0.0.1",10000,"80M01030070000002","151038403456371324", "0",1);
+		alert("init OK");
+	};
+
+	$(document).ready(
+			function() {
+
+				try {
+					
+					VideoPlayer.InitParams("192.168.1.10", 8866, "admin", "",
+						0,"127.0.0.1",10000,"80M01030070000002","151038402114062204", "0",1);
+					//alert("init ok");
+				} catch (aa) {
+					alert(aa.getMessage());
+				}
+
+				//$("#realPlayer").innerHtml = "<object width='352' height='288' classid='CLSID:0C615F36-0C1C-497B-B9E4-833B0D7AA8CA' />";
+				var myVideoPlayer = document.getElementById("VideoPlayer");
+				$("#BtnInit").click(
+						function() {
+
+							var aa = VideoPlayer.DeviceList;
+							alert(aa);
+
+							try {
+								VideoPlayer.Init("192.168.1.10", 8866, "admin",
+										"", "151038402869168764", "0");
+							} catch (aa) {
+								alert(aa.getMessage());
+							}
+							alert("init OK");
+
+						});
+				$("button").click(function() {
+					if ($("#tab_position").is(":visible")) {
+						$("#tab_position").fadeOut(300);
+					} else {
+						$("#tab_position").fadeIn(300);
+					}
+
+				});
+
+				$("#sItem li:not(:first)").css("display", "none");
+				var B = $("#sItem li:last");
+				var C = $("#sItem li:first");
+				setInterval(function() {
+					if (B.is(":visible")) {
+						C.fadeIn(500).addClass("in");
+						B.hide()
+					} else {
+						$("#sItem li:visible").addClass("in");
+						$("#sItem li.in").next().fadeIn(500);
+						$("li.in").hide().removeClass("in")
+					}
+				}, 3000) //ÿ3�����л�һ��������Ը����Ҫ��� 
+			});
+</script>
+
+	</head>
+	<body onload="load();" style="width: 100%; height: 100%;">
+		<div
+			style="height: 100%; width: 100%; margin: 0px; padding: 0px; background-color: #afcfcf;">
+			<object id="VideoPlayer" name="VideoPlayer"
+				classid="clsid:6BCF6633-1B2B-4720-ACF7-F0E64C847344" width="100%"
+				height="600px" align=center hspace=0 vspace=0>
+			</object>
+		</div>
+	</body>
+</html>
+

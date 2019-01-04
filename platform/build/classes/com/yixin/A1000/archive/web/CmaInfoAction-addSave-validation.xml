@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//OpenSymphony Group//XWork Validator 1.0.2//EN" 
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<!-- start 监测代理编码 -->
+	<field name="cmaInfo.cmaCode">
+		<field-validator type="requiredstring">
+			<message>请输入监测代理编码</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9]+$]]></param>
+			<message>监测代理编码只允许输入英文或数字</message>
+		</field-validator>
+	</field>
+	<!-- end 监测代理编码 -->
+
+	<!-- start 监测代理名称 -->
+	<field name="cmaInfo.cmaName">
+		<field-validator type="requiredstring">
+			<message>请输入监测代理名称</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9\u4e00-\u9fa5]+$]]></param>
+			<message>监测代理名称只允许输入中英文或数字</message>
+		</field-validator>
+	</field>
+	<!-- end 监测代理名称 -->	
+
+	<!-- start 状态 -->
+	<field name="cmaInfo.state">
+		<field-validator type="required">
+			<message>请输入状态</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="expression"><![CDATA[0|1]]></param>
+			<message>状态值无效，只允许为0或1</message>
+		</field-validator>
+	</field>
+	<!-- end 状态 -->
+	
+	<!-- start 型号 -->
+	<field name="cmaInfo.cmaModel">
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9\-]+$]]></param>
+			<message>型号只允许输入英文或数字或“-”</message>
+		</field-validator>
+	</field>
+	<!-- end 型号 -->
+	
+	<!-- start 描述 -->
+	<field name="cmaInfo.cmaDesc">
+		<field-validator type="stringlength">
+			<param name="trim">false</param>
+			<param name="minLength">0</param>
+			<param name="maxLength">250</param>
+			<message>描述长度在${minLength}到${maxLength}之间</message>
+		</field-validator>
+	</field>
+	<!-- end 描述 -->
+</validators>

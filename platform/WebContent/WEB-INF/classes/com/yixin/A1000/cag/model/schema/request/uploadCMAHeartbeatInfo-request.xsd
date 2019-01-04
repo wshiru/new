@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="request">
+		<complexType>
+			<sequence>
+				<element name="cma">
+					<complexType>
+						<sequence>
+							<element name="ip" type="string" />
+							<element name="curtime" type="string" />
+							<element name="batteryvoltage" type="string" />
+							<element name="operationtemperature" type="string" />
+							<element name="floatingcharge" type="string" />
+						</sequence>
+						<attribute name="id" type="string" use="required" />
+					</complexType>
+				</element>
+				<element name="sensors">
+					<complexType>
+						<sequence>
+							<element name="sensor" minOccurs="1" maxOccurs="unbounded">
+								<complexType>
+									<sequence>
+										<element name="status" type="string" />
+										<element name="batteryvoltage" type="string" />
+										<element name="operationtemperature" type="string" />
+										<element name="floatingcharge" type="string" />
+									</sequence>
+									<attribute name="id" type="string" />
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+
+<!-- Dao 配置开始 -->
+	<bean id="iceThincknessSamplingDao" class="com.yixin.A1000.icethinckness.dao.impl.springhibernate.IceThincknessSamplingDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="iceThincknessParameterDao" class="com.yixin.A1000.icethinckness.dao.impl.springhibernate.IceThincknessParameterDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+<!-- Dao 配置结束 -->
+
+<!-- Service 配置开始 -->
+	<bean id="iceThincknessSamplingService" class="com.yixin.A1000.icethinckness.service.impl.IceThincknessSamplingServiceImpl">
+		<property name="samplingDao" ref="iceThincknessSamplingDao" />
+	</bean>
+	<bean id="realTimeIceThincknessService" class="com.yixin.A1000.icethinckness.service.impl.RealTimeIceThincknessServiceImpl">
+		<property name="taskConfigDao" ref="taskConfigDao" />
+		<property name="taskConfigService" ref="taskConfigService" />
+		<property name="commService" ref="commService" />
+	</bean>
+	<bean id="iceThincknessParameterService" class="com.yixin.A1000.icethinckness.service.impl.IceThincknessParameterServiceImpl">
+		<property name="iceThincknessParameterDao" ref="iceThincknessParameterDao" />
+	</bean>
+	
+<!-- Service 配置结束 -->
+
+<!-- Action 配置开始 -->
+
+	<bean name="iceThincknessSamplingAction" class="com.yixin.A1000.icethinckness.web.IceThincknessSamplingAction" scope="prototype">
+		<property name="samplingService" ref="iceThincknessSamplingService"/>
+		<property name="sensorService" ref="sensorService"/>
+		<property name="pictureService" ref="pictureService"/>				
+		<property name="iceThincknessParameterService" ref="iceThincknessParameterService"/>		
+		<property name="weatherSamplingService" ref="weatherSamplingService"/>
+	</bean>
+	
+	<bean name="iceThincknessParameterAction" class="com.yixin.A1000.icethinckness.web.IceThincknessParameterAction" scope="prototype">
+		<property name="iceThincknessParameterService" ref="iceThincknessParameterService"/>
+		<property name="deviceSettingsService" ref="deviceSettingsService"/>		
+		<property name="sensorService" ref="sensorService"/>		
+	</bean>	
+	
+	<bean name="realTimeIceThincknessAction" class="com.yixin.A1000.icethinckness.web.RealTimeIceThincknessAction" scope="prototype">
+		<property name="realTimeIceThincknessService" ref="realTimeIceThincknessService"/>
+		<property name="sensorService" ref="sensorService"/>
+		<property name="iceThincknessSamplingService" ref="iceThincknessSamplingService"/>
+		<property name="taskConfigService" ref="taskConfigService"/>
+	</bean>
+	  
+	<bean name="iceThincknessAnalysisAction" class="com.yixin.A1000.icethinckness.web.IceThincknessAnalysisAction" scope="prototype">
+		<property name="samplingService" ref="iceThincknessSamplingService"/>
+		<property name="sensorService" ref="sensorService"/>
+	</bean>	
+ 	
+<!-- Action 配置结束 -->
+</beans>

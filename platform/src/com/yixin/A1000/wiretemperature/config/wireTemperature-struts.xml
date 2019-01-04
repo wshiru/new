@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="wireTemperature" namespace="/wiretemperature/sampling" extends="struts-default">
+		<result-types>
+			<result-type name="chart" class="org.apache.struts2.dispatcher.ChartResult">
+				<param name="width">1000</param>
+				<param name="height">500</param>
+			</result-type>				
+		</result-types>
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/wiretemperature/sampling/list.jsp</result>
+			<result name="chart" type="chart" />	
+		</global-results>
+		<action name="list" class="wireTemperatureSamplingAction" method="list"></action>	
+		<action name="chart" class="wireTemperatureSamplingAction" method="chart"></action>	
+	</package>
+	<package name="realTimeWireTemperature" namespace="/wireTemperature/realTime" extends="struts-default">
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/wiretemperature/realTimeWireTemperature.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/wiretemperature/realTimeWireTemperature.jsp</result>
+		</global-results>
+		<action name="realTime" class="realTimeWireTemperatureAction" method="realTime"></action>	
+		<action name="addRealTimeTask" class="realTimeWireTemperatureAction" method="addRealTimeTask"></action>
+	</package>
+</struts>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//OpenSymphony Group//XWork Validator 1.0.2//EN" 
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<!-- start 字典编号 -->
+	<field name="dictionary.code">
+		<field-validator type="requiredstring">
+			<message>该项不能为空</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9]+$]]></param>
+			<message>该项只允许输入英文或数字</message>
+		</field-validator>
+	</field>
+	<!-- end 字典编号 -->
+	
+	<!-- start 字典名称 -->
+	<field name="dictionary.name">
+        <field-validator type="requiredstring">
+            <message>该项不能为空</message>
+        </field-validator>
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9\u4e00-\u9fa5]+$]]></param>
+			<message>该项只允许输入中英文或数字</message>
+		</field-validator>
+	</field>
+	<!-- end 字典名称 -->	
+	
+	<!-- start 字典类型 -->
+    <field name="dictionary.dictCategory.dictCategoryId">
+        <field-validator type="required">
+            <message>该项不能为空</message>
+        </field-validator>
+    </field>
+    <!-- end 字典类型 -->	
+	
+</validators>

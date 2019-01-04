@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+
+<!-- Service 配置开始 -->
+	<bean id="deviceSettingsService" class="com.yixin.A1000.settings.service.impl.DeviceSettingsServiceImpl">
+		<property name="commService" ref="commService" />
+	</bean>
+<!-- Service 配置结束 -->
+
+<!-- Action 配置开始 -->
+	<bean name="deviceSettingsAction" class="com.yixin.A1000.settings.web.DeviceSettingsAction" scope="prototype">
+		<property name="deviceSettingsService" ref="deviceSettingsService"/>
+		<property name="sensorService" ref="sensorService"/>
+	</bean>
+<!-- Action 配置结束 -->
+</beans>

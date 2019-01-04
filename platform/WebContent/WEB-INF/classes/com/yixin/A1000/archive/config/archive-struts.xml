@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="cmainfo" namespace="/archive/cmainfo" extends="struts-default">
+		<default-action-ref name="list" />
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/archive/cmainfo/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/cmainfo/list.jsp
+			</result>
+		</global-results>
+		<action name="list" class="cmaInfoAction" method="list"></action>
+		<action name="add" class="cmaInfoAction" method="add">
+			<result>/WEB-INF/jsp/A1000/archive/cmainfo/add.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/cmainfo/add.jsp
+			</result>
+		</action>
+		<action name="addSave" class="cmaInfoAction" method="addSave">
+			<result name="input">/WEB-INF/jsp/A1000/archive/cmainfo/add.jsp
+			</result>
+		</action>
+		<action name="edit" class="cmaInfoAction" method="edit">
+			<result>/WEB-INF/jsp/A1000/archive/cmainfo/edit.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/cmainfo/edit.jsp
+			</result>
+		</action>
+		<action name="editSave" class="cmaInfoAction" method="editSave">
+			<result name="input">/WEB-INF/jsp/A1000/archive/cmainfo/edit.jsp
+			</result>
+		</action>
+		<action name="detail" class="cmaInfoAction" method="detail">
+			<result>/WEB-INF/jsp/A1000/archive/cmainfo/detail.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/cmainfo/detail.jsp
+			</result>
+		</action>
+		<action name="delete" class="cmaInfoAction" method="delete"></action>
+	</package>
+	<package name="line" namespace="/archive/line" extends="struts-default">
+		<default-action-ref name="list" />
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/archive/line/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/line/list.jsp</result>
+		</global-results>
+		<action name="list" class="lineAction" method="list"></action>
+		<action name="add" class="lineAction" method="add">
+			<result>/WEB-INF/jsp/A1000/archive/line/add.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/line/add.jsp</result>
+		</action>
+		<action name="addSave" class="lineAction" method="addSave">
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="input">/WEB-INF/jsp/A1000/archive/line/add.jsp</result>
+		</action>
+		<action name="edit" class="lineAction" method="edit">
+			<result>/WEB-INF/jsp/A1000/archive/line/edit.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/line/edit.jsp</result>
+		</action>
+		<action name="editSave" class="lineAction" method="editSave">
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="input">/WEB-INF/jsp/A1000/archive/line/edit.jsp</result>
+		</action>
+		<action name="detail" class="lineAction" method="detail">
+			<result>/WEB-INF/jsp/A1000/archive/line/detail.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/line/detail.jsp
+			</result>
+		</action>
+		<action name="delete" class="lineAction" method="delete"></action>
+	</package>
+	<package name="sensortype" namespace="/archive/sensortype"
+		extends="struts-default">
+		<default-action-ref name="list" />
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/archive/sensortype/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensortype/list.jsp
+			</result>
+		</global-results>
+		<action name="list" class="sensorTypeAction" method="list"></action>
+		<action name="add" class="sensorTypeAction" method="add">
+			<result>/WEB-INF/jsp/A1000/archive/sensortype/add.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensortype/add.jsp
+			</result>
+		</action>
+		<action name="addSave" class="sensorTypeAction" method="addSave">
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensortype/add.jsp
+			</result>
+		</action>
+		<action name="edit" class="sensorTypeAction" method="edit">
+			<result>/WEB-INF/jsp/A1000/archive/sensortype/edit.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensortype/edit.jsp
+			</result>
+		</action>
+		<action name="editSave" class="sensorTypeAction" method="editSave">
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensortype/edit.jsp
+			</result>
+		</action>
+		<action name="detail" class="sensorTypeAction" method="detail">
+			<result>/WEB-INF/jsp/A1000/archive/sensortype/detail.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensortype/detail.jsp
+			</result>
+		</action>
+		<action name="delete" class="sensorTypeAction" method="delete"></action>
+		<action name="modFunc" class="sensorTypeAction" method="modSensorFunction">
+			<result name="modFunc">/WEB-INF/jsp/A1000/archive/sensortype/modFunc.jsp
+			</result>
+		</action>
+		<action name="updateFunc" class="sensorTypeAction" method="updateSensorFunction"></action>
+	</package>
+	<package name="towertype" namespace="/archive/towertype"
+		extends="struts-default">
+		<default-action-ref name="list" />
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/archive/towertype/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/towertype/list.jsp
+			</result>
+		</global-results>
+		<action name="list" class="towerTypeAction" method="list"></action>
+		<action name="add" class="towerTypeAction" method="add">
+			<result>/WEB-INF/jsp/A1000/archive/towertype/add.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/towertype/add.jsp
+			</result>
+		</action>
+		<action name="addSave" class="towerTypeAction" method="addSave">
+			<result name="input">/WEB-INF/jsp/A1000/archive/towertype/add.jsp
+			</result>
+		</action>
+		<action name="edit" class="towerTypeAction" method="edit">
+			<result>/WEB-INF/jsp/A1000/archive/towertype/edit.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/towertype/edit.jsp
+			</result>
+		</action>
+		<action name="editSave" class="towerTypeAction" method="editSave">
+			<result name="input">/WEB-INF/jsp/A1000/archive/towertype/edit.jsp
+			</result>
+		</action>
+		<action name="detail" class="towerTypeAction" method="detail">
+			<result>/WEB-INF/jsp/A1000/archive/towertype/detail.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/towertype/detail.jsp
+			</result>
+		</action>
+		<action name="delete" class="towerTypeAction" method="delete"></action>
+	</package>
+	<package name="tower" namespace="/archive/tower" extends="struts-default">
+		<default-action-ref name="list" />
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/archive/tower/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/tower/list.jsp
+			</result>
+		</global-results>
+		<action name="list" class="towerAction" method="list"></action>
+		<action name="add" class="towerAction" method="add">
+			<result>/WEB-INF/jsp/A1000/archive/tower/add.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/tower/add.jsp</result>
+		</action>
+		<action name="addSave" class="towerAction" method="addSave">
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="input">/WEB-INF/jsp/A1000/archive/tower/add.jsp</result>
+		</action>
+		<action name="edit" class="towerAction" method="edit">
+			<result>/WEB-INF/jsp/A1000/archive/tower/edit.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/tower/edit.jsp
+			</result>
+		</action>
+		<action name="editSave" class="towerAction" method="editSave">
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="input">/WEB-INF/jsp/A1000/archive/tower/edit.jsp
+			</result>
+		</action>
+		<action name="detail" class="towerAction" method="detail">
+			<result>/WEB-INF/jsp/A1000/archive/tower/detail.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/tower/detail.jsp
+			</result>
+		</action>
+		<action name="delete" class="towerAction" method="delete"></action>
+	</package>
+	<package name="sensor" namespace="/archive/sensor" extends="struts-default">
+		<default-action-ref name="list" />
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/archive/sensor/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensor/list.jsp
+			</result>
+		</global-results>
+		<action name="list" class="sensorAction" method="list"></action>
+		<action name="add" class="sensorAction" method="add">
+			<result>/WEB-INF/jsp/A1000/archive/sensor/add.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensor/add.jsp
+			</result>
+		</action>
+		<action name="addSave" class="sensorAction" method="addSave">
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensor/add.jsp
+			</result>
+		</action>
+		<action name="edit" class="sensorAction" method="edit">
+			<result>/WEB-INF/jsp/A1000/archive/sensor/edit.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensor/edit.jsp
+			</result>
+		</action>
+		<action name="editSave" class="sensorAction" method="editSave">
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensor/edit.jsp
+			</result>
+		</action>
+		<action name="detail" class="sensorAction" method="detail">
+			<result>/WEB-INF/jsp/A1000/archive/sensor/detail.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensor/detail.jsp
+			</result>
+		</action>
+		<action name="delete" class="sensorAction" method="delete"></action>
+	</package>
+
+	<package name="picture" namespace="/archive/picture" extends="struts-default">
+		<default-action-ref name="list" />
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/archive/sensorPicture/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensorPicture/list.jsp
+			</result>
+		</global-results>
+		<action name="list" class="pictureAction" method="list"></action>
+		<action name="add" class="pictureAction" method="add">
+			<result>/WEB-INF/jsp/A1000/archive/sensorPicture/add.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensorPicture/add.jsp
+			</result>
+		</action>
+		<action name="addSave" class="pictureAction" method="addSave">
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensorPicture/add.jsp
+			</result>
+		</action>
+		<action name="edit" class="pictureAction" method="edit">
+			<result>/WEB-INF/jsp/A1000/archive/sensorPicture/edit.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensorPicture/edit.jsp
+			</result>
+		</action>
+		<action name="editSave" class="pictureAction" method="editSave">
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensorPicture/edit.jsp
+			</result>
+		</action>
+		<action name="detail" class="pictureAction" method="detail">
+			<result>/WEB-INF/jsp/A1000/archive/sensorPicture/detail.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/sensorPicture/detail.jsp
+			</result>
+		</action>		
+		<action name="sensorList">
+			<result name="success" type="redirect">
+				<param name="location">/archive/sensor/list.jspx</param>				
+			</result>
+		</action>
+		<action name="delete" class="pictureAction" method="delete"></action>
+	</package>
+
+	<package name="upgradeFile" namespace="/archive/upgradeFile"
+		extends="struts-default">
+		<default-action-ref name="list" />
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/archive/upgradeFile/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/upgradeFile/list.jsp
+			</result>
+		</global-results>
+		<action name="list" class="upgradeFileAction" method="list"></action>
+		<action name="add" class="upgradeFileAction" method="add">
+			<result>/WEB-INF/jsp/A1000/archive/upgradeFile/add.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/upgradeFile/add.jsp
+			</result>
+		</action>
+		<action name="addSave" class="upgradeFileAction" method="addSave">
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="input">/WEB-INF/jsp/A1000/archive/upgradeFile/add.jsp
+			</result>
+		</action>
+		<action name="edit" class="upgradeFileAction" method="edit">
+			<result>/WEB-INF/jsp/A1000/archive/upgradeFile/edit.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/upgradeFile/edit.jsp
+			</result>
+		</action>
+		<action name="editSave" class="upgradeFileAction" method="editSave">
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="input">/WEB-INF/jsp/A1000/archive/upgradeFile/edit.jsp
+			</result>
+		</action>
+		<action name="detail" class="upgradeFileAction" method="detail">
+			<result>/WEB-INF/jsp/A1000/archive/upgradeFile/detail.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/archive/upgradeFile/detail.jsp
+			</result>
+		</action>
+		<action name="delete" class="upgradeFileAction" method="delete"></action>
+	</package>
+
+
+</struts>

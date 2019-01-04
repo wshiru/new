@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+		
+    <bean id="protocolValidationService"  class="com.yixin.A1000.cag.service.impl.ProtocolValidationServiceImpl" >    
+        <property name="cmaInfoService" ref="cmaInfoService" /> 
+        <property name="sensorService" ref="sensorService" />
+    </bean>
+
+	<bean id="protocolParseService" class="com.yixin.A1000.cag.service.impl.ProtocolParseServiceImpl">
+		<property name="cmaInfoService" ref="cmaInfoService" />
+		<property name="sensorService" ref="sensorService" />
+		<property name="taskConfigService" ref="taskConfigService" />
+	</bean>       
+		
+	
+    <bean id="protocolService" class="com.yixin.A1000.cag.service.impl.ProtocolServiceImpl">  
+         <property name="protocolValidationService" ref="protocolValidationService" /> 
+         <property name="protocolParseService" ref="protocolParseService" /> 
+         <property name="cmaHeartbeatInfoService" ref="cmaHeartbeatInfoService" /> 
+         <property name="sensorHeartbeatInfoService" ref="sensorHeartbeatInfoService" /> 
+         <property name="taskConfigService" ref="taskConfigService" />  
+         <property name="deviceParameterService" ref="deviceParameterService" />  
+         <!-- <property name="sensorParamsService" ref="sensorParamsService" />  
+           -->
+         <property name="upgradeFileDao" ref="upgradeFileDao" />  
+         <property name="taskConfigDao" ref="taskConfigDao" />       
+         <property name="historyVersionService" ref="historyVersionService" />
+      
+         <property name="wireSagSamplingService" ref="wireSagSamplingService" />
+         <property name="wireTemperatureSamplingService" ref="wireTemperatureSamplingService" />
+         <property name="weatherSamplingService" ref="weatherSamplingService" />
+         <property name="towerTiltSamplingService" ref="towerTiltSamplingService" />
+         <property name="insulatorMonsoonSamplingService" ref="insulatorMonsoonSamplingService" />
+         <property name="whiteMonsoonSamplingService" ref="whiteMonsoonSamplingService" />
+         <property name="warningService" ref="warningService" />
+    </bean>
+
+	<bean id="protocolServiceInterceptor" class="com.yixin.A1000.cag.service.impl.interceptor.ProtocolServiceInterceptor" />
+	<aop:config>
+		<aop:aspect id="sfds" ref="protocolServiceInterceptor">
+			<aop:pointcut id="protocolServicePointCut" expression="execution(* com.yixin.A1000.cag.service.impl.ProtocolServiceImpl.*(..))" />
+			<aop:around pointcut-ref="protocolServicePointCut" method="doException" />
+		</aop:aspect>
+	</aop:config>
+</beans>

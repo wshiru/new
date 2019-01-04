@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="request">
+		<complexType>
+			<sequence>
+				<element name="command">
+					<complexType>
+						<attribute name="id" type="string" use="required" />
+						<attribute name="versionno" type="string" use="required" />
+						<attribute name="filename" type="string" use="required" />
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

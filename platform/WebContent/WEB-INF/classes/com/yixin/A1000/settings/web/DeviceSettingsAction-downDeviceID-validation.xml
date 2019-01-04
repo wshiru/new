@@ -1,0 +1,33 @@
+<!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+    <!-- "deviceID.componentID" start -->
+    <field name="deviceID.componentID">
+        <field-validator type="requiredstring">
+        	<param name="trim">true</param>
+            <message>被监测设备ID不能为空</message>
+        </field-validator>
+		<field-validator type="stringlength">
+			<param name="minLength">17</param>
+			<param name="maxLength">17</param>
+			<message>被监测设备ID必须为17位</message>
+		</field-validator>
+    </field>
+    <!-- "deviceID.componentID" end -->
+    
+    <!-- "deviceID.originalID" start -->
+    <field name="deviceID.originalID">
+        <field-validator type="required">
+        	<param name="trim">true</param>
+            <message>原始ID不能为空</message>
+        </field-validator>
+        <field-validator type="int">
+			<param name="min">1</param>
+			<param name="max">65535</param>
+			<message>原始ID必须为${min}到${max}间的整数</message>
+		</field-validator>
+    </field>
+    <!-- "deviceID.originalID" end -->
+</validators>

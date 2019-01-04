@@ -1,0 +1,303 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+
+		<title>深圳供电局输电线路运行气象及地质环境综合监测系统</title>
+
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		<meta http-equiv="keywords" content="">
+		<meta http-equiv="description" content="">
+
+		<script type="text/javascript"
+			src="http://192.168.0.51:8000/platform/resource/module/jquery/jquery.min.js"></script>
+		<script type="text/javascript"
+			src="http://192.168.0.51:8000/platform/resource/module/jquery/jquery.messager.js"></script>
+		<!-- start 消息处理 -->
+
+		<script type="text/javascript">
+	$(function() {
+		var pathDiv = parent.window.document.getElementById("pathDiv");
+		var tab_position = document.getElementById("tab_position");
+		if (tab_position == null || tab_position.innerHTML == "") {
+			pathDiv.innerHTML = "";
+		} else {
+			pathDiv.innerHTML = "&nbsp;&gt;&nbsp;" + tab_position.innerHTML;
+		}
+
+	});
+</script>
+
+
+		<script type="text/javascript">
+	function openChart(url) {
+		if ('false' == true)
+			alert("无法生成曲线图，当前包含多个监测装置的数据");
+		else {
+			var maxRecords = parseInt('10000');
+			var currSize = parseInt('0');
+			if (maxRecords < currSize)
+				alert("数据过大，无法生成曲线图，请缩小时间范围进行查询");
+			else
+				openNewWin(url);
+		}
+	}
+</script>
+
+
+		<link type="text/css" rel="stylesheet"
+			href="http://192.168.0.51:8000/platform/resource/theme/blue/css/main.css" />
+		<link type="text/css" rel="stylesheet"
+			href="http://192.168.0.51:8000/platform/resource/theme/blue/css/tab.css" />
+		<link type="text/css" rel="stylesheet"
+			href="http://192.168.0.51:8000/platform/resource/theme/blue/css/uitab.css" />
+
+		<script type="text/javascript"
+			src="http://192.168.0.51:8000/platform/resource/common/js/common.js"></script>
+		<script type="text/javascript"
+			src="http://192.168.0.51:8000/platform/resource/common/js/highLight.js"></script>
+		<script type="text/javascript"
+			src="http://192.168.0.51:8000/platform/resource/common//js/checkbox.js"></script>
+		<script type="text/javascript"
+			src="http://192.168.0.51:8000/platform/resource/module/My97DatePicker/WdatePicker.js"></script>
+
+
+
+		<link rel="stylesheet"
+			href="http://192.168.0.51:8000/platform/resource/module/jquery/jquery-ui-1.7.2.css"
+			type="text/css" />
+		<script type="text/javascript"
+			src="http://192.168.0.51:8000/platform/resource/module/jquery/jquery.min.js"></script>
+		<script type="text/javascript"
+			src="http://192.168.0.51:8000/platform/resource/module/jquery/jquery-ui-1.7.2.min.js"></script>
+		<script type="text/javascript"
+			src="http://192.168.0.51:8000/platform/resource/module/jquery/jquery.cookie.js"></script>
+
+
+		<script type="text/javascript">
+	$(function() {
+		// Tabs
+		$('#tabs').tabs({
+			cookie : {
+				expires : 30
+			}
+		});
+	});
+</script>
+
+
+	</head>
+
+	<body>
+		<!-- start 当前位置 -->
+		<div id="tab_position">
+			<span class="tab_position_b">最新数据</span>
+		</div>
+		<!-- end 当前位置 -->
+
+		<!-- start 查询区域 -->
+
+		<!-- end 查询区域 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- start 信息区域 -->
+		<table width="100%" border="0" align="center" cellpadding="0"
+			cellspacing="0">
+			<tr>
+				<td height="30">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td class="first_line_left"></td>
+							<td class="first_line_center">
+								<div class="tab_title">
+									<img
+										src="http://192.168.0.51:8000/platform/resource/theme/blue/images/tab/comments.gif"
+										width="16" height="16" />
+									&#26438;&#22612;&#20542;&#26012;&#30417;&#27979; :
+									80M01030080000004
+								</div>
+							</td>
+							<td class="first_line_center">
+								<div class="div_right">
+								</div>
+							</td>
+							<td class="first_line_right"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td class="second_line_left">
+								&nbsp;
+							</td>
+							<td class="second_line_center">
+								<table cellspacing="1" onmouseover="changeto()"
+									onmouseout="changeback()" class="tab">
+									<tr>
+										<td width="15%" class="first_line">
+											类型
+										</td>
+										<td width="15%" class="first_line">
+											时间
+										</td>
+										<td width="13%" class="first_line">
+											倾斜度(mm/m)
+										</td>
+										<td width="13%" class="first_line">
+											顺线倾斜度(mm/m)
+										</td>
+										<td width="15%" class="first_line">
+											横向倾斜度(mm/m)
+										</td>
+										<td width="15%" class="first_line">
+											顺线倾斜角(°)
+										</td>
+										<td class="first_line">
+											横向倾斜角(°)
+										</td>
+									</tr>
+
+
+
+
+								</table>
+							</td>
+							<td class="second_line_right"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td height="29">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td class="third_line_left">
+								&nbsp;
+							</td>
+							<td class="third_line_center">
+								&nbsp;
+							</td>
+							<td class="third_line_right">
+								&nbsp;
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<!-- end 信息区域 -->
+
+		<!-- start 曲线图片 
+		<div class="chartBox">
+			<img src="/platform/towertilt/analysis/dayChart.jspx?sensorId=297e7d7f420846030142084898fb0003&amp;beginTime=2014-02-14+10%3A48%3A14&amp;endTime=2014-02-22+10%3A48%3A14&amp;showInclination=true&amp;showGradientAlongLines=true&amp;showLateralTilt=true&amp;showAngle_x=true&amp;showAngle_y=true" />
+		</div>
+		-->
+		<div id="tabs" style="height: 100%;">
+			<ul>
+				<li>
+					<a href="#tabs-99"><span>数据分析曲线</span> </a>
+				</li>
+				<li>
+					<a href="#tabs-91"><span>数据分析曲线</span> </a>
+				</li>
+				<li>
+					<a href="#tabs-20"><span>数据分析曲线</span> </a>
+				</li>
+
+				<li>
+					<a href="#tabs-1"><span>
+							&#29616;&#22330;&#22270;&#29255; </span> </a>
+
+				</li>
+
+			</ul>
+
+			<div id="#tabs-99">
+				<table align="center" cellspacing="1" class="tab">
+					<tr>
+						<td colspan="4" class="table_td_left">
+							<img
+								src="/platform/towertilt/analysis/dayChart.jspx?sensorId=297e7d7f420846030142084898fb0003&amp;beginTime=2014-02-14+10%3A48%3A14&amp;endTime=2014-02-22+10%3A48%3A14&amp;showInclination=true&amp;showGradientAlongLines=true&amp;showLateralTilt=true&amp;showAngle_x=true&amp;showAngle_y=true" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="#tabs-91">
+				<table align="center" cellspacing="1" class="tab">
+					<tr>
+						<td colspan="4" class="table_td_left">
+							<img
+								src="/platform/towertilt/analysis/dayChart.jspx?sensorId=297e7d7f420846030142084898fb0003&amp;beginTime=2014-02-14+10%3A48%3A14&amp;endTime=2014-02-22+10%3A48%3A14&amp;showInclination=true&amp;showGradientAlongLines=true&amp;showLateralTilt=true&amp;showAngle_x=true&amp;showAngle_y=true" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="#tabs-20"">
+				<table align="center" cellspacing="1" class="tab">
+					<tr>
+						<td colspan="4" class="table_td_left">
+							<img
+								src="/platform/towertilt/analysis/dayChart.jspx?sensorId=297e7d7f420846030142084898fb0003&amp;beginTime=2014-02-14+10%3A48%3A14&amp;endTime=2014-02-22+10%3A48%3A14&amp;showInclination=true&amp;showGradientAlongLines=true&amp;showLateralTilt=true&amp;showAngle_x=true&amp;showAngle_y=true" />
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="#tabs-1"">
+				<table align="center" cellspacing="1" class="tab">
+					<tr>
+						<td colspan="4" class="table_td_left">
+
+							<a
+								href="http://192.168.0.51:8000/platform/resource/images/upload/20140220050904.jpeg"
+								target="myimage"> <img
+									src="http://192.168.0.51:8000/platform/resource/images/upload/20140220050904.jpeg"
+									width="500px" heigth="400px"
+									alt="&#29616;&#22330;&#22270;&#29255;" /> </a>
+
+
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<!-- end 曲线图片 -->
+		<!-- start 页尾提示信息 -->
+
+
+
+		<!-- 
+
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var msg = document.getElementById("msgDiv").innerText;
+		alert(msg);
+	});
+</script>
+
+ -->
+		<!-- end 页尾提示信息 -->
+	</body>
+</html>

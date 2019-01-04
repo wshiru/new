@@ -1,0 +1,109 @@
+@charset "utf-8";
+
+/* start menuFrame  */
+html,body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	height: 100%;
+	width: 100%;
+}
+
+div,h3 {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.nav_treetype{
+	background-color: #CECECE;
+	height:20px;
+}
+
+.nav_fix,hr{
+	background-color: #004F7A;	
+	margin: 0;
+	padding: 0;	
+	height:1px;
+}
+
+
+/* start 树形菜单 */
+ 
+/*
+.menu_treestop {
+	width: 100%;
+	float: left;
+	clear: both;
+	font-size: 0;
+	height: 5px !important;
+	background-color: #005a62;
+	background-image: url(../images/menuFrame/menu_treetop.png);
+	background-repeat: no-repeat;
+}
+
+.menu_treesbtm {
+	width: 235px;
+	height: 10px;
+	clear: both;
+	float: left;
+	background-image: url(../images/menuFrame/menu_treebtm.png);
+	background-repeat: no-repeat;
+	margin: 0;
+}
+*/
+.menu_trees {
+	background-image: url(../images/menuFrame/menu_treebtm.png); *+
+	background-repeat: no-repeat; *+
+	background-position: left bottom;
+	background-color: #005a62;
+	text-align: left;
+	margin: 0;
+	padding: 0;
+	float: left;
+	width: 100%;
+	/* overflow: visible; */
+	overflow-y: auto;
+	overflow-x: hidden;
+	scrollbar-face-color: #e7f8fc;
+	scrollbar-highlight-color: #e7f8fc; /*f5eff8 滚动条左边框颜色*/
+	scrollbar-shadow-color: #e7f8fc; /* 滚动条右边框颜色*/
+	scrollbar-3dlight-color: #e7f8fc;
+	scrollbar-arrow-color: #00a826; /* 滚动条方向头颜色 */
+	scrollbar-track-color: #e7f8fc; /* 滚动条底色*/
+}
+
+/* end 树形菜单 */
+/* left menu */
+.nav {
+	float: left;
+	clear: both;
+	width: 100%;
+	height: auto;
+	background-color: #005a62;
+}
+
+.nav_img {
+	width: 100%;
+	height: 37px;
+	color: #555e5e;
+	text-align: center;
+	padding:0 0 0 0;
+	background-image: url(../images/menuFrame/menu_nav.png);
+}
+
+
+.nav_text {
+	font-weight: bold;
+	font-size: 18px;
+	color:#fff;
+	/*display: inline;*/
+	padding: 6px 0 6px 0;
+	*+padding: 8px 0 6px 0;
+	background-color: #005a62;	
+}
+
+.nav_img {
+	margin: 1px 0 0 0;
+}
+/* start menuFrame  */

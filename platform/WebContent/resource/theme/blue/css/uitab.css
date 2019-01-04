@@ -1,0 +1,101 @@
+@charset "utf-8";
+
+/* jquery-ui 中tab的CSS样式 */
+#tabs {
+	width: 100%;
+	height: 100%;
+	margin: 0 0 25px 0px;
+	padding: 0;
+	border: 0;
+}
+
+#tabs div {
+	height: 100%;
+	border: 0 none;
+	margin: 0;
+	padding: 0;
+}
+
+/**/
+.ui-tabs .ui-tabs-nav {
+	margin: 4px;
+	background: url(../images/uitab/nav_bg11.png);
+	border: 0;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected {
+	border: 1px solid #5c91de;
+	border-bottom: 1px solid #fff;
+	background: url(../images/uitab/nav_2bg.png);
+	margin: 0 2px 0 -2px;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a:link {
+	text-decoration: none;
+	color: #080e5a;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a:visited {
+	text-decoration: none;
+	color: #000000;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a:hover {
+	text-decoration: none;
+	color: #080e5a;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a:active {
+	color: #000000;
+	text-decoration: none;
+}
+
+/**/
+.ui-tabs .ui-tabs-nav li {
+	border: 1px solid #5c91de;
+	background: url(../images/uitab/nav_1bg.png);
+	margin: 0 2px 0 -2px;
+}
+
+.ui-tabs .ui-tabs-nav a:link {
+	text-decoration: none;
+	color: #000000;
+}
+
+.ui-tabs .ui-tabs-nav a:visited {
+	text-decoration: none;
+	color: #000000;
+}
+
+.ui-tabs .ui-tabs-nav a:hover {
+	text-decoration: none;
+	color: #000000;
+}
+
+.ui-tabs .ui-tabs-nav a:active {
+	color: #080e5a;
+	text-decoration: none;
+}
+
+.ui-tabs .ui-tabs-nav .nav_2bg a {
+	padding: 2px 5px 0px 4px;
+	height: 23px;
+	border: 0 none;
+	font-size: 13px;
+}
+
+/* 表格详细数据 DIV*/
+.tabs_details {
+	padding: 3px 10px 0 20px;
+	background-position: 2px 7px;
+}
+
+.tabs_details a:link,.tabs_details a:visited {
+	color: #0a1b7f;
+	text-decoration: none;
+}
+
+.tabs_details a:hover {
+	color: #FF6600;
+	text-decoration: none;
+}

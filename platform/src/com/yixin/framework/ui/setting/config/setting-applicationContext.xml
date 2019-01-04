@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+<!-- start 引入properties文件 -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:database-config.properties</value>
+			</list>
+		</property>
+	</bean>
+<!-- end 引入properties文件 -->
+
+<!-- start 数据库连接 配置 -->
+	<!-- 使用 c3p0 的 连接池，解决了 Mysql 服务器默认的“wait_timeout”是8小时，也就是说一个connection空闲超过8个小时，Mysql将自动断开该 connection 的问题 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="${jdbc.driverClassName}" />
+    	<property name="jdbcUrl" value="${jdbc.protocol}${jdbc.ipAddress}:${jdbc.port}/${jdbc.dbName}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		
+		<property name="minPoolSize" value="1" />
+		<property name="maxPoolSize" value="20"/>  
+		<property name="initialPoolSize" value="1"/>
+		<property name="maxIdleTime" value="25000"/>
+		<property name="acquireIncrement" value="1"/>
+		
+		<property name="acquireRetryAttempts" value="30"/>
+		<property name="acquireRetryDelay" value="1000"/>
+		<property name="testConnectionOnCheckin" value="true"/>
+		<property name="automaticTestTable" value="c3p0TestTable"/>
+		<property name="idleConnectionTestPeriod" value="18000"/>
+		<property name="checkoutTimeout" value="3000"/>
+	</bean>
+
+<!-- end 数据库连接 配置 -->
+
+<!-- start spring事务管理 配置 -->
+	<!-- start 配置 hibernate sessionFactory -->
+	<bean id="sessionFactory"
+        class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <!-- 指定数据源 -->
+        <property name="dataSource" ref="dataSource" />
+        
+		<!-- packagesToScan可以自动搜索某个package的全部标记@Entity class -->
+		<property name="packagesToScan">
+			<list>
+				<value>com.yixin.**.model</value>
+			</list>
+		</property>	   
+		 <!-- 配置 hibernate 属性 -->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="connection.useUnicode">true</prop> 
+                <prop key="connection.characterEncoding">utf-8</prop> 
+                <prop key="hibernate.show_sql">false</prop> 
+                <prop key="hibernate.format_sql">true</prop> 
+                <prop key="hibernate.autoReconnect">true</prop> 
+            </props>
+        </property>
+    </bean>
+    <!-- end 配置 hibernate sessionFactory -->    
+    
+	<!-- 配置 hibernate 的事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	 	<!--配置事务通知 --> 
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+    	<tx:attributes>
+    		<tx:method name="add*" propagation="REQUIRED" />
+    		<tx:method name="edit*" propagation="REQUIRED" />
+    		<tx:method name="delete*" propagation="REQUIRED" />
+    		<tx:method name="save*" propagation="REQUIRED" />
+    		<tx:method name="update*" propagation="REQUIRED" />
+    		<tx:method name="read*" propagation="REQUIRED" />
+    		<tx:method name="cancel*" propagation="REQUIRED" />
+    		<tx:method name="set*" propagation="REQUIRED" />
+    		<tx:method name="getUpload*" propagation="REQUIRED" />
+    		<tx:method name="getDownload*" propagation="REQUIRED" />
+    		<!-- <tx:method name="*" read-only="true" />
+    		 -->
+    	</tx:attributes>
+    </tx:advice>
+    <!--配置 aop 事务管理 -->
+    <aop:config>
+    	<aop:pointcut id="allServiceMethods" expression="execution(* com.yixin.*.*.service.impl.*.*(..))" />
+    	<aop:advisor advice-ref="txAdvice" pointcut-ref="allServiceMethods" />
+    </aop:config>
+	<!-- end spring事务管理 配置 -->
+</beans>

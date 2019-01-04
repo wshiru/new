@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+
+<!-- Dao 配置开始 -->
+	<bean id="wireTemperatureSamplingDao" class="com.yixin.A1000.wiretemperature.dao.impl.springhibernate.WireTemperatureSamplingDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+<!-- Dao 配置结束 -->
+
+<!-- Service 配置开始 -->
+	<bean id="wireTemperatureSamplingService" class="com.yixin.A1000.wiretemperature.service.impl.WireTemperatureSamplingServiceImpl">
+		<property name="samplingDao" ref="wireTemperatureSamplingDao" />
+	</bean>
+	<bean id="realTimeWireTemperatureService" class="com.yixin.A1000.wiretemperature.service.impl.RealTimeWireTemperatureServiceImpl">
+		<property name="taskConfigDao" ref="taskConfigDao" />
+		<property name="taskConfigService" ref="taskConfigService" />
+	</bean>
+<!-- Service 配置结束 -->
+
+<!-- Action 配置开始 -->
+	<bean name="wireTemperatureSamplingAction" class="com.yixin.A1000.wiretemperature.web.WireTemperatureSamplingAction" scope="prototype">
+		<property name="samplingService" ref="wireTemperatureSamplingService"/>
+	</bean>
+	<bean name="realTimeWireTemperatureAction" class="com.yixin.A1000.wiretemperature.web.RealTimeWireTemperatureAction" scope="prototype">
+		<property name="realTimeWireTemperatureService" ref="realTimeWireTemperatureService"/>
+		<property name="sensorService" ref="sensorService"/>
+		<property name="wireTemperatureSamplingService" ref="wireTemperatureSamplingService"/>
+		<property name="taskConfigService" ref="taskConfigService"/>
+	</bean>
+<!-- Action 配置结束 -->
+</beans>

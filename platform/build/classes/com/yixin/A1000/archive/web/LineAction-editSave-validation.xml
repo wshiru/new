@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//OpenSymphony Group//XWork Validator 1.0.2//EN" 
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<!-- start 线路编号 -->
+	<field name="line.lineCode">
+		<field-validator type="requiredstring">
+			<message>请输入线路编号</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9]+$]]></param>
+			<message>线路编号只允许输入英文或数字</message>
+		</field-validator>
+	</field>
+	<!-- end 线路编号 -->
+
+	<!-- start 线路名称 -->
+	<field name="line.lineName">
+		<field-validator type="requiredstring">
+			<message>请输入线路名称</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9\u4e00-\u9fa5]+$]]></param>
+			<message>线路名称只允许输入中英文或数字</message>
+		</field-validator>
+	</field>
+	<!-- end 线路名称 -->	
+
+	<!-- start 长度 -->
+	<field name="line.length">
+		<field-validator type="alltypesupportregex">
+			<param name="expression"><![CDATA[^[0-9]+(.[0-9]{1,2})?$]]></param>
+			<message>长度必须是正实数,且最多2位小数位数</message>
+		</field-validator>
+	</field>
+	<!-- end 长度 -->	
+
+	<!-- start 描述 -->
+	<field name="line.lineDesc">
+		<field-validator type="stringlength">
+			<param name="trim">false</param>
+			<param name="minLength">0</param>
+			<param name="maxLength">250</param>
+			<message>描述长度在${minLength}到${maxLength}之间</message>
+		</field-validator>
+	</field>
+	<!-- end 描述 -->
+</validators>

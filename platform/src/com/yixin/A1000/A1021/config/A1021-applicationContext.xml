@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+ 
+<!-- Action 配置开始 -->
+
+	<bean name="a1021SamplingAction" class="com.yixin.A1000.A1021.web.A1021SamplingAction" scope="prototype">
+		<property name="weatherSamplingService" ref="weatherSamplingService" />
+		<property name="towerTiltParameterService" ref="towerTiltParameterService" />
+		<property name="towerTiltSamplingService" ref="towerTiltSamplingService" />
+		<property name="sensorService" ref="sensorService" />
+		<property name="pictureService" ref="pictureService" />
+	</bean>
+	
+ 
+<!-- Action 配置结束 -->
+</beans>

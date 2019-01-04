@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="response">
+		<complexType>
+			<sequence>
+				<element name="result">
+					<complexType>
+						<sequence>
+							<element name="error" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="attr" minOccurs="1" maxOccurs="unbounded">
+											<complexType>
+												<attribute name="name" type="string" use="required" />
+												<attribute name="value" type="string" use="required" />
+											</complexType>
+										</element>
+									</sequence>
+									<attribute name="errorcode" type="string" use="required" />
+								</complexType>
+							</element>
+						</sequence>
+						<attribute name="code" type="string" use="required" />
+					</complexType>
+				</element>
+				<element name="versions">
+					<complexType>
+						<sequence>
+							<element maxOccurs="unbounded" minOccurs="1" name="version">
+								<complexType>
+									<sequence>
+										<element name="time" type="string" />
+										<element name="versionno" type="string" />
+										<element name="filename" type="string" />
+										<element name="filedata" type="string" />
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

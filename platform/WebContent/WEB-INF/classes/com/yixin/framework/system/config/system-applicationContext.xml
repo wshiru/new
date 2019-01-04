@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+
+<!-- Dao 配置开始 -->
+	<bean id="roleDao" class="com.yixin.framework.system.dao.impl.springhibernate.RoleDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="userDao" class="com.yixin.framework.system.dao.impl.springhibernate.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="logDao" class="com.yixin.framework.system.dao.impl.springhibernate.LogDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="dictCategoryDao" class="com.yixin.framework.system.dao.impl.springhibernate.DictCategoryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="dictionaryDao" class="com.yixin.framework.system.dao.impl.springhibernate.DictionaryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="authResourceDao" class="com.yixin.framework.system.dao.impl.springhibernate.AuthResourceDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+<!-- Dao 配置结束 -->
+
+<!-- Service 配置开始 -->
+	<bean id="roleService" class="com.yixin.framework.system.service.impl.RoleServiceImpl">
+		<property name="roleDao" ref="roleDao" />
+	</bean>
+	
+	<bean id="userService" class="com.yixin.framework.system.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao" />
+		<property name="roleService" ref="roleService" />		
+	</bean>
+	
+	<bean id="logService" class="com.yixin.framework.system.service.impl.LogServiceImpl">
+		<property name="logDao" ref="logDao" />
+	</bean>
+	<bean id="dictCategoryService" class="com.yixin.framework.system.service.impl.DictCategoryServiceImpl">
+		<property name="dictCategoryDao" ref="dictCategoryDao" />
+		<property name="dictionaryDao" ref="dictionaryDao" />
+	</bean>	
+	<bean id="dictionaryService" class="com.yixin.framework.system.service.impl.DictionaryServiceImpl">
+		<property name="dictionaryDao" ref="dictionaryDao" />
+	</bean>
+<!-- Service 配置结束 -->
+
+<!-- Action 配置开始 -->	
+	<bean name="userAction" class="com.yixin.framework.system.web.UserAction" scope="prototype">
+		<property name="userService" ref="userService" />
+		<property name="roleService" ref="roleService" />
+	</bean>
+	<bean name="roleAction" class="com.yixin.framework.system.web.RoleAction" scope="prototype">
+		<property name="roleService" ref="roleService" />
+		<property name="authResourceDao" ref="authResourceDao" />
+	</bean>
+	<bean name="logAction" class="com.yixin.framework.system.web.LogAction" scope="prototype">
+		<property name="logService" ref="logService" />
+	</bean>
+	<bean name="dictionaryAction" class="com.yixin.framework.system.web.DictionaryAction" scope="prototype">
+		<property name="dictionaryService" ref="dictionaryService" />
+		<property name="dictCategoryService" ref="dictCategoryService" />
+	</bean>
+<!-- Action 配置结束 -->
+</beans>

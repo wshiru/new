@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<request>
+	<monitordata cmaid="29M00000009009000" datanodenum="1">
+		<datanode sensorid="29M00000009009001">
+			<type>01300401</type>
+			<equipmentid>29M00000009009001</equipmentid>
+			<timestamp>2010-04-10 22:10:11</timestamp>
+			<attrs>
+				<attr alarm="TRUE" name="Windage_Yaw_Angle" value="20.3" />
+				<attr alarm="TRUE" name="Deflection_Angle" value="37" />
+				<attr alarm="TRUE" name="Least_Clearance" value="37" />
+			</attrs>
+		</datanode>
+	</monitordata>
+</request>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<request>
+	<cma id="29M00000009009000">
+		<ip>10.144.98.101</ip>
+		<curtime>2010-04-10 22:10:11</curtime>
+		<batteryvoltage>0.30</batteryvoltage>
+		<operationtemperature>15.00</operationtemperature>
+		<floatingcharge>CHARGE</floatingcharge>
+	</cma>
+	<sensors>
+		<sensor id="29M00000009009001">
+			<status>NORMAL</status>
+			<batteryvoltage>0.20</batteryvoltage>
+			<operationtemperature>15.00</operationtemperature>
+			<floatingcharge>DISCHARGE</floatingcharge>
+		</sensor>
+		<sensor id="29M00000009009002">
+			<status>NORMAL</status>
+			<batteryvoltage>0.20</batteryvoltage>
+			<operationtemperature>12.00</operationtemperature>
+			<floatingcharge>CHARGE</floatingcharge>
+		</sensor>
+	</sensors>
+</request>

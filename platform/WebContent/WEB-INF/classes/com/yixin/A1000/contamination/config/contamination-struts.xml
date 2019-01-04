@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="contaminationParameter" namespace="/contamination/parameter" extends="struts-default">
+		<interceptors>
+			<!-- 通讯的拦截器 -->
+			<interceptor name="deviceSettingsActionInterceptor" class="com.yixin.A1000.settings.web.DeviceSettingsActionInterceptor"></interceptor>
+			<interceptor-stack name="contaminationStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="deviceSettingsActionInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>			
+		
+		<!-- 传感器参数配置 开始-->
+		<action name="sensorParam" class="contaminationParameterAction" method="sensorParam">
+			<result>/WEB-INF/jsp/A1000/contamination/parameter/alarmParam.jsp</result> 
+			<result name="input">/WEB-INF/jsp/A1000/contamination/parameter/alarmParam.jsp</result>		
+		</action>		
+		<action name="saveSensorParam" class="contaminationParameterAction" method="saveSensorParam">
+			<result>/WEB-INF/jsp/A1000/contamination/parameter/alarmParam.jsp</result> 
+			<result name="input">/WEB-INF/jsp/A1000/contamination/parameter/alarmParam.jsp</result>	
+		</action>		
+		<!-- 传感器参数配置 结束-->
+		
+		<!-- 终端模型参数 开始 -->
+		<action name="modelParam" class="contaminationParameterAction" method="modelParam">
+			<result>/WEB-INF/jsp/A1000/contamination/parameter/modelParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/contamination/parameter/modelParam.jsp</result>
+		</action>
+		<action name="upModelParam" class="contaminationParameterAction" method="upModelParam">
+			<interceptor-ref name="contaminationStack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/contamination/parameter/modelParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/contamination/parameter/modelParam.jsp</result>
+		</action>
+		<action name="downModelParam" class="contaminationParameterAction" method="downModelParam">
+			<interceptor-ref name="contaminationStack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/contamination/parameter/modelParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/contamination/parameter/modelParam.jsp</result>
+		</action>
+		<!-- 终端模型参数 结束 -->		
+		
+		<!-- 终端告警阀值参数 开始-->
+		<action name="alarmParam" class="contaminationParameterAction" method="alarmParam">
+			<result>/WEB-INF/jsp/A1000/contamination/parameter/alarmParam.jsp</result> 
+			<result name="input">/WEB-INF/jsp/A1000/contamination/parameter/alarmParam.jsp</result>		
+		</action>
+		<action name="upAlarmParam" class="contaminationParameterAction" method="upAlarmParam">
+			<interceptor-ref name="contaminationStack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/contamination/parameter/alarmParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/contamination/parameter/alarmParam.jsp</result>		
+		</action>		
+		
+		<action name="downAlarmParam" class="contaminationParameterAction" method="downAlarmParam">
+			<interceptor-ref name="contaminationStack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/contamination/parameter/alarmParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/contamination/parameter/alarmParam.jsp</result>		
+		</action>
+		<!-- 终端告警阀值参数 结束-->				
+	</package>	
+	
+	<package name="contamination" namespace="/contamination/sampling" extends="struts-default">
+		<result-types>
+			<result-type name="chart" class="org.apache.struts2.dispatcher.ChartResult">
+				<param name="width">1000</param>
+				<param name="height">500</param>
+			</result-type>				
+		</result-types>
+		<global-results>
+			<result name="success">/WEB-INF/jsp/A1000/contamination/sampling/list.jsp</result>	
+			<result name="chart" type="chart" />	
+		</global-results>
+		<action name="list" class="contaminationSamplingAction" method="list">
+			<result name="success">/WEB-INF/jsp/A1000/contamination/sampling/list.jsp</result>	
+		</action>	
+		
+		<action name="timeExportExcel" class="contaminationSamplingAction" method="exportExcel">
+			<result name="success">/WEB-INF/jsp/A1000/contamination/sampling/list.jsp</result>	
+			<result name="input">/WEB-INF/jsp/A1000/contamination/sampling/list.jsp</result>	
+		</action>			
+		
+		<action name="chart" class="contaminationSamplingAction" method="chart"></action>
+		
+		<action name="main" class="contaminationSamplingAction" method="main">
+			<result>/WEB-INF/jsp/A1000/contamination/sampling/main.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/contamination/sampling/main.jsp</result>
+		</action>			
+	</package>
+	
+	<package name="realTimeContamination" namespace="/contamination/realTime" extends="struts-default">
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/contamination/realTime/realTimeContamination.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/contamination/realTime/realTimeContamination.jsp</result>
+		</global-results>
+		<action name="realTime" class="realTimeContaminationAction" method="realTime"></action>	
+		<action name="addRealTimeTask" class="realTimeContaminationAction" method="addRealTimeTask"></action>
+		<action name="samplingContamination" class="realTimeContaminationAction" method="samplingContamination">
+			<result>/WEB-INF/jsp/A1000/contamination/realTime/realTimeContamination.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/contamination/realTime/realTimeContamination.jsp</result>
+		</action>
+	</package>
+	
+
+	<package name="contaminationAnalysis" namespace="/contamination/analysis" extends="struts-default">
+		<result-types>
+			<result-type name="chart" class="org.apache.struts2.dispatcher.ChartResult">
+				<param name="width">1000</param>
+				<param name="height">500</param>
+			</result-type>				
+		</result-types>
+	
+		<action name="dayList" class="contaminationAnalysisAction" method="dayList">
+			<result >/WEB-INF/jsp/A1000/contamination/analysis/daysAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/contamination/analysis/daysAnalysis.jsp</result>	
+		</action>
+		
+		<action name="dayExportExcel" class="contaminationAnalysisAction" method="dayExportExcel">
+			<result >/WEB-INF/jsp/A1000/contamination/analysis/daysAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/contamination/analysis/daysAnalysis.jsp</result>	
+		</action>
+		
+		<action name="dayChart" class="contaminationAnalysisAction" method="dayChart">
+		     <result name="chart" type="chart" />		
+		</action>
+		
+		<action name="monthList" class="contaminationAnalysisAction" method="monthList">
+			<result >/WEB-INF/jsp/A1000/contamination/analysis/monthAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/contamination/analysis/monthAnalysis.jsp</result>	
+		</action>
+		
+		<action name="monthExportExcel" class="contaminationAnalysisAction" method="monthExportExcel">
+			<result >/WEB-INF/jsp/A1000/contamination/analysis/monthAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/contamination/analysis/monthAnalysis.jsp</result>	
+		</action>
+		
+		<action name="monthChart" class="contaminationAnalysisAction" method="monthChart">
+		     <result name="chart" type="chart" />		
+		</action>
+
+
+		<action name="yearList" class="contaminationAnalysisAction" method="yearList">
+			<result >/WEB-INF/jsp/A1000/contamination/analysis/yearAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/contamination/analysis/yearAnalysis.jsp</result>	
+		</action>
+		
+		<action name="yearExportExcel" class="contaminationAnalysisAction" method="yearExportExcel">
+			<result >/WEB-INF/jsp/A1000/contamination/analysis/yearAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/contamination/analysis/yearAnalysis.jsp</result>	
+		</action>
+		
+		<action name="yearChart" class="contaminationAnalysisAction" method="yearChart">
+		     <result name="chart" type="chart" />		
+		</action>	 
+
+		
+	</package>	
+	
+</struts>

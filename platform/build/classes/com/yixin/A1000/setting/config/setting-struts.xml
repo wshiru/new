@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+
+	<package name="sensorParamsSetting"  namespace="/setting/sensorParamsSetting" extends="struts-default">
+	    <default-action-ref name="getDbSensorParams"/>  
+   
+		<action name="getDbSensorParams" class="sensorParamsSettingAction" method="getDbSensorParams">
+		  
+		     <result>/WEB-INF/jsp/A1000/setting/sensorParamsSetting.jsp</result>
+			 <result name="input">/WEB-INF/jsp/A1000/setting/sensorParamsSetting.jsp</result>
+		</action>
+		
+		<action name="writeSensorParams" class="sensorParamsSettingAction" method="writeSensorParam">
+			<result>/WEB-INF/jsp/A1000/setting/sensorParamsSetting.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/setting/sensorParamsSetting.jsp</result>
+		</action>
+		
+		<action name="readSensorParams"  class="sensorParamsSettingAction" method="readSensorParams">
+			<result>/WEB-INF/jsp/A1000/setting/sensorParamsSetting.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/setting/sensorParamsSetting.jsp</result>	
+		</action>	
+				
+	</package>
+	
+	<package name="cmaParameterSetting" namespace="/setting/cmaParamsSetting" extends="struts-default">
+        <global-results>
+			<result>/WEB-INF/jsp/A1000/setting/cmaParamsSetting.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/setting/cmaParamsSetting.jsp</result>
+		</global-results>
+		
+		<action name="getDbCmaParams" class="cmaParameterSettingAction" method="getDbCmaParams"/>
+		<action name="readCmaParam" class="cmaParameterSettingAction" method="readCmaParam"/>
+		<action name="writeCmaParam" class="cmaParameterSettingAction" method="writeCmaParam"/>
+		
+	</package>
+	
+	<package name="taskConfig" namespace="/taskConfig" extends="struts-default">
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/taskconfig/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/taskconfig/list.jsp</result>
+		</global-results>
+		<action name="list" class="taskConfigAction" method="list"></action>
+		<action name="detail" class="taskConfigAction" method="detail">
+			<result>/WEB-INF/jsp/A1000/taskconfig/detail.jsp</result>
+		</action>
+		<action name="cancel" class="taskConfigAction" method="cancel"></action>
+	</package>
+	
+	
+	<package name="update" namespace="/update" extends="struts-default">
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/setting/update.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/setting/update.jsp</result>
+		</global-results>
+		<action name="update" class="updateAction" method="update"></action>
+		<action name="updateSave" class="updateAction" method="updateSave"></action>
+	</package>
+ 
+	             	
+</struts>

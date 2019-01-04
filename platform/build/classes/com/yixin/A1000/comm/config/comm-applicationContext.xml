@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+	<bean id="protocolSamplingConvertor" class="com.yixin.A1000.comm.protocol.convertor.ProtocolSamplingConvertor">
+		<property name="sensorService" ref="sensorService" />
+	</bean>
+	<bean id="protocolControlConvertor" class="com.yixin.A1000.comm.protocol.convertor.ProtocolControlConvertor">
+		<property name="sensorService" ref="sensorService" />
+	</bean>
+	<bean id="protocolStatusConvertor" class="com.yixin.A1000.comm.protocol.convertor.ProtocolStatusConvertor">
+		<property name="sensorService" ref="sensorService" />
+	</bean>
+	<bean id="protocolCameraConvertor" class="com.yixin.A1000.comm.protocol.convertor.ProtocolCameraConvertor">
+		<property name="sensorService" ref="sensorService" />
+	</bean>
+
+	<bean id="protocolControlValidator" class="com.yixin.A1000.comm.protocol.validator.ProtocolControlValidator">
+	</bean>
+	<bean id="protocolSamplingValidator" class="com.yixin.A1000.comm.protocol.validator.ProtocolSamplingValidator">
+	</bean>
+	<bean id="protocolStatusValidator" class="com.yixin.A1000.comm.protocol.validator.ProtocolStatusValidator">
+	</bean>	
+	<bean id="protocolCameraValidator" class="com.yixin.A1000.comm.protocol.validator.ProtocolCameraValidator">
+	</bean>	
+	
+	
+	<bean id="commService" class="com.yixin.A1000.comm.CommServiceImpl">
+		<property name="controlConvertor" ref="protocolControlConvertor" />
+		<property name="controlValidator" ref="protocolControlValidator" />
+		<property name="samplingConvertor" ref="protocolSamplingConvertor" />
+		<property name="samplingValidator" ref="protocolSamplingValidator" />
+		<property name="statusConvertor" ref="protocolStatusConvertor" />
+		<property name="statusValidator" ref="protocolStatusValidator" />
+		<property name="cameraConvertor" ref="protocolCameraConvertor" />
+		<property name="cameraValidator" ref="protocolCameraValidator" />		
+	</bean>
+</beans>

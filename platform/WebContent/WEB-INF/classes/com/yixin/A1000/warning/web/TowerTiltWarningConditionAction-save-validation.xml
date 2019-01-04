@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//OpenSymphony Group//XWork Validator 1.0.2//EN" 
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	
+	<field name="generalInclination" >
+        <field-validator type="required" short-circuit="true">
+            <message>该项不能为空</message>
+        </field-validator>
+		<field-validator type="double">
+			<param name="minExclusive">0</param>
+			<param name="maxExclusive">90</param>
+			<message>该数值必须介于${minExclusive}到${maxExclusive}之间</message>
+		</field-validator>
+	</field>
+	
+	<field name="gradientAlongLines">
+        <field-validator type="required" short-circuit="true">
+            <message>该项不能为空</message>
+        </field-validator>
+		<field-validator type="double">
+			<param name="minExclusive">0</param>
+			<param name="maxExclusive">90</param>
+			<message>该数值必须介于${minExclusive}到${maxExclusive}之间</message>
+		</field-validator>
+	</field>
+		
+	<field name="lateralTilt">
+        <field-validator type="required" short-circuit="true">
+            <message>该项不能为空</message>
+        </field-validator>
+		<field-validator type="double">
+			<param name="minExclusive">0</param>
+			<param name="maxExclusive">90</param>
+			<message>该数值必须介于${minExclusive}到${maxExclusive}之间</message>
+		</field-validator>
+	</field>
+
+</validators>

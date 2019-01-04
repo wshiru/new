@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="login" namespace="/" extends="struts-default">
+		<default-action-ref name="login"/>
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/login/login.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/login/login.jsp</result>
+		</global-results>
+		<action name="login" class="loginAction" method="login">
+			<result>/WEB-INF/jsp/A1000/login/login.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/login/login.jsp</result>
+		</action>
+		<action name="logon" class="loginAction" method="logon">
+			<result>/WEB-INF/jsp/A1000/login/index.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/login/login.jsp</result>
+		</action>
+		<action name="logout" class="loginAction" method="logout">
+			<result>/WEB-INF/jsp/A1000/login/logout.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/login/logout.jsp</result>
+		</action>
+		<!--
+		<action name="mainFrame" class="loginAction" method="mainFrame">
+			<result>/WEB-INF/jsp/A1000/login/mainFrame.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/login/mainFrame.jsp</result>
+		</action>
+		-->
+		<action name="updateWarningState" class="loginAction" method="updateWarningState">
+			<result>/WEB-INF/jsp/A1000/login/messageFrame.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/login/messageFrame.jsp</result>
+	    </action>	
+	    
+		<action name="mainMenuFrame" class="loginAction" method="mainMenuFrame">
+			<result>/WEB-INF/jsp/A1000/login/mainMenuFrame.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/login/mainMenuFrame.jsp</result>
+		</action>
+		<action name="menuFrame" class="loginAction" method="menuFrame">
+			<result>/WEB-INF/jsp/A1000/login/menuFrame.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/login/menuFrame.jsp</result>
+		</action>
+		<action name="messageFrame" class="loginAction" method="messageFrame">
+			<result>/WEB-INF/jsp/A1000/login/messageFrame.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/login/messageFrame.jsp</result>
+		</action>
+		<action name="switchFrame" class="loginAction" method="switchFrame">
+			<result>/WEB-INF/jsp/A1000/login/switchFrame.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/login/switchFrame.jsp</result>
+		</action>
+		<action name="titleFrame" class="loginAction" method="titleFrame">
+			<result>/WEB-INF/jsp/A1000/login/titleFrame.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/login/titleFrame.jsp</result>
+		</action>
+		<action name="barFrame" class="loginAction" method="barFrame">
+			<result>/WEB-INF/jsp/A1000/login/barFrame.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/login/barFrame.jsp</result>
+		</action>
+		
+		<action name="checkSysMenu" class="loginAction" method="checkSysMenu">
+			<result name="input">/WEB-INF/jsp/A1000/login/menuFrame.jsp</result>
+			<result>/WEB-INF/jsp/A1000/login/mainMenuFrame.jsp</result>
+		</action>
+
+		<action name="showGroupPage" class="loginAction" method="showGroupPage">
+			<result name="input">/WEB-INF/jsp/A1000/login/menuFrame.jsp</result>
+			<result>/WEB-INF/jsp/A1000/login/mainMenuFrame.jsp</result>
+		</action>
+				
+		<action name="checkSensorMenu" class="loginAction" method="checkSensorMenu">
+			<result name="input">/WEB-INF/jsp/A1000/login/menuFrame.jsp</result>
+			<result>/WEB-INF/jsp/A1000/login/mainMenuFrame.jsp</result>
+		</action>
+		
+	</package>
+	<package name="indexPage" namespace="/" extends="struts-default">
+		<default-action-ref name="login"/>
+		<global-results>
+			<result>/WEB-INF/jsp/A1000/login/login.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/login/login.jsp</result>
+		</global-results>
+		<action name="mainFrame" class="indexPageAction" method="mainFrame">
+			<result>/WEB-INF/jsp/A1000/login/mainFrame.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/login/mainFrame.jsp</result>
+		</action>
+		<action name="sensorTypeGroup" class="indexPageAction" method="sensorTypeGroup">
+			<result>/WEB-INF/jsp/A1000/login/sensorTypeGroup.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/login/sensorTypeGroup.jsp</result>
+		</action>
+		<action name="lineGroup" class="indexPageAction" method="lineGroup">
+			<result>/WEB-INF/jsp/A1000/login/lineGroup.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/login/lineGroup.jsp</result>
+		</action>			
+	</package>
+</struts>

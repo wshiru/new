@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<service  xmlns="http://xfire.codehaus.org/config/1.0">
+		<name>CagService</name>
+		<namespace>http://info.nari-china.com/CAG</namespace>
+		<serviceClass>com.yixin.A1000.cag.webservice.I2Service</serviceClass>
+		<implementationClass>com.yixin.A1000.cag.webservice.impl.I2ServiceImpl</implementationClass>
+	</service>
+</beans>

@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>MENU</title>
+
+		<script language=javascript src="../dtree2/dtree.js"></script>
+		<link rel="stylesheet" href="../dtree2/dtree.css" type="text/css" />
+	</head>
+
+	<body bgcolor="#bddcff">
+	<form action="" method="post" id="testform">
+		<font size='2px'>只展开一个菜单</font><input type='checkbox' id='closeSameLevelCheckbox' onclick='changeCloseStatus();' checked/>
+		
+			<script language="JavaScript">
+			function changeCloseStatus(){
+				var closeSameLevelCheckbox = document.getElementById("closeSameLevelCheckbox");
+				if(closeSameLevelCheckbox.checked){
+					d.config.closeSameLevel = true;
+				}else{
+					d.config.closeSameLevel = false;
+				}
+			}
+                                d = new dTree('d');
+                                //d.config.target = "mainFrame";
+                               	d.config.useCheckBox=true;
+                                //d.config.imageDir = '../dtree/img';
+                                d.reSetImagePath();
+                                d.config.folderLinks = true;
+                                //d.config.closeSameLevel = true;
+                                d.config.check=true;//显示复选框
+                                d.config.mycheckboxName="ids";//设置<input type='checkbox' name="ids"/>name的属性
+                                var isOpen;
+                                //根节点
+                            	d.add(0,-1,'aaa 你好!');
+								 
+                             
+                                d.add('315', '87', '企业信息维护', '../webContent/accountMana/toModiEnterprise.do?whichmethod=toModiEnterprise', 'node title', 'mainFrame');
+                                
+                               		 d.add('320', '0', '市场信息库');
+                               		
+                             
+                                d.add('323', '320', '信息检索', '../bidding/bid_queryFrontAction.do', 'node title', 'mainFrame');
+                                
+                             
+                                d.add('325', '320', '市场信息创建', '../bidding/bidRegPreAction.do', 'node title', 'mainFrame');
+                                
+                               		 d.add('335', '0', '应用订购管理');
+                               		
+                             
+                                d.add('337', '335', '订购新应用', 'orderMana/app_exclude_listAction.do', 'node title', 'mainFrame');
+                                
+                             
+                                d.add('338', '335', '订单查询', 'orderMana/query_orderAction.do', 'node title', 'mainFrame');
+                                
+                             
+                                d.add('339', '335', '订单管理', 'orderMana/manager_OrderAction.do', 'node title', 'mainFrame');
+                                
+                               		 d.add('520', '0', '企业产品信息管理');
+                               		
+                             
+                                d.add('522', '520', '产品信息创建', 'productInfoMana.do', 'node title', 'mainFrame');
+                                
+                             
+                                d.add('523', '520', '产品信息维护', 'productMana.do', 'node title', 'mainFrame');
+                                
+                             
+                                d.add('184', '87', '新建帐户', 'accountMana/toCreateAccount.do', 'node title', 'mainFrame');
+                                
+                             
+                                d.add('186', '87', '帐户维护', 'accountMana/toAccountList.do?menu=editRole', 'node title', 'mainFrame');
+                                
+                             
+                                d.add('185', '87', '重置密码', 'accountMana/toAccountList.do?menu=changePs', 'node title', 'mainFrame');
+                                
+                             
+                                d.add('206', '87', '用户信息查询', 'accountMana/toAccountList.do?menu=query', 'node title', 'mainFrame');
+                                
+                             
+                                d.add('242', '87', '角色管理', 'roleMana/toRoleList.do', 'node title', 'mainFrame');
+                                
+                             
+                                d.add('240', '87', '组织结构管理', 'DeptMana/toDeptList.do', 'node title', 'mainFrame');
+                                
+                               		 d.add('87', '0', '企业管理');
+                               		
+                             
+                                d.add('243', '0', '个人信息', 'accountMana/currentAccountInfo.do', 'node title', 'mainFrame');
+                                
+                                d.closeAll();
+                               	document.write(d);
+								d.setCheck("243,240"); //设置默认选中的项目
+                               	//d.setCheck("315,87,320,323"); //设置默认选中的项目
+								
+         </script>
+         <input type="button" value="测试提交" onclick="subtest();">
+        </form>
+
+		<script>
+		function subtest(){
+			var substr="";
+			var subids = document.all("ids");
+			for(var i=0;i<subids.length;i++){
+				if(subids[i].checked){
+					substr+=","+subids[i].value;
+				}
+			}
+			alert(substr);
+		}
+		
+		</script>
+	</body>
+</html>

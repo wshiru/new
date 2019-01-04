@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+
+<!-- Dao 配置开始 -->
+	<bean id="towerTiltSamplingDao" class="com.yixin.A1000.towertilt.dao.impl.springhibernate.TowerTiltSamplingDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="towerTiltParameterDao" class="com.yixin.A1000.towertilt.dao.impl.springhibernate.TowerTiltParameterDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+<!-- Dao 配置结束 -->
+
+<!-- Service 配置开始 -->
+	<bean id="towerTiltSamplingService" class="com.yixin.A1000.towertilt.service.impl.TowerTiltSamplingServiceImpl">
+		<property name="samplingDao" ref="towerTiltSamplingDao" />
+	</bean>
+	<bean id="realTimeTowerTiltService" class="com.yixin.A1000.towertilt.service.impl.RealTimeTowerTiltServiceImpl">
+		<property name="taskConfigDao" ref="taskConfigDao" />
+		<property name="taskConfigService" ref="taskConfigService" />
+		<property name="commService" ref="commService" />
+	</bean>
+	<bean id="towerTiltParameterService" class="com.yixin.A1000.towertilt.service.impl.TowerTiltParameterServiceImpl">
+		<property name="towerTiltParameterDao" ref="towerTiltParameterDao" />
+
+	</bean>	
+	
+	
+<!-- Service 配置结束 -->
+
+<!-- Action 配置开始 -->
+	<bean name="towerTiltSamplingAction" class="com.yixin.A1000.towertilt.web.TowerTiltSamplingAction" scope="prototype">
+		<property name="samplingService" ref="towerTiltSamplingService"/>
+		<property name="sensorService" ref="sensorService"/>
+		<property name="pictureService" ref="pictureService"/>				
+		<property name="towerTiltParameterService" ref="towerTiltParameterService"/>		
+	</bean>
+	
+	<bean name="towerTiltParameterAction" class="com.yixin.A1000.towertilt.web.TowerTiltParameterAction" scope="prototype">
+		<property name="towerTiltParameterService" ref="towerTiltParameterService"/>
+		<property name="deviceSettingsService" ref="deviceSettingsService"/>		
+		<property name="sensorService" ref="sensorService"/>
+		
+	</bean>	
+	
+	<bean name="realTimeTowerTiltAction" class="com.yixin.A1000.towertilt.web.RealTimeTowerTiltAction" scope="prototype">
+		<property name="realTimeTowerTiltService" ref="realTimeTowerTiltService"/>
+		<property name="sensorService" ref="sensorService"/>
+		<property name="towerTiltSamplingService" ref="towerTiltSamplingService"/>
+		<property name="taskConfigService" ref="taskConfigService"/>
+	</bean>
+	
+  
+	<bean name="towerTiltAnalysisAction" class="com.yixin.A1000.towertilt.web.TowerTiltAnalysisAction" scope="prototype">
+		<property name="samplingService" ref="towerTiltSamplingService"/>
+		<property name="sensorService" ref="sensorService"/>
+	</bean>	
+	
+ 
+	
+<!-- Action 配置结束 -->
+</beans>

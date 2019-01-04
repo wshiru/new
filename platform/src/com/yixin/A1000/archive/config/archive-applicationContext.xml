@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+
+<!-- Dao 配置开始 -->
+	<bean id="cmaInfoDao" class="com.yixin.A1000.archive.dao.impl.springhibernate.CmaInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="lineDao" class="com.yixin.A1000.archive.dao.impl.springhibernate.LineDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sensorDao" class="com.yixin.A1000.archive.dao.impl.springhibernate.SensorDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sensorTypeDao" class="com.yixin.A1000.archive.dao.impl.springhibernate.SensorTypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="towerDao" class="com.yixin.A1000.archive.dao.impl.springhibernate.TowerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="towerTypeDao" class="com.yixin.A1000.archive.dao.impl.springhibernate.TowerTypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="upgradeFileDao" class="com.yixin.A1000.archive.dao.impl.springhibernate.UpgradeFileDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sensorFunctionDao" class="com.yixin.A1000.archive.dao.impl.springhibernate.SensorFunctionDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="pictureDao" class="com.yixin.A1000.archive.dao.impl.springhibernate.PictureDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+	<bean id="historyVersionDao" class="com.yixin.A1000.archive.dao.impl.springhibernate.HistoryVersionDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	
+<!-- Dao 配置结束 -->
+
+<!-- Service 配置开始 -->
+	<bean id="cmaInfoService" class="com.yixin.A1000.archive.service.impl.CmaInfoServiceImpl">
+		<property name="cmaInfoDao" ref="cmaInfoDao" />
+		<property name="sensorDao" ref="sensorDao" />
+	</bean>
+	<bean id="lineService" class="com.yixin.A1000.archive.service.impl.LineServiceImpl">
+		<property name="lineDao" ref="lineDao" />
+		<property name="towerDao" ref="towerDao" />
+		<property name="dictionaryDao" ref="dictionaryDao" />
+		<property name="dictCategoryDao" ref="dictCategoryDao" />
+	</bean>
+	<bean id="sensorService" class="com.yixin.A1000.archive.service.impl.SensorServiceImpl">
+		<property name="sensorDao" ref="sensorDao" />
+	</bean>
+	<bean id="sensorTypeService" class="com.yixin.A1000.archive.service.impl.SensorTypeServiceImpl">
+		<property name="sensorTypeDao" ref="sensorTypeDao" />
+		<property name="sensorDao" ref="sensorDao" />
+	</bean>
+	<bean id="towerService" class="com.yixin.A1000.archive.service.impl.TowerServiceImpl">
+		<property name="towerDao" ref="towerDao" />
+		<property name="sensorDao" ref="sensorDao" />
+	</bean>
+	<bean id="towerTypeService" class="com.yixin.A1000.archive.service.impl.TowerTypeServiceImpl">
+		<property name="towerTypeDao" ref="towerTypeDao" />
+		<property name="towerDao" ref="towerDao" />
+	</bean>
+	<bean id="upgradeFileService" class="com.yixin.A1000.archive.service.impl.UpgradeFileServiceImpl">
+		<property name="upgradeFileDao" ref="upgradeFileDao" />
+		<property name="taskConfigDao" ref="taskConfigDao" />
+	</bean>
+	<bean id="historyVersionService" class="com.yixin.A1000.archive.service.impl.HistoryVersionServiceImpl">
+		<property name="historyVersionDao" ref="historyVersionDao" />
+	</bean>
+	
+	<bean id="sensorFunctionService" class="com.yixin.A1000.archive.service.impl.SensorFunctionServiceImpl">
+		<property name="sensorFunctionDao" ref="sensorFunctionDao" />
+	</bean>
+	
+	<bean id="pictureService" class="com.yixin.A1000.archive.service.impl.PictureServiceImpl">
+		<property name="pictureDao" ref="pictureDao" />
+	</bean>	
+	
+<!-- Service 配置结束 -->
+
+
+<!-- Action 配置开始 -->	
+	<bean name="lineAction" class="com.yixin.A1000.archive.web.LineAction" scope="prototype">
+		<property name="lineService" ref="lineService" />
+		<property name="dictionaryService" ref="dictionaryService" />
+	</bean>
+	<bean name="cmaInfoAction" class="com.yixin.A1000.archive.web.CmaInfoAction" scope="prototype">
+		<property name="cmaInfoService" ref="cmaInfoService" />
+	</bean>
+	<bean name="sensorTypeAction" class="com.yixin.A1000.archive.web.SensorTypeAction" scope="prototype">
+		<property name="sensorTypeService" ref="sensorTypeService" />
+		<property name="authResourceDao" ref="authResourceDao" />
+		<property name="sensorFunctionService" ref="sensorFunctionService" />
+	</bean>
+	<bean name="towerTypeAction" class="com.yixin.A1000.archive.web.TowerTypeAction" scope="prototype">
+		<property name="towerTypeService" ref="towerTypeService" />
+	</bean>
+	<bean name="towerAction" class="com.yixin.A1000.archive.web.TowerAction" scope="prototype">
+		<property name="towerService" ref="towerService" />
+		<property name="lineService" ref="lineService" />
+		<property name="towerTypeService" ref="towerTypeService" />
+	</bean>
+	<bean name="sensorAction" class="com.yixin.A1000.archive.web.SensorAction" scope="prototype">
+		<property name="sensorService" ref="sensorService" />
+		<property name="lineService" ref="lineService" />
+		<property name="towerService" ref="towerService" />
+		<property name="cmaInfoService" ref="cmaInfoService" />
+		<property name="sensorTypeService" ref="sensorTypeService" />
+	</bean>
+	<bean name="pictureAction" class="com.yixin.A1000.archive.web.PictureAction" scope="prototype">
+		<property name="sensorService" ref="sensorService" />
+		<property name="pictureService" ref="pictureService" />
+	</bean>
+		
+	<bean name="upgradeFileAction" class="com.yixin.A1000.archive.web.UpgradeFileAction" scope="prototype">
+		<property name="upgradeFileService" ref="upgradeFileService" />
+		<property name="sensorTypeService" ref="sensorTypeService" />
+	</bean>
+<!-- Action 配置结束 -->
+</beans>

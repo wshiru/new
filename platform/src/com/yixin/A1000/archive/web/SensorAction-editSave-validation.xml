@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//OpenSymphony Group//XWork Validator 1.0.2//EN" 
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<!-- start 监测装置编码 -->
+	<field name="sensor.sensorCode">
+		<field-validator type="requiredstring">
+			<message>请输入监测装置编码</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9]+$]]></param>
+			<message>监测装置编码只允许输入英文或数字</message>
+		</field-validator>
+	</field>
+	<!-- end 监测装置编码 -->
+	
+	<!-- start 被监测装置编码 -->
+	<field name="sensor.bySensorCode">
+		<field-validator type="requiredstring">
+			<message>请输入被监测装置编码</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9]+$]]></param>
+			<message>被监测装置编码只允许输入英文或数字</message>
+		</field-validator>
+	</field>
+	<!-- end 被监测装置编码 -->
+	
+	<!-- start 所在杆塔 -->
+	<field name="sensor.tower.towerId">
+		<field-validator type="requiredstring">
+			<message>请选择所在杆塔</message>
+		</field-validator>
+	</field>
+	<!-- end 所在杆塔 -->
+	
+	<!-- start 所属监测类型 -->
+	<field name="sensor.sensorType.sensorTypeId">
+		<field-validator type="requiredstring">
+			<message>请选择所属监测类型</message>
+		</field-validator>
+	</field>
+	<!-- end 所属监测类型 -->
+	
+	<!-- start 采集监测代理 -->
+	<!-- <field name="sensor.cmaInfo.cmaInfoId">
+		<field-validator type="requiredstring">
+			<message>请选择采集监测代理</message>
+		</field-validator>
+	</field>
+    -->
+	<!-- end 采集监测代理 -->
+
+	<!-- start 状态 -->
+	<field name="sensor.state">
+		<field-validator type="required">
+			<message>请输入状态</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="expression"><![CDATA[0|1]]></param>
+			<message>状态值无效，只允许为0或1</message>
+		</field-validator>
+	</field>
+	<!-- end 状态 -->
+
+	<!-- start 生产厂商 -->
+	<field name="sensor.manuFacturer">
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9\u4e00-\u9fa5]+$]]></param>
+			<message>生产厂商只允许输入中英文或数字</message>
+		</field-validator>
+	</field>
+	<!-- end 线路名称 -->	
+	
+	<!-- start 出厂编号 -->
+	<field name="sensor.identificationNumber">
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9\-]+$]]></param>
+			<message>出厂编号只允许输入英文或数字或“-”</message>
+		</field-validator>
+	</field>
+	<!-- end 出厂编号 -->
+	
+	<!-- start 描述 -->
+	<field name="sensor.sensorDesc">
+		<field-validator type="stringlength">
+			<param name="trim">false</param>
+			<param name="minLength">0</param>
+			<param name="maxLength">250</param>
+			<message>描述长度在${minLength}到${maxLength}之间</message>
+		</field-validator>
+	</field>
+	<!-- end 描述 -->
+</validators>

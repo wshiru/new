@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+/* start switchFrame  */
+body {
+	margin: 0px;
+	overflow: hidden;
+	back
+}
+
+.navPoint {
+	COLOR: white;
+	CURSOR: hand;  /* IE etc.*/
+	CURSOR: pointer; /* FF */
+	FONT-FAMILY: Webdings;
+	FONT-SIZE: 9pt;
+	text-align: center;
+	margin: 0 1 0 1;
+}
+
+.switch_bg{
+	background:#005a62;		
+	
+}
+
+/* end switchFrame  */

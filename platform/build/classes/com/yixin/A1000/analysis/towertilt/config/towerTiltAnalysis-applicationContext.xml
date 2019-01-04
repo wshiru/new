@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+
+<!-- Service 配置开始 -->
+<bean id="towerTiltAnalysisService" class="com.yixin.A1000.analysis.towertilt.service.impl.TowerTiltAnalysisServiceImpl">
+		<property name="towerTiltSamplingDao" ref="towerTiltSamplingDao" />
+		<property name="sensorService" ref="sensorService" />		
+</bean>
+<!-- Service 配置结束 -->
+
+<!-- Action 配置开始 -->
+	<bean name="towerTiltDayAnalysisAction" class="com.yixin.A1000.analysis.towertilt.web.TowerTiltDayAnalysisAction" scope="prototype">
+		<property name="towerTiltAnalysisService" ref="towerTiltAnalysisService"/>
+	</bean>	
+	
+	<bean name="towerTiltMonthAnalysisAction" class="com.yixin.A1000.analysis.towertilt.web.TowerTiltMonthAnalysisAction" scope="prototype">
+		<property name="towerTiltAnalysisService" ref="towerTiltAnalysisService"/>
+	</bean>	
+	
+	<bean name="towerTiltYearAnalysisAction" class="com.yixin.A1000.analysis.towertilt.web.TowerTiltYearAnalysisAction" scope="prototype">
+		<property name="towerTiltAnalysisService" ref="towerTiltAnalysisService"/>
+	</bean>	
+
+    <bean name="towerTiltExtremeValueAnalysisAction" class="com.yixin.A1000.analysis.towertilt.web.TowerTiltExtremeValueAnalysisAction" scope="prototype">
+		<property name="towerTiltAnalysisService" ref="towerTiltAnalysisService"/>
+	</bean>	
+		
+<!-- Action 配置结束 -->
+
+</beans>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="request">
+		<complexType>
+			<sequence>
+				<element name="monitordata">
+					<complexType>
+						<sequence>
+							<element name="datanode" minOccurs="1" maxOccurs="unbounded">
+								<complexType>
+									<sequence>
+										<element name="type" type="string" />
+										<element name="equipmentid" type="string" />
+										<element name="timestamp" type="string" />
+										<element name="attrs">
+											<complexType>
+												<sequence>
+													<element name="attr"
+														minOccurs="0" maxOccurs="unbounded">
+														<complexType>
+															<attribute
+																name="name" type="string" />
+															<attribute
+																name="value" type="string" />
+															<attribute
+																name="alarm" type="string" />
+														</complexType>
+													</element>
+												</sequence>
+												<attribute
+													name="version" type="string">
+												</attribute>
+											</complexType>
+										</element>
+									</sequence>
+									<attribute name="sensorid" type="string" />
+								</complexType>
+							</element>
+						</sequence>
+						<attribute name="cmaid" type="string" />
+						<attribute name="datanodenum" type="string" />
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

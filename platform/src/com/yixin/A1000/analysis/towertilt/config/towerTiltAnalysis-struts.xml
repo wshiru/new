@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="towerTiltAnalysis" namespace="/analysis/towertilt" extends="struts-default">
+		<result-types>
+			<result-type name="chart" class="org.apache.struts2.dispatcher.ChartResult">
+				<param name="width">1000</param>
+				<param name="height">500</param>
+			</result-type>				
+		</result-types>
+	
+		<action name="dayList" class="towerTiltDayAnalysisAction" method="list">
+			<result >/WEB-INF/jsp/A1000/analysis/towertilt/daysAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/analysis/towertilt/daysAnalysis.jsp</result>	
+		</action>
+		
+		<action name="dayExportExcel" class="towerTiltDayAnalysisAction" method="exportExcel">
+			<result >/WEB-INF/jsp/A1000/analysis/towertilt/daysAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/analysis/towertilt/daysAnalysis.jsp</result>	
+		</action>
+		
+		<action name="dayChart" class="towerTiltDayAnalysisAction" method="chart">
+		     <result name="dayfxChart" type="chart" />		
+		</action>
+		
+		
+		<action name="monthList" class="towerTiltMonthAnalysisAction" method="list">
+			<result >/WEB-INF/jsp/A1000/analysis/towertilt/monthAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/analysis/towertilt/monthAnalysis.jsp</result>	
+		</action>
+		
+	
+		<action name="monthExportExcel" class="towerTiltMonthAnalysisAction" method="exportExcel">
+			<result >/WEB-INF/jsp/A1000/analysis/towertilt/monthAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/analysis/towertilt/monthAnalysis.jsp</result>	
+		</action>
+		
+		<action name="monthChart" class="towerTiltMonthAnalysisAction" method="chart">
+	          <result name="monthfxChart" type="chart" />	  
+		</action>
+		
+		
+		<action name="yearList" class="towerTiltYearAnalysisAction" method="list">
+			<result >/WEB-INF/jsp/A1000/analysis/towertilt/yearAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/analysis/towertilt/yearAnalysis.jsp</result>	
+		</action>
+		
+		<action name="yearExportExcel" class="towerTiltYearAnalysisAction" method="exportExcel">
+		    <result >/WEB-INF/jsp/A1000/analysis/towertilt/yearAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/analysis/towertilt/yearAnalysis.jsp</result>	
+		</action>
+		
+		<action name="yearChart" class="towerTiltYearAnalysisAction" method="chart">
+		     <result name="yearfxChart" type="chart" />	 
+		</action>
+	
+		<action name="extremeValueList" class="towerTiltExtremeValueAnalysisAction" method="list">
+			<result >/WEB-INF/jsp/A1000/analysis/towertilt/extremeValueAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/analysis/towertilt/extremeValueAnalysis.jsp</result>	
+		</action>
+		
+		<action name="extremeExportExcel" class="towerTiltExtremeValueAnalysisAction" method="exportExcel">
+			<result >/WEB-INF/jsp/A1000/analysis/towertilt/extremeValueAnalysis.jsp</result>	
+		    <result name="input" >/WEB-INF/jsp/A1000/analysis/towertilt/extremeValueAnalysis.jsp</result>	
+		</action>
+	
+		<action name="extremeValueChart" class="towerTiltExtremeValueAnalysisAction" method="chart">
+		 	 <result name="extremeValuefxChart" type="chart" />	 	 
+		</action>
+		
+	</package>
+	
+	
+</struts>
+

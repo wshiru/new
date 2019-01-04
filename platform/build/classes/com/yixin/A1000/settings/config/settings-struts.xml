@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="deviceSettings" namespace="/device/settings" extends="struts-default">
+		<interceptors>
+			<interceptor name="deviceSettingsActionInterceptor" class="com.yixin.A1000.settings.web.DeviceSettingsActionInterceptor"></interceptor>
+			<interceptor-stack name="mystack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="deviceSettingsActionInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>		
+		<!-- 终端时间 开始 -->
+		<action name="deviceTime" class="deviceSettingsAction" method="deviceTime">
+			<result>/WEB-INF/jsp/A1000/settings/deviceTime.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/deviceTime.jsp</result>
+		</action>
+		<action name="upDeviceTime" class="deviceSettingsAction" method="upDeviceTime">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/deviceTime.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/deviceTime.jsp</result>
+		</action>
+		<action name="downDeviceTime" class="deviceSettingsAction" method="downDeviceTime">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/deviceTime.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/deviceTime.jsp</result>
+		</action>
+		<!-- 终端时间 结束 -->
+
+
+		<!-- 终端采样间隔 开始 -->
+
+		<action name="samplingParam" class="deviceSettingsAction" method="samplingParam">
+			<result>/WEB-INF/jsp/A1000/settings/samplingParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/samplingParam.jsp</result>
+		</action>
+				
+		<action name="upSamplingParam" class="deviceSettingsAction" method="upSamplingParam">
+			<interceptor-ref name="mystack"></interceptor-ref>			
+			<result>/WEB-INF/jsp/A1000/settings/samplingParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/samplingParam.jsp</result>
+		</action>
+		<action name="downSamplingParam" class="deviceSettingsAction" method="downSamplingParam">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/samplingParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/samplingParam.jsp</result>
+		</action>				
+		
+		<!-- 终端采样间隔 结束 -->
+
+		<!-- 网络适配器开始 -->
+		<action name="networkAdapter" class="deviceSettingsAction" method="networkAdapter">
+			<result>/WEB-INF/jsp/A1000/settings/networkAdapter.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/networkAdapter.jsp</result>
+		</action>
+		<action name="upNetworkAdapter" class="deviceSettingsAction" method="upNetworkAdapter">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/networkAdapter.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/networkAdapter.jsp</result>
+		</action>
+		<action name="downNetworkAdapter" class="deviceSettingsAction" method="downNetworkAdapter">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/networkAdapter.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/networkAdapter.jsp</result>
+		</action>
+		<!-- 网络适配器 结束 -->
+
+		<!-- 终端模型参数 开始 -->
+		<action name="modelParam" class="deviceSettingsAction" method="modelParam">
+			<result>/WEB-INF/jsp/A1000/settings/modelParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/modelParam.jsp</result>
+		</action>
+		<action name="upModelParam" class="deviceSettingsAction" method="upModelParam">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/modelParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/modelParam.jsp</result>
+		</action>
+		<action name="downModelParam" class="deviceSettingsAction" method="downModelParam">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/modelParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/modelParam.jsp</result>
+		</action>
+		<!-- 终端模型参数 结束 -->
+
+		<!-- 终端报警阈值 开始 -->
+		<action name="alarmParam" class="deviceSettingsAction" method="alarmParam">
+			<result>/WEB-INF/jsp/A1000/settings/alarmParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/alarmParam.jsp</result>
+		</action>
+		<action name="upAlarmParam" class="deviceSettingsAction" method="upAlarmParam">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/alarmParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/alarmParam.jsp</result>
+		</action>
+		<action name="downAlarmParam" class="deviceSettingsAction" method="downAlarmParam">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/alarmParam.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/alarmParam.jsp</result>
+		</action>
+		<!-- 终端报警阈值 结束 -->
+
+		<!-- 终端通讯参数 开始 -->
+		<action name="masterStation" class="deviceSettingsAction" method="masterStation">
+			<result>/WEB-INF/jsp/A1000/settings/masterStation.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/masterStation.jsp</result>
+		</action>
+		<action name="upMasterStation" class="deviceSettingsAction" method="upMasterStation">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/masterStation.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/masterStation.jsp</result>
+		</action>
+		<action name="downMasterStation" class="deviceSettingsAction" method="downMasterStation">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/masterStation.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/masterStation.jsp</result>
+		</action>
+		<!-- 终端通讯参数 结束 -->
+
+		<!-- 终端状态监测 开始 -->
+		<action name="deviceID" class="deviceSettingsAction" method="deviceID">
+			<result>/WEB-INF/jsp/A1000/settings/deviceID.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/deviceID.jsp</result>
+		</action>
+		<action name="upDeviceID" class="deviceSettingsAction" method="upDeviceID">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/deviceID.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/deviceID.jsp</result>
+		</action>
+		<action name="downDeviceID" class="deviceSettingsAction" method="downDeviceID">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/deviceID.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/deviceID.jsp</result>
+		</action>
+		<!-- 终端状态监测 结束 -->
+
+		<!-- 终端复位 开始 -->
+		<action name="deviceReset" class="deviceSettingsAction" method="deviceReset">
+			<result>/WEB-INF/jsp/A1000/settings/deviceReset.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/deviceReset.jsp</result>
+		</action>
+		<action name="downDeviceResetNormal" class="deviceSettingsAction" method="downDeviceResetNormal">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/deviceReset.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/deviceReset.jsp</result>
+		</action>
+		<action name="downDeviceResetDiagnose" class="deviceSettingsAction" method="downDeviceResetDiagnose">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/deviceReset.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/deviceReset.jsp</result>
+		</action>
+		<action name="downDeviceResetOTHER" class="deviceSettingsAction" method="downDeviceResetOTHER">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/deviceReset.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/deviceReset.jsp</result>
+		</action>
+		<action name="downDeviceResetUpdate" class="deviceSettingsAction" method="downDeviceResetUpdate">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/deviceReset.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/deviceReset.jsp</result>
+		</action>
+		<!-- 终端复位 结束 -->
+		
+		<!-- 终端状态监测 开始 -->
+		<action name="uploadData" class="deviceSettingsAction" method="uploadData">
+			<result>/WEB-INF/jsp/A1000/settings/uploadData.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/uploadData.jsp</result>
+		</action>
+		<action name="requestUploadData" class="deviceSettingsAction" method="requestUploadData">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/uploadData.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/uploadData.jsp</result>
+		</action>
+		
+		<action name="stopUploadData" class="deviceSettingsAction" method="stopUploadData">
+			<interceptor-ref name="mystack"></interceptor-ref>
+			<result>/WEB-INF/jsp/A1000/settings/uploadData.jsp</result>
+			<result name="input">/WEB-INF/jsp/A1000/settings/uploadData.jsp</result>
+		</action>		
+		
+		<!-- 终端状态监测 结束 -->		
+	</package>
+</struts>

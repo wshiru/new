@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://cxf.apache.org/jaxws 
+    http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+	<bean name="videoPlayAction" class="com.yixin.A1000.video.web.VideoPlayAction"
+		scope="prototype">
+		<property name="videoServerService" ref="videoServerService" />
+		<property name="sensorService" ref="sensorService" />
+		<property name="commService" ref="commService" />
+	</bean>
+
+	<!-- WebService 配置开始 -->
+	<bean name="cameraProxyPortType" class="com.yixin.A1000.video.webservice.impl.CameraProxyImpl"
+		scope="prototype">
+		<property name="sensorService" ref="sensorService" />
+		<property name="videoServerService" ref="videoServerService" />
+		<property name="recordFileService" ref="recordFileService" />
+		<property name="commService" ref="commService" />
+		<property name="sensorHeartbeatInfoService" ref="sensorHeartbeatInfoService" />
+		<property name="warningService" ref="warningService" />
+		<property name="realTimeVideoService" ref="realTimeVideoService" />		
+	</bean>
+	<jaxws:server id="CameraProxy"
+		serviceClass="com.yixin.A1000.video.webservice.CameraProxyPortType"
+		address="/CameraProxy">
+		<jaxws:serviceBean>
+			<!-- 要暴露的 bean 的引用 -->
+			<ref bean="cameraProxyPortType" />
+		</jaxws:serviceBean>
+		<!-- 要暴露的 bean 的引用 <jaxws:inInterceptors> <ref bean="inMessageInterceptor" 
+			/> </jaxws:inInterceptors> <jaxws:outInterceptors> <ref bean="outLoggingInterceptor" 
+			/> </jaxws:outInterceptors> -->
+	</jaxws:server>
+	<!-- WebService 配置结束 -->
+</beans>

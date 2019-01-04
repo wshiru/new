@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+
+<!-- Dao 配置开始 -->
+
+	<bean id="weatherParameterDao" class="com.yixin.A1000.weather.dao.impl.springhibernate.WeatherParameterDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="weatherSamplingDao" class="com.yixin.A1000.weather.dao.impl.springhibernate.WeatherSamplingDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="localWeatherSamplingDao" class="com.yixin.A1000.weather.dao.impl.springhibernate.LocalWeatherSamplingDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+<!-- Dao 配置结束 -->
+
+<!-- Service 配置开始 -->
+	<bean id="weatherParameterService" class="com.yixin.A1000.weather.service.impl.WeatherParameterServiceImpl">
+		<property name="weatherParameterDao" ref="weatherParameterDao" />
+	</bean>
+
+	<bean id="weatherSamplingService" class="com.yixin.A1000.weather.service.impl.WeatherSamplingServiceImpl">
+		<property name="samplingDao" ref="weatherSamplingDao" />
+	</bean>
+	
+	<bean id="weatherAnalysisService" class="com.yixin.A1000.weather.service.impl.WeatherAnalysisServiceImpl">
+		<property name="weatherSamplingDao" ref="weatherSamplingDao" />
+	</bean>
+    <bean id="localWeatherSamplingService" class="com.yixin.A1000.weather.service.impl.LocalWeatherSamplingServiceImpl">
+		<property name="localWeatherSamplingDao" ref="localWeatherSamplingDao" />
+	</bean>
+	<bean id="realTimeWeatherService" class="com.yixin.A1000.weather.service.impl.RealTimeWeatherServiceImpl">
+		<property name="taskConfigDao" ref="taskConfigDao" />
+		<property name="taskConfigService" ref="taskConfigService" />
+		<property name="commService" ref="commService" />
+		<property name="weatherParameterService" ref="weatherParameterService"/>
+	</bean>
+<!-- Service 配置结束 -->
+
+<!-- Action 配置开始 -->
+	<bean name="weatherParameterAction" class="com.yixin.A1000.weather.web.WeatherParameterAction" scope="prototype">
+		<property name="sensorService" ref="sensorService" />
+		<property name="weatherParameterService" ref="weatherParameterService"/>
+	</bean>
+	
+	<bean name="weatherSamplingAction" class="com.yixin.A1000.weather.web.WeatherSamplingAction" scope="prototype">
+		<property name="samplingService" ref="weatherSamplingService"/>
+		<property name="sensorService" ref="sensorService" />
+		<property name="pictureService" ref="pictureService"/>
+	</bean>
+	
+	<bean name="weatherAnalysisAction" class="com.yixin.A1000.weather.web.WeatherAnalysisAction" scope="prototype">
+		<property name="weatherAnalysisService" ref="weatherAnalysisService"/>
+		<property name="sensorService" ref="sensorService" />
+	</bean>	
+		
+	<bean name="realTimeWeatherAction" class="com.yixin.A1000.weather.web.RealTimeWeatherAction" scope="prototype">
+		<property name="realTimeWeatherService" ref="realTimeWeatherService"/>
+		<property name="sensorService" ref="sensorService"/>
+		<property name="weatherSamplingService" ref="weatherSamplingService"/>
+		<property name="taskConfigService" ref="taskConfigService"/>		
+	</bean>
+<!-- Action 配置结束 -->
+</beans>

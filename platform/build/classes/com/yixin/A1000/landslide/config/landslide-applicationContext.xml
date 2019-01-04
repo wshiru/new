@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+
+<!-- Dao 配置开始 -->
+	<bean id="landslideSamplingDao" class="com.yixin.A1000.landslide.dao.impl.springhibernate.LandslideSamplingDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="landslideSamplingDetailDao" class="com.yixin.A1000.landslide.dao.impl.springhibernate.LandslideSamplingDetailDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="landslideParameterDao" class="com.yixin.A1000.landslide.dao.impl.springhibernate.LandslideParameterDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+		
+	<bean id="landslideParameterDetailDao" class="com.yixin.A1000.landslide.dao.impl.springhibernate.LandslideParameterDetailDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>		
+	
+<!-- Dao 配置结束 -->
+
+<!-- Service 配置开始 -->
+	<bean id="landslideSamplingService" class="com.yixin.A1000.landslide.service.impl.LandslideSamplingServiceImpl">
+		<property name="samplingDao" ref="landslideSamplingDao" />
+		<property name="landslideSamplingDetailDao" ref="landslideSamplingDetailDao" />
+	</bean>    
+	<bean id="realTimeLandslideService" class="com.yixin.A1000.landslide.service.impl.RealTimeLandslideServiceImpl">
+		<property name="commService" ref="commService" />
+	</bean>
+	<bean id="landslideParameterService" class="com.yixin.A1000.landslide.service.impl.LandslideParameterServiceImpl">
+		<property name="landslideParameterDao" ref="landslideParameterDao" />
+		<property name="landslideParameterDetailDao" ref="landslideParameterDetailDao" />
+	</bean>	
+<!-- Service 配置结束 -->
+
+<!-- Action 配置开始 -->
+	<bean name="landslideSamplingAction" class="com.yixin.A1000.landslide.web.LandslideSamplingAction" scope="prototype">
+		<property name="samplingService" ref="landslideSamplingService"/>
+		<property name="sensorService" ref="sensorService"/>
+		<property name="pictureService" ref="pictureService"/>
+		<property name="landslideParameterService" ref="landslideParameterService" />
+	</bean>
+	
+	<bean name="realTimeLandslideAction" class="com.yixin.A1000.landslide.web.RealTimeLandslideAction" scope="prototype">
+		<property name="realTimeLandslideService" ref="realTimeLandslideService"/>
+		<property name="sensorService" ref="sensorService"/>
+		<property name="landslideParameterService" ref="landslideParameterService" />		
+	</bean>
+	<bean name="landslideParameterAction" class="com.yixin.A1000.landslide.web.LandslideParameterAction" scope="prototype">
+		<property name="landslideParameterService" ref="landslideParameterService"/>
+		<property name="deviceSettingsService" ref="deviceSettingsService"/>
+		<property name="sensorService" ref="sensorService"/>		
+	</bean>	
+	
+	<bean name="landslideDisplacementAction" class="com.yixin.A1000.landslide.web.LandslideDisplacementAction" scope="prototype">
+		<property name="landslideParameterService" ref="landslideParameterService"/>
+		<property name="samplingService" ref="landslideSamplingService"/>
+		<property name="sensorService" ref="sensorService"/>
+	</bean>		
+<!-- Action 配置结束 -->
+</beans>

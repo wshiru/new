@@ -1,0 +1,38 @@
+<!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<!-- masterStation.ipAddress start-->
+    <field name="masterStation.ipAddress">
+        <field-validator type="requiredstring" short-circuit="true">
+            <message>上位机IP地址不能为空</message>
+        </field-validator>
+        <field-validator type="regex" short-circuit="true">
+			<param name="expression">^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$</param>
+			<message>上位机IP地址格式不正确</message>
+		</field-validator>
+    </field>
+	<!-- masterStation.ipAddress end -->
+	
+	<!-- masterStation.port start-->
+    <field name="masterStation.port">
+		<field-validator type="required">
+            <message>上位机端口号不能为空</message>
+        </field-validator>
+        <field-validator type="int">
+			<param name="min">1</param>
+			<param name="max">65535</param>
+			<message>上位机端口号必须为${min}到${max}间的整数</message>
+		</field-validator>
+    </field>
+	<!-- masterStation.port end -->
+	
+	<!-- masterStation.domainName start-->
+    <field name="masterStation.domainName">
+        <field-validator type="requiredstring" short-circuit="true">
+            <message>上位机域名不能为空</message>
+        </field-validator>
+    </field>
+	<!-- masterStation.domainName end -->
+</validators>

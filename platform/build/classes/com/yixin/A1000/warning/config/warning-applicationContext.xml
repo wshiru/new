@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+
+<!-- Dao 配置开始 -->
+	<bean id="warningDictDao" class="com.yixin.A1000.warning.dao.impl.springhibernate.WarningDictDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="warningConditionDao" class="com.yixin.A1000.warning.dao.impl.springhibernate.WarningConditionDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="warningDao" class="com.yixin.A1000.warning.dao.impl.springhibernate.WarningDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+<!-- Dao 配置结束 -->
+
+<!-- Service 配置开始 -->
+	<bean id="warningDictService" class="com.yixin.A1000.warning.service.impl.WarningDictServiceImpl">
+		<property name="warningDictDao" ref="warningDictDao" />
+	</bean>
+	<bean id="warningConditionService" class="com.yixin.A1000.warning.service.impl.WarningConditionServiceImpl">
+		<property name="warningConditionDao" ref="warningConditionDao" />
+	</bean>
+	
+	<bean id="warningService" class="com.yixin.A1000.warning.service.impl.WarningServiceImpl">
+		<property name="warningDao" ref="warningDao" />
+	</bean>
+	
+	
+
+
+
+<!-- Service 配置结束 -->
+
+<!-- Action 配置开始 -->	
+
+	<bean name="warningAction" class="com.yixin.A1000.warning.web.WarningAction" scope="prototype">
+		<property name="warningDictService" ref="warningDictService"/>
+		<property name="warningService" ref="warningService"/>
+		<property name="sensorService" ref="sensorService"/>
+		<property name="lineService" ref="lineService"/>			
+	</bean>
+	
+	<bean name="latestWarningAction" class="com.yixin.A1000.warning.web.LatestWarningAction" scope="prototype">
+		<property name="warningService" ref="warningService"/>
+	</bean>
+
+	<bean name="weatherWarningConditionAction" class="com.yixin.A1000.warning.web.WeatherWarningConditionAction" scope="prototype" />
+	<bean name="wireTemperatureWarningConditionAction" class="com.yixin.A1000.warning.web.WireTemperatureWarningConditionAction" scope="prototype" />
+	<bean name="wireSagWarningConditionAction" class="com.yixin.A1000.warning.web.WireSagWarningConditionAction" scope="prototype" />
+	<bean name="whiteMonsoonWarningConditionAction" class="com.yixin.A1000.warning.web.WhiteMonsoonWarningConditionAction" scope="prototype" />
+	<bean name="towerTiltWarningConditionAction" class="com.yixin.A1000.warning.web.TowerTiltWarningConditionAction" scope="prototype" />
+	<bean name="insulatorMonsoonWarningConditionAction" class="com.yixin.A1000.warning.web.InsulatorMonsoonWarningConditionAction" scope="prototype" />
+<!-- Action 配置结束 -->
+</beans>

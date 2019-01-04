@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+
+<!-- Service 配置开始 -->
+	<bean id="roleService" class="com.yixin.framework.system.service.impl.RoleServiceImpl">
+		<property name="roleDao" ref="roleDao" />
+	</bean>
+	<bean id="userService" class="com.yixin.framework.system.service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao" />
+	</bean>
+	<bean id="logService" class="com.yixin.framework.system.service.impl.LogServiceImpl">
+		<property name="logDao" ref="logDao" />
+	</bean>
+	<bean id="dictCategoryService" class="com.yixin.framework.system.service.impl.DictCategoryServiceImpl">
+		<property name="dictCategoryDao" ref="dictCategoryDao" />
+		<property name="dictionaryDao" ref="dictionaryDao" />
+	</bean>	
+	<bean id="dictionaryService" class="com.yixin.framework.system.service.impl.DictionaryServiceImpl">
+		<property name="dictCategoryDao" ref="dictCategoryDao" />
+		<property name="dictionaryDao" ref="dictionaryDao" />
+	</bean>
+<!-- Service 配置结束 -->
+
+</beans>

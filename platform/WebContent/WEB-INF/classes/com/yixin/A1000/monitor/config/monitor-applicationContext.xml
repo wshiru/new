@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+
+<!-- Dao 配置开始 -->
+	<bean id="onlineDeviceStatusDao" class="com.yixin.A1000.monitor.dao.impl.springhibernate.OnlineDeviceStatusDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+<!-- Dao 配置结束 -->	
+
+<!-- Service 配置开始  -->
+	
+	<bean id="onlineDeviceStatusService" class="com.yixin.A1000.monitor.service.impl.OnlineDeviceStatusServiceImpl">
+		<property name="commService" ref="commService" />
+		<property name="onlineDeviceStatusDao" ref="onlineDeviceStatusDao" />
+	</bean>
+		
+<!-- Service 配置结束 -->	
+<!-- Action 配置开始 -->	
+
+	<bean name="cmaRunningStatusAction" class="com.yixin.A1000.monitor.web.CmaRunningStatusAction" scope="prototype">
+		<property name="cmaHeartbeatInfoService" ref="cmaHeartbeatInfoService"/>
+		<property name="sensorService" ref="sensorService" />
+	</bean>
+	
+	<bean name="sensorRunningStatusAction" class="com.yixin.A1000.monitor.web.SensorRunningStatusAction" scope="prototype">
+		<property name="sensorHeartbeatInfoService" ref="sensorHeartbeatInfoService"/>
+	</bean>
+	
+	<bean name="cmaOnlineAction" class="com.yixin.A1000.monitor.web.CmaOnlineAction" scope="prototype">
+		<property name="cmaInfoService" ref="cmaInfoService" />
+		<property name="cmaHeartbeatInfoService" ref="cmaHeartbeatInfoService"/>		
+	</bean>
+	
+	<bean name="sensorOnlineAction" class="com.yixin.A1000.monitor.web.SensorOnlineAction" scope="prototype">
+		<property name="sensorService" ref="sensorService" />
+		<property name="sensorHeartbeatInfoService" ref="sensorHeartbeatInfoService"/>
+		<property name="onlineDeviceStatusService" ref="onlineDeviceStatusService"/>
+		<property name="sensorTypeService" ref="sensorTypeService"/>
+	</bean>
+	
+<!-- Action 配置结束 -->
+</beans>

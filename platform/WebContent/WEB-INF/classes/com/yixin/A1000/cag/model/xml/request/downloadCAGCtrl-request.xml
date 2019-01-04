@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<request>
+	<command objid="29M00000009009000" type=" CAMERA_REGULATE">
+		<action name="CHANNELNO" value="1" />
+		<action name="PRESETTINGNO " value="2" />
+		<action name="CTLACTION" value="0" />
+	</command>
+</request>

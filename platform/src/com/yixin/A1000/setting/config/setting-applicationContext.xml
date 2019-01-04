@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+">
+
+<!-- Dao 配置开始 -->
+	<bean id="cmaHeartbeatInfoDao" class="com.yixin.A1000.setting.dao.impl.springhibernate.CmaHeartbeatInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />	
+	</bean>	
+	<bean id="sensorHeartbeatInfoDao" class="com.yixin.A1000.setting.dao.impl.springhibernate.SensorHeartbeatInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	<bean id="taskConfigDao" class="com.yixin.A1000.setting.dao.impl.springhibernate.TaskConfigDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cmaParamDao" class="com.yixin.A1000.setting.dao.impl.springhibernate.CmaParamsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+	<bean id="sensorParamsDao" class="com.yixin.A1000.setting.dao.impl.springhibernate.SensorParamsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="deviceParameterDao" class="com.yixin.A1000.setting.dao.impl.springhibernate.DeviceParameterDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+
+	
+<!-- Dao 配置结束 -->
+
+<!-- Service 配置开始 -->
+	<bean id="cmaHeartbeatInfoService" class="com.yixin.A1000.setting.service.impl.CmaHeartbeatInfoServiceImpl" >
+		<property name="cmaHeartbeatInfoDao" ref="cmaHeartbeatInfoDao" />
+		<property name="cmaInfoDao" ref="cmaInfoDao" />
+	</bean>	
+	<bean id="sensorHeartbeatInfoService" class="com.yixin.A1000.setting.service.impl.SensorHeartbeatInfoServiceImpl">
+		<property name="sensorHeartbeatInfoDao" ref="sensorHeartbeatInfoDao" />
+		<property name="sensorDao" ref="sensorDao" />
+	</bean>	
+	<bean id="taskConfigService" class="com.yixin.A1000.setting.service.impl.TaskConfigServiceImpl">
+		<property name="taskConfigDao" ref="taskConfigDao" />
+		<property name="sensorDao" ref="sensorDao" />
+		<property name="cmaInfoDao" ref="cmaInfoDao" />
+		<property name="sensorParamsDao" ref="sensorParamsDao" />
+		<property name="deviceParameterDao" ref="deviceParameterDao" />
+		<property name="deviceParameterService" ref="deviceParameterService" />	
+	</bean>	
+	
+	
+	<bean id="sensorParamsService" class="com.yixin.A1000.setting.service.impl.SensorParamsServiceImpl">
+		<property name="sensorParamsDao" ref="sensorParamsDao" />
+		<property name="sensorService" ref="sensorService" />	
+	</bean>
+	
+	
+	<bean id="sensorParamsSettingService" class="com.yixin.A1000.setting.service.impl.SensorParamsSettingServiceImpl">
+		<property name="sensorParamsDao" ref="sensorParamsDao" />
+		<property name="taskConfigDao" ref="taskConfigDao" />
+		<property name="sensorParamsService" ref="sensorParamsService" />
+		<property name="taskConfigService" ref="taskConfigService" />	
+	</bean>
+  
+	<bean id="deviceParameterService" class="com.yixin.A1000.setting.service.impl.DeviceParameterServiceImpl">
+		<property name="deviceParameterDao" ref="deviceParameterDao" />
+	</bean>	
+	
+	
+	<bean id="deviceParamSettingService" class="com.yixin.A1000.setting.service.impl.DeviceParameterSettingServiceImpl">
+		<property name="deviceParameterDao" ref="deviceParameterDao" />
+		<property name="taskConfigDao" ref="taskConfigDao" />
+		<property name="deviceParameterService" ref="deviceParameterService" />
+		<property name="taskConfigService" ref="taskConfigService" />	
+	</bean>
+	
+	
+	<bean id="updateService" class="com.yixin.A1000.setting.service.impl.UpdateServiceImpl">
+		<property name="taskConfigDao" ref="taskConfigDao" />
+		<property name="taskConfigService" ref="taskConfigService" />
+	</bean>	
+<!-- Service 配置结束 -->
+
+<!-- Action 配置开始 -->
+ 	
+ 	<bean id="sensorParamsSettingAction" class="com.yixin.A1000.setting.web.SensorParamsSettingAction" scope="prototype">
+		<property name="deviceParamSettingService" ref="deviceParamSettingService" />
+		<property name="sensorService" ref="sensorService" />
+	</bean>	
+		
+		
+	<bean id="cmaParameterSettingAction" class="com.yixin.A1000.setting.web.CmaParamsSettingAction" scope="prototype">
+		<property name="deviceParamSettingService" ref="deviceParamSettingService" /> 
+		<property name="sensorService" ref="sensorService" />
+	</bean>
+	
+	<bean id="taskConfigAction" class="com.yixin.A1000.setting.web.TaskConfigAction" scope="prototype">
+		<property name="taskConfigService" ref="taskConfigService" />
+		<property name="cmaInfoService" ref="cmaInfoService" />
+		<property name="sensorService" ref="sensorService" />
+		<property name="userService" ref="userService" />
+	</bean>
+	<bean id="updateAction" class="com.yixin.A1000.setting.web.UpdateAction" scope="prototype">
+		<property name="updateService" ref="updateService" />
+		<property name="cmaInfoService" ref="cmaInfoService" />
+		<property name="sensorService" ref="sensorService" />
+		<property name="upgradeFileService" ref="upgradeFileService" />
+		<property name="taskConfigService" ref="taskConfigService" />
+	</bean>
+<!-- Action 配置结束 -->	
+</beans>

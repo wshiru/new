@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="role" namespace="/system/role" extends="struts-default">
+		<default-action-ref name="list"/>
+		<global-results>
+			<result name="success">/WEB-INF/jsp/framework/system/role/list.jsp</result>		
+			<result name="input">/WEB-INF/jsp/framework/system/role/addOrEdit.jsp</result>
+		</global-results>
+		<action name="list" class="roleAction" method="list"></action>
+		<action name="add" class="roleAction" method="add" />
+		<action name="edit" class="roleAction" method="edit"></action>
+		<action name="saveOrUpdate" class="roleAction" method="saveOrUpdate"></action>	
+		<action name="delete" class="roleAction" method="delete"></action>
+		<action name="modAuth" class="roleAction" method="modAuth">
+			<result name="modAuth">/WEB-INF/jsp/framework/system/role/modAuth.jsp</result>
+		</action>
+		<action name="updateAuth" class="roleAction" method="updateAuth"></action>
+	</package>
+	<package name="user" namespace="/system/user" extends="struts-default">
+		<global-results>
+			<result name="input">/WEB-INF/jsp/framework/system/user/list.jsp</result>
+		</global-results>
+		<action name="list" class="userAction" method="list">
+			<result>/WEB-INF/jsp/framework/system/user/list.jsp</result>
+		</action>
+		<action name="add" class="userAction" method="add">
+			<result>/WEB-INF/jsp/framework/system/user/add.jsp</result>
+			<result name="input">/WEB-INF/jsp/framework/system/user/add.jsp</result>
+		</action>
+		<action name="addSave" class="userAction" method="addSave">
+			<result>/WEB-INF/jsp/framework/system/user/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/framework/system/user/add.jsp</result>
+		</action>
+		<action name="edit" class="userAction" method="edit">
+			<result>/WEB-INF/jsp/framework/system/user/edit.jsp</result>
+			<result name="input">/WEB-INF/jsp/framework/system/user/edit.jsp</result>
+		</action>
+		<action name="editSave" class="userAction" method="editSave">
+			<result>/WEB-INF/jsp/framework/system/user/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/framework/system/user/edit.jsp</result>
+		</action>
+		<action name="detail" class="userAction" method="detail">
+			<result>/WEB-INF/jsp/framework/system/user/detail.jsp</result>
+			<result name="input">/WEB-INF/jsp/framework/system/user/detail.jsp</result>
+		</action>
+		<action name="delete" class="userAction" method="delete">
+			<result>/WEB-INF/jsp/framework/system/user/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/framework/system/user/list.jsp</result>
+		</action>
+		<action name="modPwd" class="userAction" method="modPwd">
+			<result>/WEB-INF/jsp/framework/system/user/modPwd.jsp</result>
+			<result name="input">/WEB-INF/jsp/framework/system/user/list.jsp</result>
+		</action>
+		<action name="modPwdSave" class="userAction" method="modPwdSave">
+			<result>/WEB-INF/jsp/A1000/login/mainFrame.jsp</result>
+			<result name="input">/WEB-INF/jsp/framework/system/user/modPwd.jsp</result>
+		</action>
+		<action name="editRoles" class="userAction" method="editRoles">
+			<result>/WEB-INF/jsp/framework/system/user/editRoles.jsp</result>
+			<result name="input">/WEB-INF/jsp/framework/system/user/list.jsp</result>
+		</action>
+		<action name="editRolesSave" class="userAction" method="editRolesSave">
+			<result>/WEB-INF/jsp/framework/system/user/list.jsp</result>
+			<result name="input">/WEB-INF/jsp/framework/system/user/editRoles.jsp</result>
+		</action>
+		<action name="backHome" class="userAction" method="execute">
+			<result name="success" type="redirect" >/checkSysMenu.jspx</result>
+		</action>
+	</package>
+	<package name="dictionary" namespace="/system/dictionary" extends="struts-default">
+		<default-action-ref name="list"/>
+		<global-results>
+			<result name="success">/WEB-INF/jsp/framework/system/dictionary/list.jsp</result>		
+			<result name="input">/WEB-INF/jsp/framework/system/dictionary/addOrEdit.jsp</result>
+		</global-results>
+		<action name="list" class="dictionaryAction" method="list"></action>
+		<action name="add" class="dictionaryAction" method="add" />
+		<action name="edit" class="dictionaryAction" method="edit"></action>
+		<action name="saveOrUpdate" class="dictionaryAction" method="saveOrUpdate"></action>	
+		<action name="delete" class="dictionaryAction" method="delete"></action>
+	</package>
+	<package name="log" namespace="/system/log" extends="struts-default">
+		<default-action-ref name="list"/>
+		<global-results>
+			<result name="success">/WEB-INF/jsp/framework/system/log/list.jsp</result>		
+		</global-results>
+		<action name="list" class="logAction" method="list"></action>	
+		<action name="delete" class="logAction" method="delete"></action>
+	</package>
+</struts>

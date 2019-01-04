@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<request>
+	<configs>
+		<config objid="29M00000009009000" dataacquiretime="30" heartbeattime="20" version="1.01" wakeupreferencetime="0" wakeupcycle="5" wakeuptime="60">
+			<attr desc="状态监测装置数目" name="SENSORNUM" type="INT" length="2" unit="" range=">=0" note="CMA所辖状态监测装置的数目，该参数不可更改" value="2" />
+		</config>
+		<config objid="29M00000009009000" dataacquiretime="30" heartbeattime="20" version="1.01" wakeupreferencetime="0" wakeupcycle="0" wakeuptime="0">
+			<attr desc="被监测设备" name="EQUIPMENTID" type="STRING" length="17" unit="" range="" note="被监测设备的17位码标识" value="97M00090990000997" />
+			<attr desc="IP地址" name="IP" type="STRING" length="20" unit="" range="" note="状态监测装置与CMA通信的IP地址" value="192.168.0.2" />
+			<attr desc="监测专业代码" name="MONITORTYPE" type="STRING" length="5" unit="" range="在Q/GDW xxx—2010输电线路智能监测装置通用技术规范中规定" note="" value="01013" />
+		</config>
+	</configs>
+</request>

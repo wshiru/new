@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- Dao 配置开始 -->
+	<bean id="videoPlatformDao"
+		class="com.yixin.A1000.video.dao.impl.springhibernate.VideoPlatformDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="videoServerDao"
+		class="com.yixin.A1000.video.dao.impl.springhibernate.VideoServerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="recordFileDao"
+		class="com.yixin.A1000.video.dao.impl.springhibernate.RecordFileDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="recordPlanDao"
+		class="com.yixin.A1000.video.dao.impl.springhibernate.RecordPlanDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- Dao 配置结束 -->
+
+	<!-- Service 配置开始 -->
+
+	<bean id="videoPlatformService"
+		class="com.yixin.A1000.video.service.impl.VideoPlatformServiceImpl">
+		<property name="videoPlatformDao" ref="videoPlatformDao" />
+	</bean>
+
+	<bean id="videoServerService"
+		class="com.yixin.A1000.video.service.impl.VideoServerServiceImpl">
+		<property name="videoServerDao" ref="videoServerDao" />
+	</bean>
+
+	<bean id="recordFileService"
+		class="com.yixin.A1000.video.service.impl.RecordFileServiceImpl">
+		<property name="recordFileDao" ref="recordFileDao" />
+	</bean>
+
+	<bean id="recordPlanService"
+		class="com.yixin.A1000.video.service.impl.RecordPlanServiceImpl">
+		<property name="recordPlanDao" ref="recordPlanDao" />
+	</bean>
+
+	<bean id="realTimeVideoService"
+		class="com.yixin.A1000.video.service.impl.RealTimeVideoServiceImpl">
+		<property name="commService" ref="commService" />
+	</bean>
+
+
+	<!-- Service 配置结束 -->
+
+	<!-- Action 配置开始 -->
+
+	<bean name="videoPlatformAction" class="com.yixin.A1000.video.web.VideoPlatformAction"
+		scope="prototype">
+		<property name="videoPlatformService" ref="videoPlatformService" />
+	</bean>
+
+	<bean name="videoServerAction" class="com.yixin.A1000.video.web.VideoServerAction"
+		scope="prototype">
+		<property name="videoServerService" ref="videoServerService" />
+		<property name="sensorService" ref="sensorService" />
+		<property name="commService" ref="commService" />
+	</bean>
+
+	<bean name="recordPlanAction" class="com.yixin.A1000.video.web.RecordPlanAction"
+		scope="prototype">
+		<property name="videoServerService" ref="videoServerService" />
+		<property name="sensorService" ref="sensorService" />
+		<property name="recordPlanService" ref="recordPlanService" />
+	</bean>
+
+	<bean name="realtimeVideoAction" class="com.yixin.A1000.video.web.RealtimeVideoAction"
+		scope="prototype">
+		<property name="videoPlatformService" ref="videoPlatformService" />
+		<property name="videoServerService" ref="videoServerService" />
+		<property name="sensorService" ref="sensorService" />
+		<property name="realTimeVideoService" ref="realTimeVideoService" />
+	</bean>
+
+	<bean name="playbackVideoAction" class="com.yixin.A1000.video.web.PlaybackVideoAction"
+		scope="prototype">
+		<property name="sensorService" ref="sensorService" />
+		<property name="videoServerService" ref="videoServerService" />
+		<property name="recordFileService" ref="recordFileService" />
+	</bean>
+	
+
+	<!-- Action 配置结束 -->
+</beans>

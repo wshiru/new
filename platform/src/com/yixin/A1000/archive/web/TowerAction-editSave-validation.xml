@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//OpenSymphony Group//XWork Validator 1.0.2//EN" 
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<!-- start 杆塔编号 -->
+	<field name="tower.towerCode">
+		<field-validator type="requiredstring">
+			<message>请输入杆塔编号</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9]+$]]></param>
+			<message>杆塔编号只允许输入英文或数字</message>
+		</field-validator>
+	</field>
+	<!-- end 杆塔编号 -->
+	
+	<!-- start 所属线路 -->
+	<field name="tower.line.lineId">
+		<field-validator type="requiredstring">
+			<message>请选择所属线路</message>
+		</field-validator>
+	</field>
+	<!-- end 所属线路 -->
+	
+	<!-- start 杆塔类型 -->
+	<field name="tower.towerType.towerTypeId">
+		<field-validator type="requiredstring">
+			<message>请选择杆塔类型</message>
+		</field-validator>
+	</field>
+	<!-- end 杆塔类型 -->
+
+	<!-- start 杆塔高度 -->
+	<field name="tower.towerHeight">
+		<field-validator type="alltypesupportregex">
+			<param name="expression"><![CDATA[^[0-9]+(.[0-9]{1,2})?$]]></param>
+			<message>杆塔高度必须是数字，且最多两位小数</message>
+		</field-validator>
+	</field>
+	<!-- end 杆塔高度 -->
+
+	<!-- start 经度 -->
+	<field name="tower.towerHeight">
+		<field-validator type="alltypesupportregex">
+			<param name="expression"><![CDATA[^[0-9]+(.[0-9]{1,2})?$]]></param>
+			<message>经度必须是数字，且最多两位小数</message>
+		</field-validator>
+	</field>
+	<!-- end 经度 -->
+
+	<!-- start 纬度 -->
+	<field name="tower.towerHeight">
+		<field-validator type="alltypesupportregex">
+			<param name="expression"><![CDATA[^[0-9]+(.[0-9]{1,2})?$]]></param>
+			<message>纬度必须是数字，且最多两位小数</message>
+		</field-validator>
+	</field>
+	<!-- end 纬度 -->
+	
+	<!-- start 描述 -->
+	<field name="tower.towerDesc">
+		<field-validator type="stringlength">
+			<param name="trim">false</param>
+			<param name="minLength">0</param>
+			<param name="maxLength">250</param>
+			<message>描述长度在${minLength}到${maxLength}之间</message>
+		</field-validator>
+	</field>
+	<!-- end 描述 -->
+</validators>

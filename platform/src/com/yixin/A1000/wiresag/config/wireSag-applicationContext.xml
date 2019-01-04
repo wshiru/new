@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件说明信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+>
+
+<!-- Dao 配置开始 -->
+
+	<bean id="wireSagSamplingDao" class="com.yixin.A1000.wiresag.dao.impl.springhibernate.WireSagSamplingDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+<!-- Dao 配置结束 -->
+
+<!-- Service 配置开始 -->
+	<bean id="wireSagSamplingService" class="com.yixin.A1000.wiresag.service.impl.WireSagSamplingServiceImpl">
+		<property name="samplingDao" ref="wireSagSamplingDao" />
+	</bean>
+	<bean id="realTimeWireSagService" class="com.yixin.A1000.wiresag.service.impl.RealTimeWireSagServiceImpl">
+		<property name="taskConfigDao" ref="taskConfigDao" />
+		<property name="taskConfigService" ref="taskConfigService" />
+	</bean>
+<!-- Service 配置结束 -->
+
+<!-- Action 配置开始 -->
+	<bean name="wireSagSamplingAction" class="com.yixin.A1000.wiresag.web.WireSagSamplingAction" scope="prototype">
+		<property name="samplingService" ref="wireSagSamplingService"/>
+	</bean>
+	<bean name="realTimeWireSagAction" class="com.yixin.A1000.wiresag.web.RealTimeWireSagAction" scope="prototype">
+		<property name="realTimeWireSagService" ref="realTimeWireSagService"/>
+		<property name="sensorService" ref="sensorService"/>
+		<property name="wireSagSamplingService" ref="wireSagSamplingService"/>
+		<property name="taskConfigService" ref="taskConfigService"/>
+	</bean>
+<!-- Action 配置结束 -->
+</beans>

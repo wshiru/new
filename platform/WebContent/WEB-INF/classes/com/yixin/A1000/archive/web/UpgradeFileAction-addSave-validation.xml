@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//OpenSymphony Group//XWork Validator 1.0.2//EN" 
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<!-- start 版本号 -->
+	<field name="upgradeFile.version">
+		<field-validator type="requiredstring">
+			<message>请输入版本号</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^((\d+)[.])+(\d+)+$]]></param>
+			<message>版本号格式错误</message>
+		</field-validator>
+	</field>
+	<!-- end 版本号 -->
+	
+	<!-- start 版本发布时间 -->
+	<field name="upgradeFile.releaseTime">
+		<field-validator type="required">
+			<message>请输入版本发布时间</message>
+		</field-validator>
+	</field>
+	<!-- end 版本发布时间 -->
+	
+	<!-- start 描述 -->
+	<field name="upgradeFile.upgradeFileDesc">
+		<field-validator type="stringlength">
+			<param name="trim">false</param>
+			<param name="minLength">0</param>
+			<param name="maxLength">250</param>
+			<message>描述长度在${minLength}到${maxLength}之间</message>
+		</field-validator>
+	</field>
+	<!-- end 描述 -->
+</validators>

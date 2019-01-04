@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="request">
+		<complexType>
+			<sequence>
+				<element name="imageinfo">
+					<complexType>
+						<sequence>
+							<element name="packagesum" type="string" />
+							<element name="curpackagenum" type="string" />
+							<element name="timestamp" type="string" />
+							<element name="info" minOccurs="1" maxOccurs="unbounded">
+								<complexType>
+										<attribute name="name" type="string" use="required" />
+										<attribute name="value" type="string" use="required" />
+								</complexType>
+							</element>
+						</sequence>
+						<attribute name="cmaid" type="string" use="required" />
+						<attribute name="sensorid" type="string" use="required" />
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

@@ -1,0 +1,39 @@
+/* 告警滚动信息样式 */
+#scrolllayer{
+  overflow:hidden;
+  height:17px;
+  width:90%; 
+  padding:3px 0 0 0; 	  	
+}
+
+#scrollmessage{
+	float:left;
+	/* color:#02fdee; */
+    width:90%;
+	font-size:12px;
+	text-align:left; 
+	padding:0;
+	margin:0;
+}
+		
+		
+#scrollmessage ul {
+	list-style:none;
+	padding:0; 
+	margin:0;
+} 
+	
+#scrollmessage li { 
+	line-height:17px;
+	color:#fafd02;
+}
+
+#scrollmessage li a{
+    color:#fafd02; 
+	text-decoration:none;
+} 
+
+#scrollmessage li a:hover{
+   /* color:#02fdee; */
+   text-decoration:none;
+}

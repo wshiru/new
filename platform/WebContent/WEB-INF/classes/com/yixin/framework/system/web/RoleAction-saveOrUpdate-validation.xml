@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//OpenSymphony Group//XWork Validator 1.0.2//EN" 
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	
+	<!-- start 角色名称 -->
+	<field name="role.roleName">
+        <field-validator type="requiredstring">
+            <message>该项不能为空</message>
+        </field-validator>
+		<field-validator type="regex">
+			<param name="trim">false</param>
+			<param name="expression"><![CDATA[^[A-Za-z0-9\u4e00-\u9fa5]+$]]></param>
+			<message>该项只允许输入中英文或数字</message>
+		</field-validator>
+	</field>
+	<!-- end 角色名称 -->	
+	
+	<!-- start 角色类型 -->
+    <field name="role.roleType">
+        <field-validator type="required">
+            <message>该项不能为空</message>
+        </field-validator>
+    </field>
+    <!-- end 角色类型 -->	
+    
+	<!-- start 角色描述 -->
+	<field name="role.roleDesc">
+		<field-validator type="stringlength">
+			<param name="trim">false</param>
+			<param name="maxLength">125</param>
+			<message>该项长度不能超过${maxLength}个字</message>
+		</field-validator>
+	</field>
+	<!-- end 角色描述 -->
+	
+</validators>

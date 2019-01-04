@@ -1,0 +1,44 @@
+<!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+    <!-- "samplingParam.mainTime" start -->
+    <field name="samplingParam.mainTime">
+		<field-validator type="required">
+            <message>采集时间周期不能为空</message>
+        </field-validator>
+        <field-validator type="int">
+			<param name="min">1</param>
+			<param name="max">65535</param>
+			<message>采集时间周期必须为${min}到${max}间的整数</message>
+		</field-validator>
+    </field>
+    <!-- "samplingParam.mainTime" end -->
+    
+    <!-- "samplingParam.sampleCount" start -->
+    <field name="samplingParam.sampleCount">
+		<field-validator type="required">
+            <message>高速采样点数不能为空</message>
+        </field-validator>
+        <field-validator type="int">
+			<param name="min">1</param>
+			<param name="max">65535</param>
+			<message>高速采样点数必须为${min}到${max}间的整数</message>
+		</field-validator>
+    </field>
+    <!-- "samplingParam.sampleCount" end -->
+    
+    <!-- "samplingParam.sampleFrequency" start -->
+    <field name="samplingParam.sampleFrequency">
+		<field-validator type="required">
+            <message>高速采样频率不能为空</message>
+        </field-validator>
+        <field-validator type="int">
+			<param name="min">1</param>
+			<param name="max">65535</param>
+			<message>高速采样频率必须为${min}到${max}间的整数</message>
+		</field-validator>
+    </field>
+    <!-- "samplingParam.sampleFrequency" end -->
+</validators>

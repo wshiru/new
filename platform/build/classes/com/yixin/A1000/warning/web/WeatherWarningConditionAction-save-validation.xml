@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  		"-//OpenSymphony Group//XWork Validator 1.0.2//EN" 
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	
+	<field name="maxTemperature" >
+        <field-validator type="required" short-circuit="true">
+            <message>该项不能为空</message>
+        </field-validator>
+		<field-validator type="double">
+			<param name="minExclusive">0</param>
+			<message>该数值必须大于${minExclusive}</message>
+		</field-validator>
+	</field>
+	<field name="minTemperature" >
+        <field-validator type="required" short-circuit="true">
+            <message>该项不能为空</message>
+        </field-validator>
+		<field-validator type="double">
+			<message>该项只允许输入数字</message>
+		</field-validator>
+		<field-validator type="fieldexpression">
+	        <param name="expression">maxTemperature > minTemperature</param>
+	        <message>上限值必须大于下限值</message>
+		</field-validator>
+	</field>
+  	
+	<field name="maxHumidity">
+        <field-validator type="required" short-circuit="true">
+            <message>该项不能为空</message>
+        </field-validator>
+		<field-validator type="double">
+			<param name="minExclusive">0</param>
+			<message>该数值必须大于${minExclusive}</message>
+		</field-validator>
+	</field>
+	<field name="minHumidity">
+        <field-validator type="required" short-circuit="true">
+            <message>该项不能为空</message>
+        </field-validator>
+		<field-validator type="double">
+			<param name="minExclusive">0</param>
+			<message>该数值必须大于${minExclusive}</message>
+		</field-validator>
+		<field-validator type="fieldexpression">
+	        <param name="expression">maxHumidity > minHumidity</param>
+	        <message>上限值必须大于下限值</message>
+		</field-validator>
+	</field>
+		
+	<field name="windSpeed">
+        <field-validator type="required" short-circuit="true">
+            <message>该项不能为空</message>
+        </field-validator>
+		<field-validator type="double">
+			<param name="minExclusive">0</param>
+			<message>该数值必须大于${minExclusive}</message>
+		</field-validator>
+	</field><!--
+
+	<field name="windDirection">
+        <field-validator type="required" short-circuit="true">
+            <message>该项不能为空</message>
+        </field-validator>
+		<field-validator type="double">
+			<message>该项只允许输入数字</message>
+		</field-validator>
+	</field>
+	
+	--><field name="airPressure">
+        <field-validator type="required" short-circuit="true">
+            <message>该项不能为空</message>
+        </field-validator>
+		<field-validator type="double">
+			<param name="minExclusive">0</param>
+			<message>该数值必须大于${minExclusive}</message>
+		</field-validator>
+	</field>
+		
+	<field name="dailyRainFall">
+        <field-validator type="required" short-circuit="true">
+            <message>该项不能为空</message>
+        </field-validator>
+		<field-validator type="double">
+			<param name="minExclusive">0</param>
+			<message>该数值必须大于${minExclusive}</message>
+		</field-validator>
+	</field><!--
+	
+	<field name="radiationIntensity">
+        <field-validator type="required" short-circuit="true">
+            <message>该项不能为空</message>
+        </field-validator>
+		<field-validator type="double">
+			<message>该项只允许输入数字</message>
+		</field-validator>
+	</field>	
+--></validators>

@@ -1,0 +1,97 @@
+@charset "utf-8";
+
+/* login.jsp页面CSS样式 */
+html,body {
+	height: 100%;
+}
+
+body {
+	margin: 0px;
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background:#5D8880;
+	overflow:hidden ;	
+	width:100%;
+}
+
+img {
+	border: 0;
+	padding: 32px 16px 16px 16px;
+	margin: 2px 0px 0px 0px;	
+	height: 45px;
+	width: 380px;	
+}
+
+table,div {
+	font-size: 12px;
+}
+
+a:link,a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+
+a:hover,a:active {
+	color: #00CCFF;
+	text-decoration: none;
+}
+
+input {
+	border: 2px solid #D4EDFC;  	
+	background:#D4EDFC;
+	font-size: 12px;	
+}
+
+.copyright2 {
+	color: #D4EDFC;
+	line-height: 10px;
+}
+
+.copyright3 {
+	color: #D4EDFC;
+	font-size: 10px;
+}
+
+
+.login_msg{
+	color: #D4EDFC;	
+	font-size: 14px;
+}
+	
+.loginbg {
+	height: 100%;
+	vertical-align: middle;
+}
+
+.login {
+	color: #005248; /*#004e53;*/
+	vertical-align: middle;
+	margin: 25% auto auto 25%; *+
+	margin: 15% auto auto 35%;
+}
+
+
+
+.login_btn {
+	font-size: 12px;
+	color: #fff;
+	background-image: url(../images/login/btn.png);
+	/*background-color: transparent;*/
+	height: 22px;
+	width: 66px;
+	border: 0px;
+	cursor: pointer;
+	padding: 0px 2px 3px 10px; *+
+	padding: 1px 2px 1px 10px;
+	margin: 2px 0px 0px 0px;
+	
+	
+}
+
+
+.formBg {
+	background: #00483B;
+	-webkit-box-shadow: 2px 2px #222;   
+    -moz-box-shadow: 2px 2px #222;  
+    box-shadow: 2px 2px #222; 
+}
